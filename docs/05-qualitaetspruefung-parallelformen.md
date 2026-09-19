@@ -1,4 +1,4 @@
-# Qualitätsprüfung der Parallelformen – Version 0.1 → 0.2
+# Qualitätsprüfung der Parallelformen – Version 0.1 → 0.3
 
 ## Ziel
 
@@ -120,27 +120,37 @@ Damit werden direkte Wortkenntnis und kontextuelles Erschließen wieder getrennt
 
 ---
 
-## 4. Bild-Wort-Aufgaben
+## 4. Wort-Bild-Aufgaben
 
-### Problem
+### Revision 0.3
 
-Im Birke-Set war **„Werkzeug“** als Oberbegriff vorgesehen, während Eiche und Ahorn konkrete Gegenstände verwenden.
+Die früheren Platzhalter wurden vollständig durch echte, einheitlich gestaltete PNG-Illustrationen ersetzt.
 
-Das misst zusätzlich Kategorienwissen.
+Jede Parallelform enthält jetzt **9 Wort-Bild-Aufgaben**:
 
-### Revision
+- **Eiche:** Ball, Haus, Fisch, Bus, Buch, Hund, Schuh, Apfel, Fahrrad
+- **Ahorn:** Maus, Baum, Brot, Tasse, Uhr, Vogel, Jacke, Banane, Fenster
+- **Birke:** Stern, Mond, Blume, Teller, Kerze, Gabel, Schere, Tomate, Schule
 
-Birke verwendet stattdessen:
+Die 27 Bildassets liegen unter:
 
-**Hammer**
+```
+assets/lesebilder/
+```
 
-mit drei eindeutig unterscheidbaren Bildern, z. B.:
+Die JSON-Sets referenzieren die Bilder über `asset`-Felder. Die App lädt diese Assets direkt in den Wort-Bild-Aufgaben.
 
-- Hammer ✅
-- Schere
-- Becher
+### Qualitätsregeln
 
-Alle Bilditems verwenden konkrete, gut darstellbare Gegenstände oder Handlungen.
+- ausschließlich konkrete, eindeutig benennbare Gegenstände
+- pro Aufgabe klar unterscheidbare Bildoptionen
+- einheitlicher Illustrationsstil
+- keine Beschriftung im Bild
+- transparente Hintergründe
+- gleiche visuelle Größe und Gewichtung der Optionen
+- die Bildpositionen werden wie die übrigen Antwortoptionen in der App gemischt
+
+Die früheren Überlegungen zu Oberbegriffen wie „Werkzeug“ sind damit überholt.
 
 ---
 
@@ -250,9 +260,9 @@ Frage: Wer steckte den Schlüssel ein?
 - Zusammenhang zwischen digitaler Lesegeschwindigkeit und Lautlesetest
 - Pilot-Schwellenwerte der Auswertungsmatrix
 
-## Nächster Workflow-Schritt
+## Aktueller Umsetzungsstand
 
-Die freigegebenen Inhalte werden in maschinenlesbare Dateien überführt:
+Die freigegebenen Inhalte sind vollständig in maschinenlesbare Dateien überführt:
 
 ```
 data/
@@ -264,4 +274,25 @@ data/
     pilot-rules.json
 ```
 
-Die JSON-Struktur erhält bereits stabile Item-IDs, Kompetenzcodes und Auswertungsfelder, damit die spätere Webapp ohne erneute Umstrukturierung darauf aufbauen kann.
+Aktuell gilt:
+
+- alle drei Sets: Version **0.3**
+- App: Version **0.5**
+- je Parallelform 9 Wort-Bild-Aufgaben
+- insgesamt 27 Bildassets
+- stabile Item-IDs und Kompetenzcodes
+- Auswertungslogik datengetrieben über `pilot-rules.json`
+- lokale Speicherung und CSV-Export implementiert
+
+## Nächster Workflow-Schritt
+
+Der nächste Schritt ist **nicht mehr die technische Grundimplementierung**, sondern die praktische Erprobung:
+
+1. technischer Funktionstest auf den vorgesehenen Schulgeräten
+2. kleiner Schüler-Pilot
+3. Prüfung der Bearbeitungszeit
+4. Vergleich der Förderempfehlungen mit Lautlesetest und pädagogischer Einschätzung
+5. Analyse auffälliger Items und Distraktoren
+6. anschließende Kalibrierung der Pilot-Schwellenwerte und ggf. einzelner Parallelformen
+
+Die aktuelle Fassung ist damit ein **einsatzfähiger Pilotprototyp**, aber noch kein normiertes diagnostisches Verfahren.
