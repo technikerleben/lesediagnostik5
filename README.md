@@ -99,7 +99,7 @@ Details: `docs/07-datenpflege-und-versionierung.md`
 
 ## Status
 
-**Statischer Prototyp / App-Version 0.5**
+**Statischer Prototyp / App-Version 0.6**
 
 Aktueller fachlicher Stand:
 
@@ -114,6 +114,24 @@ Aktueller fachlicher Stand:
 - Ergebnis- und Itemdaten können als CSV exportiert werden
 
 Die Implementierungsphase des aktuellen Prototyps ist damit abgeschlossen.
+
+## Schüleroberfläche 0.6
+
+Die Schüleransicht wurde für schwächere Leserinnen und Leser und für die Nutzung auf dem **iPad im Querformat** vereinfacht.
+
+Grundregeln der Oberfläche:
+
+- pro Bildschirm nur die Informationen, die für die aktuelle Aufgabe benötigt werden
+- Fortschrittsbalken bleibt sichtbar
+- keine Navigations-, Lehrkraft- oder Technikhinweise während der Aufgaben
+- Beispiele sind durch eine eigene mintfarbene **„Beispiel“**-Kennzeichnung klar von echten Aufgaben getrennt
+- echte Aufgaben tragen eine blaue **„Aufgabe“**-Kennzeichnung
+- Lesetexte werden bei Textverständnis-Aufgaben in einer eigenen **„Text“**-Fläche dargestellt
+- auf dem iPad im Querformat stehen Text und Frage nebeneinander
+- große Schrift, großzügige Abstände und große Touch-Flächen
+- Bildantworten werden als drei große gleichwertige Karten dargestellt
+- eine Antwort wird zuerst markiert und erst mit **„Weiter“** bestätigt, damit versehentliche Berührungen nicht sofort weiterführen
+- bei Wort-Bild-Aufgaben verrät die barrierefreie Beschriftung nicht die richtige Lösung
 
 ### Nächster Projektabschnitt: technischer Test und Pilotierung
 
