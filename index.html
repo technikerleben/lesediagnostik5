@@ -552,6 +552,309 @@ button:disabled {
     height: 82px;
   }
 }
+
+/* UI 0.6 – fokussierte Schüleransicht für iPad Querformat */
+body {
+  min-height: 100vh;
+  font-size: 20px;
+}
+
+.page-shell {
+  width: min(100%, 1180px);
+  min-height: 100vh;
+  padding: 18px 24px 28px;
+}
+
+.navigator.student-screen {
+  min-height: calc(100vh - 46px);
+  align-content: start;
+  gap: 14px;
+}
+
+.student-screen .progress-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 8px 0 10px;
+  background: var(--white);
+}
+
+.student-screen .progress-head {
+  display: none;
+}
+
+.student-screen .progress-track {
+  height: 12px;
+}
+
+.screen-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 38px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.task-label {
+  color: var(--blue);
+  background: #edf4fa;
+  border: 2px solid #bfd1e2;
+}
+
+.example-label {
+  color: #17685f;
+  background: #e9fbf8;
+  border: 2px solid var(--mint);
+}
+
+.text-label {
+  color: var(--muted);
+  background: var(--white);
+  border: 2px solid var(--line);
+}
+
+.example-card {
+  max-width: 900px;
+  width: 100%;
+  margin: 5vh auto 0;
+  border: 3px solid var(--mint);
+  background: #f7fffd;
+}
+
+.example-card h2,
+.question-panel h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.45rem);
+}
+
+.example-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.practice-options {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.practice-option {
+  min-height: 150px;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.task-layout {
+  min-height: calc(100vh - 90px);
+  display: grid;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.task-layout.has-passage {
+  grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+}
+
+.task-layout.single-task {
+  grid-template-columns: minmax(0, 860px);
+  justify-content: center;
+  align-items: center;
+}
+
+.question-panel,
+.reading-panel,
+.passage-panel {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--white);
+}
+
+.question-panel,
+.reading-panel {
+  display: grid;
+  align-content: center;
+  gap: 22px;
+  padding: 30px 34px;
+}
+
+.passage-panel {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 24px 28px;
+  background: var(--panel);
+  overflow: auto;
+  max-height: calc(100vh - 95px);
+}
+
+.passage-panel p {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.72;
+  white-space: pre-line;
+}
+
+.prompt {
+  font-size: clamp(1.55rem, 2.8vw, 2rem);
+  line-height: 1.35;
+}
+
+.options {
+  gap: 14px;
+}
+
+.option-button,
+.unknown-button,
+.primary-button,
+.secondary-button {
+  min-height: 66px;
+  font-size: 1.2rem;
+}
+
+.option-button {
+  padding: 16px 20px;
+  border-width: 3px;
+  border-radius: 17px;
+}
+
+.option-button.is-selected,
+.unknown-button.is-selected {
+  border-color: var(--blue);
+  background: #eaf2f9;
+  box-shadow: 0 0 0 3px rgba(36, 86, 136, 0.12);
+}
+
+.unknown-button {
+  min-height: 58px;
+  font-size: 1.05rem;
+}
+
+.visual-options {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.visual-options .option-button {
+  min-height: 190px;
+  padding: 16px;
+}
+
+.visual-asset {
+  width: 150px;
+  height: 150px;
+}
+
+.action-row {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 70px;
+  align-items: center;
+}
+
+.action-row .primary-button {
+  min-width: 190px;
+  font-size: 1.3rem;
+}
+
+.timed-text {
+  margin: 0;
+  padding: 26px 30px;
+  font-size: clamp(1.2rem, 2vw, 1.42rem);
+  line-height: 1.78;
+  max-height: calc(100vh - 210px);
+  overflow: auto;
+}
+
+.intro-card.student-intro {
+  max-width: 880px;
+  margin: 4vh auto 0;
+}
+
+.student-intro > p {
+  font-size: 1.15rem;
+}
+
+.student-intro .primary-button {
+  min-width: 220px;
+}
+
+.student-intro .participant-box {
+  background: var(--white);
+  padding: 0;
+  border: 0;
+}
+
+.student-intro .local-only-note {
+  margin-bottom: 0;
+}
+
+.local-admin.student-admin {
+  max-width: 880px;
+  width: 100%;
+  margin: 8px auto 0;
+}
+
+.result-card {
+  max-width: 920px;
+  width: 100%;
+  margin: 2vh auto 0;
+}
+
+@media (orientation: landscape) and (min-width: 760px) and (max-height: 900px) {
+  .page-shell {
+    padding-top: 12px;
+    padding-bottom: 18px;
+  }
+
+  .question-panel,
+  .reading-panel {
+    padding: 24px 30px;
+    gap: 18px;
+  }
+
+  .visual-options .option-button {
+    min-height: 170px;
+  }
+
+  .visual-asset {
+    width: 136px;
+    height: 136px;
+  }
+
+  .practice-option {
+    min-height: 132px;
+  }
+}
+
+@media (orientation: portrait), (max-width: 759px) {
+  .task-layout.has-passage {
+    grid-template-columns: 1fr;
+  }
+
+  .passage-panel {
+    max-height: 46vh;
+  }
+
+  .visual-options,
+  .practice-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .visual-options .option-button {
+    min-height: 120px;
+  }
+
+  .visual-asset {
+    width: 92px;
+    height: 92px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -567,7 +870,7 @@ button:disabled {
   <script>
 "use strict";
 
-const APP_VERSION = "0.5";
+const APP_VERSION = "0.6";
 const PREFIX = "lesediagnostik5:v1";
 const PARTICIPANTS_KEY = PREFIX + ":participants";
 const RUNS_KEY = PREFIX + ":runs";
@@ -600,7 +903,9 @@ const state = {
   currentParticipant: null,
   resultData: null,
   teacherUnlocked: false,
-  saveMessage: ""
+  saveMessage: "",
+  selectedOption: null,
+  exampleSelected: false
 };
 
 const app = document.getElementById("app");
@@ -946,6 +1251,7 @@ function pathIcon(type) {
 }
 
 function render() {
+  if (state.stage === "example") return renderExample();
   if (state.stage === "task") return renderTask();
   if (state.stage === "result") return renderResult();
   return renderIntro();
@@ -959,28 +1265,20 @@ function renderIntro(message) {
 
   app.innerHTML =
     '<div class="navigator">' +
-      '<header class="brandline"><div><h1>Lese-Navigator</h1>' +
-      '<p>Finde heraus, welche Leseübungen gerade gut zu dir passen.</p></div>' +
-      '<span class="note">Pilotversion ' + APP_VERSION + ' · HTML</span></header>' +
-      '<div class="path-row" aria-label="Drei Lesewege">' +
-        '<div class="path-card wave">' + pathIcon("wave") + '<span>Welle</span></div>' +
-        '<div class="path-card compass">' + pathIcon("compass") + '<span>Kompass</span></div>' +
-        '<div class="path-card magnifier">' + pathIcon("magnifier") + '<span>Lupe</span></div>' +
-      '</div>' +
-      '<section class="intro-card"><h2>So geht es</h2>' +
-        '<p>Du löst kleine Leseaufgaben. Du musst nichts schreiben. Lies in deinem normalen Tempo und klicke die Antwort an, die für dich passt.</p>' +
-        '<p>Du bekommst keine Note. Am Ende erhältst du einen Tipp, mit welchen Übungen du weiterarbeiten kannst.</p>' +
-        '<div class="participant-box"><h3>Dieser Durchlauf</h3>' +
-          '<p class="note">Die Angaben werden nur im Browser dieses Geräts gespeichert. Du kannst auch ein eindeutiges Kürzel statt des Namens verwenden.</p>' +
+      '<section class="intro-card student-intro">' +
+        '<h1>Lese-Navigator</h1>' +
+        '<p>Du löst kleine Leseaufgaben. Am Ende bekommst du einen Tipp zum Weiterüben.</p>' +
+        '<div class="participant-box">' +
           '<div class="form-grid">' +
             '<label><span>Name oder Kürzel</span><input id="participant-name" type="text" autocomplete="off" maxlength="80" value="' + escapeAttribute(state.participantName) + '"></label>' +
-            '<label><span>Klasse (optional)</span><input id="class-name" type="text" autocomplete="off" maxlength="40" value="' + escapeAttribute(state.className) + '"></label>' +
-          '</div></div>' +
+            '<label><span>Klasse</span><input id="class-name" type="text" autocomplete="off" maxlength="40" value="' + escapeAttribute(state.className) + '"></label>' +
+          '</div>' +
+        '</div>' +
         (message ? '<p class="error-message">' + escapeHtml(message) + '</p>' : '') +
-        '<button id="start-run" class="primary-button" type="button">Lese-Navigator starten</button>' +
-        '<p class="local-only-note"><strong>Nur lokal:</strong> Diagnoseergebnisse werden nicht an einen Server gesendet. Die Website liefert ausschließlich statische Dateien aus.</p>' +
+        '<button id="start-run" class="primary-button" type="button">Start</button>' +
+        '<p class="local-only-note">Deine Ergebnisse bleiben auf diesem Gerät.</p>' +
       '</section>' +
-      '<details class="local-admin"><summary>Lokale Datenverwaltung – Lehrkraft</summary>' +
+      '<details class="local-admin student-admin"><summary>Lehrkraft</summary>' +
         '<div class="local-admin-body">' +
           (state.teacherUnlocked ? teacherAdminUnlocked(participantCount, runCount) : teacherAdminLocked(configured)) +
         '</div></details>' +
@@ -1011,6 +1309,44 @@ function renderIntro(message) {
 
   const deleteButton = document.getElementById("delete-local");
   if (deleteButton) deleteButton.addEventListener("click", handleDeleteAll);
+}
+
+function renderExample() {
+  const selected = state.exampleSelected;
+
+  app.innerHTML =
+    '<div class="navigator student-screen">' +
+      '<div class="progress-wrap" aria-label="Fortschritt">' +
+        '<div class="progress-track" aria-hidden="true"><div class="progress-fill" style="width:0%"></div></div>' +
+      '</div>' +
+      '<section class="task-card example-card">' +
+        '<span class="screen-label example-label">Beispiel</span>' +
+        '<h2>So wählst du eine Antwort.</h2>' +
+        '<p class="prompt">Tippe auf eine Antwort.</p>' +
+        '<p class="example-note">Das ist nur zum Üben. Es zählt noch nicht.</p>' +
+        '<div class="options practice-options">' +
+          '<button class="option-button practice-option' + (selected === "circle" ? ' is-selected' : '') + '" data-example="circle" type="button" aria-pressed="' + (selected === "circle") + '">●</button>' +
+          '<button class="option-button practice-option' + (selected === "square" ? ' is-selected' : '') + '" data-example="square" type="button" aria-pressed="' + (selected === "square") + '">■</button>' +
+          '<button class="option-button practice-option' + (selected === "triangle" ? ' is-selected' : '') + '" data-example="triangle" type="button" aria-pressed="' + (selected === "triangle") + '">▲</button>' +
+        '</div>' +
+        (selected ? '<div class="action-row"><button id="begin-tasks" class="primary-button" type="button">Weiter</button></div>' : '') +
+      '</section>' +
+    '</div>';
+
+  document.querySelectorAll("[data-example]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      state.exampleSelected = button.dataset.example;
+      renderExample();
+    });
+  });
+
+  const begin = document.getElementById("begin-tasks");
+  if (begin) begin.addEventListener("click", function () {
+    state.exampleSelected = false;
+    state.selectedOption = null;
+    state.stage = "task";
+    render();
+  });
 }
 
 function teacherAdminLocked(configured) {
@@ -1094,7 +1430,9 @@ function startRun() {
   state.fluency = { startedAt: null, seconds: null, wpm: null };
   state.resultData = null;
   state.saveMessage = "";
-  state.stage = "task";
+  state.selectedOption = null;
+  state.exampleSelected = false;
+  state.stage = "example";
   render();
 }
 
@@ -1105,21 +1443,29 @@ function renderTask() {
   const progress = state.queue.length ? Math.round((state.index / state.queue.length) * 100) : 0;
   const isTimed = current.type === "timed_reading";
   const timedStarted = state.fluency.startedAt != null;
-  let body = "";
+  const selected = state.selectedOption;
+  let questionContent = "";
 
   if (isTimed) {
     if (timedStarted) {
-      body = '<div class="timed-reading"><div class="timed-text">' +
-        escapeHtml(current.text) +
-        '</div><button id="finish-reading" class="primary-button" type="button">Fertig gelesen</button></div>';
+      questionContent =
+        '<section class="reading-panel">' +
+          '<span class="screen-label task-label">Leseaufgabe</span>' +
+          '<div class="timed-text">' + escapeHtml(current.text) + '</div>' +
+          '<div class="action-row"><button id="finish-reading" class="primary-button" type="button">Fertig gelesen</button></div>' +
+        '</section>';
     } else {
-      body = '<div class="timed-reading"><h2>Jetzt liest du einen kurzen Text.</h2>' +
-        '<p class="prompt">' + escapeHtml(current.prompt) + '</p>' +
-        '<button id="start-reading" class="primary-button" type="button">Text starten</button></div>';
+      questionContent =
+        '<section class="reading-panel">' +
+          '<span class="screen-label task-label">Leseaufgabe</span>' +
+          '<h2>Lies einen kurzen Text.</h2>' +
+          '<p class="prompt">Lies in deinem normalen Tempo.</p>' +
+          '<div class="action-row"><button id="start-reading" class="primary-button" type="button">Text zeigen</button></div>' +
+        '</section>';
     }
   } else {
     const options = orderedOptions(current.options || [], state.runSeed, current.id);
-    const optionHtml = options.map(function (option) {
+    const optionHtml = options.map(function (option, optionIndex) {
       let content = "";
 
       if (current.type === "visual_choice" && option.asset) {
@@ -1128,48 +1474,51 @@ function renderTask() {
           escapeAttribute(option.asset) +
           '.png" alt="" loading="eager" decoding="async">';
       } else if (current.type === "visual_choice") {
-        content = escapeHtml(option.symbol || option.alt || "");
+        content = escapeHtml(option.symbol || "");
       } else {
         content = escapeHtml(option.text || "");
       }
 
+      const isSelected = selected === option.id;
       const aria = current.type === "visual_choice"
-        ? ' aria-label="' + escapeAttribute(option.alt || "") + '"'
+        ? ' aria-label="Bildoption ' + (optionIndex + 1) + '"'
         : "";
 
-      return '<button class="option-button" type="button" data-option="' +
-        escapeAttribute(option.id) + '"' + aria + '>' + content + '</button>';
+      return '<button class="option-button' + (isSelected ? ' is-selected' : '') +
+        '" type="button" data-option="' + escapeAttribute(option.id) + '"' + aria +
+        ' aria-pressed="' + isSelected + '">' + content + '</button>';
     }).join("");
 
-    body =
-      '<h2>' + escapeHtml(current.sectionTitle) + '</h2>' +
-      '<p class="prompt">' + escapeHtml(current.prompt) + '</p>' +
-      '<div class="options ' + (current.type === "visual_choice" ? "visual-options" : "") + '">' +
-        optionHtml +
-      '</div>' +
-      (current.type !== "self_report"
-        ? '<button id="unknown-answer" class="unknown-button" type="button">Ich weiß es noch nicht.</button>'
-        : '');
+    questionContent =
+      '<section class="question-panel">' +
+        '<span class="screen-label task-label">Aufgabe</span>' +
+        '<p class="prompt">' + escapeHtml(current.prompt) + '</p>' +
+        '<div class="options ' + (current.type === "visual_choice" ? "visual-options" : "") + '">' +
+          optionHtml +
+        '</div>' +
+        (current.type !== "self_report"
+          ? '<button id="unknown-answer" class="unknown-button' + (selected === "unknown" ? ' is-selected' : '') +
+            '" type="button" aria-pressed="' + (selected === "unknown") + '">Ich weiß es nicht.</button>'
+          : '') +
+        (selected
+          ? '<div class="action-row"><button id="confirm-answer" class="primary-button" type="button">Weiter</button></div>'
+          : '') +
+      '</section>';
   }
 
   app.innerHTML =
-    '<div class="navigator">' +
-      '<header class="brandline"><div><h1>Lese-Navigator</h1><p>' +
-        escapeHtml(current.sectionTitle) +
-      '</p></div></header>' +
+    '<div class="navigator student-screen">' +
       '<div class="progress-wrap" aria-label="Fortschritt">' +
-        '<div class="progress-head"><span>' + escapeHtml(current.sectionTitle) +
-        '</span><span>Du bist unterwegs.</span></div>' +
         '<div class="progress-track" aria-hidden="true"><div class="progress-fill" style="width:' +
           progress + '%"></div></div>' +
       '</div>' +
-      '<section class="task-card">' +
+      '<div class="task-layout ' + (current.contextPassage ? "has-passage" : "single-task") + '">' +
         (current.contextPassage
-          ? '<div class="passage-card"><p>' + escapeHtml(current.contextPassage) + '</p></div>'
+          ? '<section class="passage-panel"><span class="screen-label text-label">Text</span><p>' +
+            escapeHtml(current.contextPassage) + '</p></section>'
           : '') +
-        body +
-      '</section>' +
-      '<p class="dev-note" aria-hidden="true">Dieser Durchlauf wird ausschließlich lokal im Browser gespeichert.</p>' +
+        questionContent +
+      '</div>' +
     '</div>';
 
   document.querySelectorAll("[data-option]").forEach(function (button) {
@@ -1180,6 +1529,9 @@ function renderTask() {
 
   const unknown = document.getElementById("unknown-answer");
   if (unknown) unknown.addEventListener("click", answerUnknown);
+
+  const confirm = document.getElementById("confirm-answer");
+  if (confirm) confirm.addEventListener("click", confirmAnswer);
 
   const startReading = document.getElementById("start-reading");
   if (startReading) startReading.addEventListener("click", function () {
@@ -1192,23 +1544,34 @@ function renderTask() {
 }
 
 function answer(optionId) {
-  const current = state.queue[state.index];
-  const nextResponses = Object.assign({}, state.responses);
-  nextResponses[current.id] = optionId;
-  const nextScores = applyScore(state.scores, current, optionId);
-  advance(nextScores, nextResponses);
+  state.selectedOption = optionId;
+  renderTask();
 }
 
 function answerUnknown() {
+  state.selectedOption = "unknown";
+  renderTask();
+}
+
+function confirmAnswer() {
   const current = state.queue[state.index];
+  const optionId = state.selectedOption;
+  if (!current || !optionId) return;
+
   const nextResponses = Object.assign({}, state.responses);
-  nextResponses[current.id] = "unknown";
-  advance(state.scores, nextResponses);
+  nextResponses[current.id] = optionId;
+
+  const nextScores = optionId === "unknown"
+    ? state.scores
+    : applyScore(state.scores, current, optionId);
+
+  advance(nextScores, nextResponses);
 }
 
 function advance(nextScores, nextResponses) {
   state.scores = nextScores;
   state.responses = nextResponses;
+  state.selectedOption = null;
   state.index += 1;
   if (state.index >= state.queue.length) {
     completeRun();
@@ -1223,6 +1586,7 @@ function finishTimedReading() {
   const seconds = Math.max(1, (performance.now() - state.fluency.startedAt) / 1000);
   state.fluency.seconds = seconds;
   state.fluency.wpm = Math.round((current.wordCount / seconds) * 60);
+  state.selectedOption = null;
   state.index += 1;
   if (state.index >= state.queue.length) {
     completeRun();
@@ -1320,6 +1684,8 @@ function resetToIntro(keepParticipant) {
   state.fluency = { startedAt: null, seconds: null, wpm: null };
   state.resultData = null;
   state.saveMessage = "";
+  state.selectedOption = null;
+  state.exampleSelected = false;
   if (!keepParticipant) {
     state.participantName = "";
     state.className = "";
