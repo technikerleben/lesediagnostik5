@@ -239,6 +239,13 @@ export default function Navigator() {
       return;
     }
 
+    if (!hasTeacherPin()) {
+      setFormError(
+        "Vor dem ersten Durchlauf muss die Lehrkraft unten in der lokalen Datenverwaltung eine Geräte-PIN festlegen."
+      );
+      return;
+    }
+
     let participant;
     try {
       participant = upsertParticipant({
