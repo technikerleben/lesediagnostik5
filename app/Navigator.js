@@ -9,11 +9,14 @@ import {
   deleteAllLocalData,
   exportItemCsv,
   exportSummaryCsv,
+  hasTeacherPin,
   loadParticipants,
   loadRuns,
   saveDiagnosticRun,
+  setTeacherPin,
   storageAvailable,
   upsertParticipant,
+  verifyTeacherPin,
 } from "./localData";
 
 const SETS = [eiche, ahorn, birke];
@@ -192,6 +195,10 @@ export default function Navigator() {
   const [formError, setFormError] = useState("");
   const [saveMessage, setSaveMessage] = useState("");
   const [resultData, setResultData] = useState(null);
+  const [teacherPinConfigured, setTeacherPinConfigured] = useState(false);
+  const [teacherUnlocked, setTeacherUnlocked] = useState(false);
+  const [teacherPinInput, setTeacherPinInput] = useState("");
+  const [teacherPinError, setTeacherPinError] = useState("");
 
   useEffect(() => {
     const available = storageAvailable();
@@ -201,6 +208,7 @@ export default function Navigator() {
         participants: loadParticipants().length,
         runs: loadRuns().length,
       });
+      setTeacherPinConfigured(hasTeacherPin());
     }
   }, []);
 
@@ -362,6 +370,38 @@ export default function Navigator() {
     }
   }
 
+  async function handleTeacherPin() {
+    setTeacherPinError("");
+    try {
+      if (!teacherPinConfigured) {
+        await setTeacherPin(teacherPinInput);
+        setTeacherPinConfigured(true);
+        setTeacherUnlocked(true);
+        setTeacherPinInput("");
+        return;
+      }
+
+      const valid = await verifyTeacherPin(teacherPinInput);
+      if (!valid) {
+        setTeacherPinError("Die PIN ist nicht richtig.");
+        return;
+      }
+
+      setTeacherUnlocked(true);
+      setTeacherPinInput("");
+    } catch (error) {
+      setTeacherPinError(
+        error instanceof Error ? error.message : "Die PIN konnte nicht verarbeitet werden."
+      );
+    }
+  }
+
+  function lockTeacherArea() {
+    setTeacherUnlocked(false);
+    setTeacherPinInput("");
+    setTeacherPinError("");
+  }
+
   function handleDeleteAll() {
     const confirmed = window.confirm(
       "Alle lokal gespeicherten Namen/Kürzel und Diagnoseergebnisse auf diesem Browser wirklich löschen?"
@@ -463,41 +503,85 @@ export default function Navigator() {
         <details className="local-admin">
           <summary>Lokale Datenverwaltung – Lehrkraft</summary>
           <div className="local-admin-body">
-            <p>
-              Auf diesem Browser gespeichert: <strong>{localCounts.participants}</strong>{" "}
-              Teilnehmer · <strong>{localCounts.runs}</strong> Durchläufe
-            </p>
-            <p className="note">
-              Browserdaten können beim Löschen des Website-Speichers verloren gehen.
-              Sichere die Ergebnisse deshalb bei Bedarf als CSV in deinem geschützten
-              schulischen Ablageort.
-            </p>
-            <div className="result-actions">
-              <button
-                className="secondary-button"
-                type="button"
-                onClick={exportSummaryCsv}
-                disabled={localCounts.runs === 0}
-              >
-                Ergebnisse als CSV
-              </button>
-              <button
-                className="secondary-button"
-                type="button"
-                onClick={exportItemCsv}
-                disabled={localCounts.runs === 0}
-              >
-                Itemdaten als CSV
-              </button>
-              <button
-                className="danger-button"
-                type="button"
-                onClick={handleDeleteAll}
-                disabled={localCounts.participants === 0 && localCounts.runs === 0}
-              >
-                Lokale Daten löschen
-              </button>
-            </div>
+            {!teacherUnlocked ? (
+              <div className="pin-gate">
+                <p className="note">
+                  {teacherPinConfigured
+                    ? "Gib die Geräte-PIN ein, um gespeicherte Ergebnisse zu sehen oder zu exportieren."
+                    : "Lege einmalig eine 4- bis 10-stellige Geräte-PIN für die lokale Datenverwaltung fest."}
+                </p>
+                <div className="pin-row">
+                  <label>
+                    <span>{teacherPinConfigured ? "Lehrkraft-PIN" : "Neue Lehrkraft-PIN"}</span>
+                    <input
+                      type="password"
+                      inputMode="numeric"
+                      autoComplete="off"
+                      value={teacherPinInput}
+                      onChange={(event) =>
+                        setTeacherPinInput(event.target.value.replace(/\D/g, "").slice(0, 10))
+                      }
+                    />
+                  </label>
+                  <button
+                    className="secondary-button"
+                    type="button"
+                    onClick={handleTeacherPin}
+                  >
+                    {teacherPinConfigured ? "Entsperren" : "PIN festlegen"}
+                  </button>
+                </div>
+                {teacherPinError && (
+                  <p className="error-message">{teacherPinError}</p>
+                )}
+              </div>
+            ) : (
+              <>
+                <p>
+                  Auf diesem Browser gespeichert:{" "}
+                  <strong>{localCounts.participants}</strong> Teilnehmer ·{" "}
+                  <strong>{localCounts.runs}</strong> Durchläufe
+                </p>
+                <p className="note">
+                  Browserdaten können beim Löschen des Website-Speichers verloren gehen.
+                  Sichere die Ergebnisse deshalb bei Bedarf als CSV in deinem geschützten
+                  schulischen Ablageort.
+                </p>
+                <div className="result-actions">
+                  <button
+                    className="secondary-button"
+                    type="button"
+                    onClick={exportSummaryCsv}
+                    disabled={localCounts.runs === 0}
+                  >
+                    Ergebnisse als CSV
+                  </button>
+                  <button
+                    className="secondary-button"
+                    type="button"
+                    onClick={exportItemCsv}
+                    disabled={localCounts.runs === 0}
+                  >
+                    Itemdaten als CSV
+                  </button>
+                  <button
+                    className="danger-button"
+                    type="button"
+                    onClick={handleDeleteAll}
+                    disabled={localCounts.participants === 0 && localCounts.runs === 0}
+                  >
+                    Lokale Daten löschen
+                  </button>
+                  <button
+                    className="secondary-button"
+                    type="button"
+                    onClick={lockTeacherArea}
+                  >
+                    Lehrkraftbereich sperren
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </details>
       </div>
