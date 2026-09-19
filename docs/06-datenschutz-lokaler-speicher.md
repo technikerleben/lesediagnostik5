@@ -13,7 +13,7 @@ Es gibt für diese Daten:
 - keine Übertragung an Vercel,
 - keine Analytics- oder Tracking-Schnittstelle.
 
-Die Next.js-App wird mit `output: "export"` als statische Website gebaut. Vercel stellt nur die statischen App-Dateien bereit.
+Die Anwendung besteht ausschließlich aus statischem HTML, CSS, JavaScript und JSON. Vercel veröffentlicht nur diese Dateien aus dem Ordner `public/`.
 
 > Hinweis: Der Hosting-Anbieter kann technisch übliche Zugriffs-/Infrastrukturdaten zum Aufruf der Website verarbeiten. Die vom Lese-Navigator erzeugten Identitäten und Diagnoseergebnisse werden von der App jedoch nicht an den Hosting-Anbieter gesendet.
 
@@ -123,4 +123,4 @@ Daraus folgen für den Einsatz:
 
 ## Rechtliche Einordnung
 
-Die Architektur minimiert die Übertragung personenbezogener Diagnosedaten an externe Dienste. Ob der konkrete schulische Einsatz alle lokalen schul-, datenschutz- und dienstrechtlichen Anforderungen erfüllt, ist unabhängig davon nach den Vorgaben des Schulträgers bzw. der zuständigen Datenschutzverantwortlichen zu beurteilen.
+Die statische Architektur vermeidet die Übertragung der vom Lese-Navigator erzeugten personenbezogenen Diagnosedaten an externe Anwendungsdienste. Ob der konkrete schulische Einsatz alle lokalen schul-, datenschutz- und dienstrechtlichen Anforderungen erfüllt, ist unabhängig davon nach den Vorgaben des Schulträgers bzw. der zuständigen Datenschutzverantwortlichen zu beurteilen.
