@@ -1,0 +1,1073 @@
+{
+  "schemaVersion": 1,
+  "setId": "eiche",
+  "version": "0.2",
+  "internalName": "Eiche",
+  "childVisibleName": null,
+  "sections": [
+    {
+      "id": "reading-base",
+      "title": "Wörter lesen",
+      "items": [
+        {
+          "id": "eiche-01",
+          "type": "visual_choice",
+          "scoreKey": "reading_base",
+          "competency": "word_recognition",
+          "prompt": "Welches Bild passt zu „Schlüssel“?",
+          "options": [
+            {
+              "id": "a",
+              "symbol": "🔑",
+              "alt": "Schlüssel"
+            },
+            {
+              "id": "b",
+              "symbol": "✂️",
+              "alt": "Schere"
+            },
+            {
+              "id": "c",
+              "symbol": "🪑",
+              "alt": "Stuhl"
+            }
+          ],
+          "correctOption": "a",
+          "needsFinalIllustration": true
+        },
+        {
+          "id": "eiche-02",
+          "type": "visual_choice",
+          "scoreKey": "reading_base",
+          "competency": "word_recognition",
+          "prompt": "Welches Bild passt zu „springen“?",
+          "options": [
+            {
+              "id": "a",
+              "symbol": "🪑",
+              "alt": "Kind sitzt"
+            },
+            {
+              "id": "b",
+              "symbol": "↟",
+              "alt": "Kind springt"
+            },
+            {
+              "id": "c",
+              "symbol": "✍️",
+              "alt": "Kind schreibt"
+            }
+          ],
+          "correctOption": "b",
+          "needsFinalIllustration": true
+        },
+        {
+          "id": "eiche-03",
+          "type": "visual_choice",
+          "scoreKey": "reading_base",
+          "competency": "word_recognition",
+          "prompt": "Welches Bild passt zu „Regenschirm“?",
+          "options": [
+            {
+              "id": "a",
+              "symbol": "🕶️",
+              "alt": "Sonnenbrille"
+            },
+            {
+              "id": "b",
+              "symbol": "🧥",
+              "alt": "Regenjacke"
+            },
+            {
+              "id": "c",
+              "symbol": "☂️",
+              "alt": "Regenschirm"
+            }
+          ],
+          "correctOption": "c",
+          "needsFinalIllustration": true
+        },
+        {
+          "id": "eiche-04",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "reading_accuracy",
+          "prompt": "Oben steht: Schmetterling. Tippe genau dasselbe Wort an.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Schmeterling"
+            },
+            {
+              "id": "b",
+              "text": "Schmetterling"
+            },
+            {
+              "id": "c",
+              "text": "Schmetterlinge"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-05",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "reading_accuracy",
+          "prompt": "Oben steht: Garten. Tippe genau dasselbe Wort an.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Karten"
+            },
+            {
+              "id": "b",
+              "text": "Gärten"
+            },
+            {
+              "id": "c",
+              "text": "Garten"
+            }
+          ],
+          "correctOption": "c"
+        },
+        {
+          "id": "eiche-06",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "reading_accuracy",
+          "prompt": "Oben steht: leise. Tippe genau dasselbe Wort an.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Leine"
+            },
+            {
+              "id": "b",
+              "text": "leise"
+            },
+            {
+              "id": "c",
+              "text": "Reise"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-07",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "prompt": "Im Winter kann ein See ____.",
+          "options": [
+            {
+              "id": "a",
+              "text": "verlieren"
+            },
+            {
+              "id": "b",
+              "text": "gefrieren"
+            },
+            {
+              "id": "c",
+              "text": "probieren"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-08",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "prompt": "Nach dem Sport füllt Lea ihre ____.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Taschenlampe"
+            },
+            {
+              "id": "b",
+              "text": "Trinkflasche"
+            },
+            {
+              "id": "c",
+              "text": "Turnhalle"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-09",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "prompt": "Bei Regen trägt Mila eine ____.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Regenjacke"
+            },
+            {
+              "id": "b",
+              "text": "Rechnung"
+            },
+            {
+              "id": "c",
+              "text": "Richtung"
+            }
+          ],
+          "correctOption": "a"
+        }
+      ]
+    },
+    {
+      "id": "word-sentence",
+      "title": "Wörter und Sätze verstehen",
+      "items": [
+        {
+          "id": "eiche-10",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary",
+          "prompt": "Was bedeutet „erschöpft“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "sehr müde"
+            },
+            {
+              "id": "b",
+              "text": "sehr laut"
+            },
+            {
+              "id": "c",
+              "text": "sehr neugierig"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-11",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary",
+          "prompt": "Was bedeutet „beobachten“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "etwas genau ansehen"
+            },
+            {
+              "id": "b",
+              "text": "etwas wegwerfen"
+            },
+            {
+              "id": "c",
+              "text": "etwas vergessen"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-12",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary",
+          "prompt": "Was bedeutet „zögern“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "sofort beginnen"
+            },
+            {
+              "id": "b",
+              "text": "noch unsicher warten"
+            },
+            {
+              "id": "c",
+              "text": "laut rufen"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-13",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary_context",
+          "prompt": "Der schwere Karton ließ sich nur mühsam tragen. Nila musste mehrfach absetzen und brauchte lange bis zur Tür. Was bedeutet „mühsam“ hier?",
+          "options": [
+            {
+              "id": "a",
+              "text": "mit großer Anstrengung"
+            },
+            {
+              "id": "b",
+              "text": "besonders leise"
+            },
+            {
+              "id": "c",
+              "text": "ohne nachzudenken"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-14",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary_context",
+          "prompt": "Die Kinder sollten einen geeigneten Platz für das Plakat suchen. Dort musste es jeder gut sehen können. Was bedeutet „geeignet“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "passend"
+            },
+            {
+              "id": "b",
+              "text": "verborgen"
+            },
+            {
+              "id": "c",
+              "text": "gefährlich"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-15",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary_context",
+          "prompt": "Das Glas ist zerbrechlich. Deshalb trägt Mara es mit beiden Händen. Was bedeutet „zerbrechlich“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Es kann leicht kaputtgehen."
+            },
+            {
+              "id": "b",
+              "text": "Es ist sehr schwer."
+            },
+            {
+              "id": "c",
+              "text": "Es ist besonders teuer."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-16",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "sequence",
+          "prompt": "Bevor Leni zur Schule ging, fütterte sie ihren Hund. Was geschah zuerst?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Leni ging zur Schule."
+            },
+            {
+              "id": "b",
+              "text": "Leni fütterte den Hund."
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-17",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "sequence",
+          "prompt": "Erst öffnete Tom das Fenster. Danach setzte er sich wieder hin. Was geschah zuletzt?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Tom setzte sich hin."
+            },
+            {
+              "id": "b",
+              "text": "Tom öffnete das Fenster."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-18",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "reference",
+          "prompt": "Jonas lieh Paul sein Fahrrad. Paul brachte es am Abend zurück. Was bedeutet „es“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Jonas"
+            },
+            {
+              "id": "b",
+              "text": "das Fahrrad"
+            },
+            {
+              "id": "c",
+              "text": "der Abend"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-19",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "reference",
+          "prompt": "Lina bekam eine neue Tasche geschenkt und zeigte sie ihrer Schwester. Lina freute sich sehr darüber. Wer freute sich?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Lina"
+            },
+            {
+              "id": "b",
+              "text": "die Schwester"
+            },
+            {
+              "id": "c",
+              "text": "die Tasche"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-20",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "signal_words",
+          "prompt": "Nicht alle Kinder wollten draußen spielen. Was passt?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Kein Kind wollte draußen spielen."
+            },
+            {
+              "id": "b",
+              "text": "Einige Kinder wollten nicht draußen spielen."
+            },
+            {
+              "id": "c",
+              "text": "Alle Kinder wollten draußen spielen."
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-21",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "signal_words",
+          "prompt": "Obwohl es regnete, ging Tom zu Fuß. Was passt?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Tom blieb wegen des Regens zu Hause."
+            },
+            {
+              "id": "b",
+              "text": "Tom ging trotz des Regens zu Fuß."
+            },
+            {
+              "id": "c",
+              "text": "Tom wartete auf Sonnenschein."
+            }
+          ],
+          "correctOption": "b"
+        }
+      ]
+    },
+    {
+      "id": "fluency",
+      "title": "Lesetempo",
+      "items": [
+        {
+          "id": "eiche-22",
+          "type": "timed_reading",
+          "competency": "reading_fluency",
+          "prompt": "Lies den Text in deinem normalen Tempo. Du musst dich nicht beeilen. Tippe auf „Fertig gelesen“, wenn du am Ende angekommen bist.",
+          "wordCount": 130,
+          "text": "Am Dienstagmorgen kam Mila etwas früher zur Schule. Auf dem Hof entdeckte sie neben dem Fahrradständer eine kleine Stofftasche. Sie hob sie nicht sofort auf, sondern schaute zuerst, ob jemand in der Nähe danach suchte. Niemand meldete sich. Auf der Tasche stand kein Name. Mila brachte sie deshalb zum Sekretariat. Dort öffnete eine Mitarbeiterin die Tasche vorsichtig. Darin lagen ein Pausenbrot, ein Schlüsselbund und ein roter Handschuh. Kurz vor Unterrichtsbeginn kam ein Junge aus der sechsten Klasse ins Sekretariat. Er suchte genau diese Tasche. Er konnte beschreiben, was darin lag, und bekam sie zurück. Mila freute sich, dass die Tasche wieder bei ihrem Besitzer war. Danach ging sie schnell in ihre Klasse, denn die erste Stunde sollte gleich beginnen. Auf ihrem Platz erzählte sie ihrer Sitznachbarin kurz, was passiert war."
+        },
+        {
+          "id": "eiche-22a",
+          "type": "choice",
+          "scoreKey": "fluency_check",
+          "competency": "fluency_comprehension_check",
+          "prompt": "Wo fand Mila die Tasche?",
+          "options": [
+            {
+              "id": "a",
+              "text": "neben dem Fahrradständer"
+            },
+            {
+              "id": "b",
+              "text": "im Klassenraum"
+            },
+            {
+              "id": "c",
+              "text": "im Sekretariat"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-22b",
+          "type": "choice",
+          "scoreKey": "fluency_check",
+          "competency": "fluency_comprehension_check",
+          "prompt": "Warum bekam der Junge die Tasche?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Er hatte die gleiche Farbe genannt."
+            },
+            {
+              "id": "b",
+              "text": "Er konnte den Inhalt beschreiben."
+            },
+            {
+              "id": "c",
+              "text": "Mila kannte ihn."
+            }
+          ],
+          "correctOption": "b"
+        }
+      ]
+    },
+    {
+      "id": "text-comprehension",
+      "title": "Text verstehen",
+      "passage": "Die Garten-AG der Schule betreut zwei Hochbeete auf dem Innenhof. Am Donnerstag meldete der Wetterbericht mehrere warme und trockene Tage. Die Schülerinnen und Schüler überlegten deshalb, wie die Pflanzen über das Wochenende genug Wasser bekommen könnten. Ein Teil der Gruppe wollte die Beete am Freitag besonders stark gießen. Andere schlugen vor, zusätzlich den Boden mit trockenem Laub abzudecken. Die Gruppe entschied sich, beides auszuprobieren.\n\nEin Beet wurde nur kräftig gegossen. Beim zweiten Beet wurde nach dem Gießen eine dünne Schicht Laub auf der Erde verteilt.\n\nAm Montag verglichen die Kinder beide Beete. Im ersten Beet war die Erde an der Oberfläche trocken und einige Blätter hingen herunter. Im zweiten Beet fühlte sich die Erde unter dem Laub noch leicht feucht an. Die Pflanzen sahen dort frischer aus.\n\nDie Gruppe notierte ihre Beobachtungen und beschloss, den Versuch in der nächsten warmen Woche zu wiederholen. Erst danach wollten sie entscheiden, ob sie künftig alle Beete mit einer Bodenabdeckung schützen.",
+      "items": [
+        {
+          "id": "eiche-23",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "find_information",
+          "prompt": "Wann bereitete die Gruppe die Beete vor?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Freitag"
+            },
+            {
+              "id": "b",
+              "text": "Montag"
+            },
+            {
+              "id": "c",
+              "text": "Dienstag"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-24",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "find_information",
+          "prompt": "Was lag auf dem zweiten Beet?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Sand"
+            },
+            {
+              "id": "b",
+              "text": "trockenes Laub"
+            },
+            {
+              "id": "c",
+              "text": "Steine"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-25",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "connect_information",
+          "prompt": "Welches Beet hielt die Feuchtigkeit besser?",
+          "options": [
+            {
+              "id": "a",
+              "text": "das Beet mit Laub"
+            },
+            {
+              "id": "b",
+              "text": "das Beet ohne Laub"
+            },
+            {
+              "id": "c",
+              "text": "beide genau gleich"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-26",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "connect_information",
+          "prompt": "Warum interessierte die Gruppe besonders der Zustand am Montag?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Die Pflanzen sollten über das Wochenende ohne Betreuung auskommen."
+            },
+            {
+              "id": "b",
+              "text": "Montags gab es keinen Unterricht."
+            },
+            {
+              "id": "c",
+              "text": "Die Beete wurden montags neu gebaut."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-27",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "main_idea",
+          "prompt": "Welche Überschrift passt am besten?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ein Versuch gegen trockene Erde"
+            },
+            {
+              "id": "b",
+              "text": "Die schönsten Blumen der Schule"
+            },
+            {
+              "id": "c",
+              "text": "Ein Ausflug am Wochenende"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-28",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "main_idea",
+          "prompt": "Worum geht es vor allem?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Die Gruppe untersucht, wie Erde länger feucht bleiben kann."
+            },
+            {
+              "id": "b",
+              "text": "Die Gruppe möchte alle Pflanzen austauschen."
+            },
+            {
+              "id": "c",
+              "text": "Die Gruppe sammelt möglichst viel Laub."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-29",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "relevance",
+          "prompt": "Welche Information ist für das Ergebnis besonders wichtig?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Die Hochbeete stehen im Innenhof."
+            },
+            {
+              "id": "b",
+              "text": "Unter dem Laub war die Erde noch feucht."
+            },
+            {
+              "id": "c",
+              "text": "Der Wetterbericht wurde am Donnerstag gehört."
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-30",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "relevance",
+          "prompt": "Welche Beobachtung spricht für die Bodenabdeckung?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Die Kinder waren am Montag wieder in der Schule."
+            },
+            {
+              "id": "b",
+              "text": "Im zweiten Beet sahen die Pflanzen frischer aus."
+            },
+            {
+              "id": "c",
+              "text": "Das Laub war trocken."
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-31",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "inference",
+          "prompt": "Warum entscheidet die Gruppe noch nicht sofort, alle Beete abzudecken?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Sie möchte das Ergebnis noch einmal überprüfen."
+            },
+            {
+              "id": "b",
+              "text": "Sie hat vergessen, welches Beet besser aussah."
+            },
+            {
+              "id": "c",
+              "text": "Sie möchte keine Pflanzen mehr anbauen."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-32",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "inference",
+          "prompt": "Welche Vermutung passt zum Versuch?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Laub kann dabei helfen, Feuchtigkeit im Boden zu halten."
+            },
+            {
+              "id": "b",
+              "text": "Laub sorgt dafür, dass Pflanzen kein Wasser mehr brauchen."
+            },
+            {
+              "id": "c",
+              "text": "Pflanzen wachsen nur unter Laub."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-33",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "inference",
+          "prompt": "Warum wurden zwei Beete unterschiedlich behandelt?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Damit man die Ergebnisse vergleichen kann."
+            },
+            {
+              "id": "b",
+              "text": "Weil nicht genug Pflanzen vorhanden waren."
+            },
+            {
+              "id": "c",
+              "text": "Weil ein Beet kaputt war."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-34",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "connect_clues",
+          "prompt": "Welche zwei Beobachtungen passen zusammen?",
+          "options": [
+            {
+              "id": "a",
+              "text": "feuchtere Erde + frischere Pflanzen"
+            },
+            {
+              "id": "b",
+              "text": "Wetterbericht + Innenhof"
+            },
+            {
+              "id": "c",
+              "text": "Donnerstag + Montag"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-35",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "connect_clues",
+          "prompt": "Was spricht dagegen, dass nur starkes Gießen ausreichte?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Das erste Beet war am Montag trockener."
+            },
+            {
+              "id": "b",
+              "text": "Die Kinder hatten am Freitag gegossen."
+            },
+            {
+              "id": "c",
+              "text": "Es gab zwei Hochbeete."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-36",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "evidence",
+          "prompt": "Welche Textstelle unterstützt am besten die Aussage „Die Abdeckung könnte geholfen haben“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Die Garten-AG betreut zwei Hochbeete."
+            },
+            {
+              "id": "b",
+              "text": "Im zweiten Beet fühlte sich die Erde unter dem Laub noch leicht feucht an."
+            },
+            {
+              "id": "c",
+              "text": "Am Donnerstag meldete der Wetterbericht warme Tage."
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-37",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "evidence",
+          "prompt": "Welche Beobachtung zeigt am besten einen Unterschied zwischen den Beeten?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Beide wurden am Freitag gegossen."
+            },
+            {
+              "id": "b",
+              "text": "Im ersten Beet hingen einige Blätter herunter, im zweiten wirkten die Pflanzen frischer."
+            },
+            {
+              "id": "c",
+              "text": "Beide Beete standen im Innenhof."
+            }
+          ],
+          "correctOption": "b"
+        }
+      ]
+    },
+    {
+      "id": "word-analysis",
+      "title": "Wörter untersuchen",
+      "items": [
+        {
+          "id": "eiche-38",
+          "type": "choice",
+          "scoreKey": "word_analysis",
+          "competency": "morphology",
+          "prompt": "Welches bekannte Wort hilft dir bei „Holzverarbeitung“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Holz"
+            },
+            {
+              "id": "b",
+              "text": "halten"
+            },
+            {
+              "id": "c",
+              "text": "Hitze"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-39",
+          "type": "choice",
+          "scoreKey": "word_analysis",
+          "competency": "morphology",
+          "prompt": "Welches Wort hilft dir, „unverständlich“ zu verstehen?",
+          "options": [
+            {
+              "id": "a",
+              "text": "stehen"
+            },
+            {
+              "id": "b",
+              "text": "verstehen"
+            },
+            {
+              "id": "c",
+              "text": "zählen"
+            }
+          ],
+          "correctOption": "b"
+        }
+      ]
+    },
+    {
+      "id": "strategy",
+      "title": "Lesestrategien",
+      "items": [
+        {
+          "id": "eiche-40",
+          "type": "choice",
+          "scoreKey": "strategy",
+          "competency": "strategy_knowledge",
+          "prompt": "Du verstehst ein Wort im Text nicht. Was hilft dir am besten?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ich klicke irgendeine Antwort an."
+            },
+            {
+              "id": "b",
+              "text": "Ich lese den Satz noch einmal und schaue auf die Wörter drumherum."
+            },
+            {
+              "id": "c",
+              "text": "Ich höre sofort mit dem Text auf."
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "eiche-41",
+          "type": "choice",
+          "scoreKey": "strategy",
+          "competency": "strategy_knowledge",
+          "prompt": "Du hast einen Abschnitt gelesen und weißt nicht, worum es ging. Was kannst du tun?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ich lese den Abschnitt noch einmal langsamer."
+            },
+            {
+              "id": "b",
+              "text": "Ich überspringe den Rest des Textes."
+            },
+            {
+              "id": "c",
+              "text": "Ich schaue nur auf das längste Wort."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "eiche-42",
+          "type": "choice",
+          "scoreKey": "strategy",
+          "competency": "strategy_knowledge",
+          "prompt": "Du sollst eine bestimmte Information im Text finden. Was hilft dir?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ich suche nach passenden Schlüsselwörtern."
+            },
+            {
+              "id": "b",
+              "text": "Ich lese nur die Überschrift."
+            },
+            {
+              "id": "c",
+              "text": "Ich rate."
+            }
+          ],
+          "correctOption": "a"
+        }
+      ]
+    },
+    {
+      "id": "self-assessment",
+      "title": "Über mein Lesen nachdenken",
+      "items": [
+        {
+          "id": "eiche-43",
+          "type": "self_report",
+          "scoreKey": null,
+          "competency": "self_assessment",
+          "prompt": "Wenn ich einen Text lese …",
+          "options": [
+            {
+              "id": "a",
+              "text": "… komme ich meistens flüssig durch."
+            },
+            {
+              "id": "b",
+              "text": "… bleibe ich häufig an Wörtern hängen."
+            },
+            {
+              "id": "c",
+              "text": "… ist das sehr unterschiedlich."
+            }
+          ]
+        },
+        {
+          "id": "eiche-44",
+          "type": "self_report",
+          "scoreKey": null,
+          "competency": "self_assessment",
+          "prompt": "Wenn ich einen Text gelesen habe …",
+          "options": [
+            {
+              "id": "a",
+              "text": "… weiß ich meistens, worum es ging."
+            },
+            {
+              "id": "b",
+              "text": "… verstehe ich einzelne Wörter, aber nicht immer den ganzen Text."
+            },
+            {
+              "id": "c",
+              "text": "… muss ich häufig noch einmal lesen."
+            }
+          ]
+        },
+        {
+          "id": "eiche-45",
+          "type": "self_report",
+          "scoreKey": null,
+          "competency": "self_assessment",
+          "prompt": "Wenn ein Text schwierig wird …",
+          "options": [
+            {
+              "id": "a",
+              "text": "… weiß ich meistens, was ich ausprobieren kann."
+            },
+            {
+              "id": "b",
+              "text": "… brauche ich manchmal einen Tipp."
+            },
+            {
+              "id": "c",
+              "text": "… weiß ich oft noch nicht, was ich tun kann."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
