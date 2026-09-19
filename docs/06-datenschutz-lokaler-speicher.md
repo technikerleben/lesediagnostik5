@@ -97,6 +97,18 @@ Für deutschsprachige Tabellenprogramme wird Semikolon als Trennzeichen und UTF-
 
 Das Löschen von Browser-/Website-Daten durch das Betriebssystem oder den Browser löscht die Daten ebenfalls.
 
+## Lehrkraft-PIN
+
+Die lokale Datenverwaltung (Anzahl gespeicherter Datensätze, CSV-Export und Löschen) ist durch eine **gerätebezogene Lehrkraft-PIN** geschützt.
+
+- Die PIN besteht aus 4 bis 10 Ziffern.
+- Die PIN selbst wird nicht gespeichert.
+- Im Browser wird nur ein mit PBKDF2/SHA-256 abgeleiteter Prüfwert mit zufälligem Salt gespeichert.
+- Vor dem ersten Diagnosedurchlauf muss die Lehrkraft eine PIN eingerichtet haben.
+- Die PIN schützt die Bedienoberfläche vor unbefugtem Zugriff.
+
+Die PIN verschlüsselt die Diagnosewerte in `localStorage` **nicht**. Der Schutz des Geräts und Browserprofils bleibt daher wesentlich.
+
 ## Sicherheitsgrenzen
 
 `localStorage` ist lokaler Browserspeicher, aber kein verschlüsselter Datentresor.
