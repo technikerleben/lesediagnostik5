@@ -1,24 +1,35 @@
 # Webapp
 
-Hier entsteht die später über Vercel deployte Lese-Navigator-Webapp.
+Die Webapp ist als Next.js-App-Router-Prototyp umgesetzt.
 
-## Geplante Anforderungen
+## Aktueller Funktionsumfang
 
-- Jahrgang 5, selbstständig bedienbar
-- keine freie Texteingabe nötig
-- eine Aufgabe pro Ansicht
-- touchfreundlich
-- einfache Sprache
-- optional vorlesbare Arbeitsanweisungen
-- keine sichtbaren Punkte / Noten
-- Ergebnis als Förderweg: 🌊 Welle, 🧭 Kompass oder 🔍 Lupe
-- optional zweiter passender Weg
-- getrennte Kinder- und Lehrkraftansicht
-- parallele Item-Sets für Wiederholungen
-- Aufgaben und Regeln aus ../data/
+- selbstständig bedienbarer Start
+- Welle / Kompass / Lupe gleichwertig dargestellt
+- zufällige Auswahl von Eiche, Ahorn oder Birke pro Durchlauf
+- Aufgaben werden aus `data/sets/*.json` geladen
+- Antwortreihenfolge wird innerhalb eines Durchlaufs gemischt
+- separate Option „Ich weiß es noch nicht“
+- Lesetext mit Start-/Fertig-Zeitmessung
+- Textverständnis mit sichtbarem Ausgangstext
+- Pilot-Auswertung zu Welle / Kompass / Lupe
+- optionale Zweitempfehlung
+- Strategiekarten-Hinweis
+- keine sichtbaren Punkte oder Niveaubegriffe
+- keine dauerhafte Datenspeicherung
 
 ## Deployment
 
-Ziel: Vercel, Hauptbranch main.
+Vercel kann das Repository direkt aus dem Root deployen.
 
-Die konkrete technische Architektur wird vor Beginn der Implementierung festgelegt.
+Framework: **Next.js**
+
+Build command: Standardwert `next build`  
+Install command: Standardwert  
+Output: Standardwert
+
+Es sind aktuell keine Environment Variables erforderlich.
+
+## Noch nicht für den Schüler-Pilot freigegeben
+
+Die ersten visuellen Worterkennungsitems verwenden derzeit Symbol-Platzhalter. Diese müssen durch einheitliche diagnostische Illustrationen ersetzt werden, bevor daraus belastbare Schülerdaten gewonnen werden.
