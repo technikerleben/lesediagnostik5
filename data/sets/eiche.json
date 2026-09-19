@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "setId": "eiche",
-  "version": "0.2",
+  "version": "0.3",
   "internalName": "Eiche",
   "childVisibleName": null,
   "sections": [
@@ -14,207 +14,222 @@
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „Schlüssel“?",
+          "prompt": "Wo siehst du den Ball?",
           "options": [
             {
               "id": "a",
-              "symbol": "🔑",
-              "alt": "Schlüssel"
+              "asset": "ball",
+              "alt": "Ball"
             },
             {
               "id": "b",
-              "symbol": "✂️",
-              "alt": "Schere"
+              "asset": "haus",
+              "alt": "Haus"
             },
             {
               "id": "c",
-              "symbol": "🪑",
-              "alt": "Stuhl"
+              "asset": "fisch",
+              "alt": "Fisch"
             }
           ],
-          "correctOption": "a",
-          "needsFinalIllustration": true
+          "correctOption": "a"
         },
         {
           "id": "eiche-02",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „springen“?",
+          "prompt": "Wo siehst du das Haus?",
           "options": [
             {
               "id": "a",
-              "symbol": "🪑",
-              "alt": "Kind sitzt"
+              "asset": "hund",
+              "alt": "Hund"
             },
             {
               "id": "b",
-              "symbol": "↟",
-              "alt": "Kind springt"
+              "asset": "haus",
+              "alt": "Haus"
             },
             {
               "id": "c",
-              "symbol": "✍️",
-              "alt": "Kind schreibt"
+              "asset": "buch",
+              "alt": "Buch"
             }
           ],
-          "correctOption": "b",
-          "needsFinalIllustration": true
+          "correctOption": "b"
         },
         {
           "id": "eiche-03",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „Regenschirm“?",
+          "prompt": "Wo siehst du den Fisch?",
           "options": [
             {
               "id": "a",
-              "symbol": "🕶️",
-              "alt": "Sonnenbrille"
+              "asset": "fisch",
+              "alt": "Fisch"
             },
             {
               "id": "b",
-              "symbol": "🧥",
-              "alt": "Regenjacke"
+              "asset": "schuh",
+              "alt": "Schuh"
             },
             {
               "id": "c",
-              "symbol": "☂️",
-              "alt": "Regenschirm"
+              "asset": "apfel",
+              "alt": "Apfel"
             }
           ],
-          "correctOption": "c",
-          "needsFinalIllustration": true
+          "correctOption": "a"
         },
         {
           "id": "eiche-04",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: Schmetterling. Tippe genau dasselbe Wort an.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du den Bus?",
           "options": [
             {
               "id": "a",
-              "text": "Schmeterling"
+              "asset": "buch",
+              "alt": "Buch"
             },
             {
               "id": "b",
-              "text": "Schmetterling"
+              "asset": "bus",
+              "alt": "Bus"
             },
             {
               "id": "c",
-              "text": "Schmetterlinge"
+              "asset": "hund",
+              "alt": "Hund"
             }
           ],
           "correctOption": "b"
         },
         {
           "id": "eiche-05",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: Garten. Tippe genau dasselbe Wort an.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du das Buch?",
           "options": [
             {
               "id": "a",
-              "text": "Karten"
+              "asset": "buch",
+              "alt": "Buch"
             },
             {
               "id": "b",
-              "text": "Gärten"
+              "asset": "ball",
+              "alt": "Ball"
             },
             {
               "id": "c",
-              "text": "Garten"
+              "asset": "fahrrad",
+              "alt": "Fahrrad"
             }
           ],
-          "correctOption": "c"
+          "correctOption": "a"
         },
         {
           "id": "eiche-06",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: leise. Tippe genau dasselbe Wort an.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du den Hund?",
           "options": [
             {
               "id": "a",
-              "text": "Leine"
+              "asset": "haus",
+              "alt": "Haus"
             },
             {
               "id": "b",
-              "text": "leise"
+              "asset": "hund",
+              "alt": "Hund"
             },
             {
               "id": "c",
-              "text": "Reise"
+              "asset": "bus",
+              "alt": "Bus"
             }
           ],
           "correctOption": "b"
         },
         {
           "id": "eiche-07",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Im Winter kann ein See ____.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du den Schuh?",
           "options": [
             {
               "id": "a",
-              "text": "verlieren"
+              "asset": "apfel",
+              "alt": "Apfel"
             },
             {
               "id": "b",
-              "text": "gefrieren"
+              "asset": "schuh",
+              "alt": "Schuh"
             },
             {
               "id": "c",
-              "text": "probieren"
+              "asset": "haus",
+              "alt": "Haus"
             }
           ],
           "correctOption": "b"
         },
         {
           "id": "eiche-08",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Nach dem Sport füllt Lea ihre ____.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du den Apfel?",
           "options": [
             {
               "id": "a",
-              "text": "Taschenlampe"
+              "asset": "fisch",
+              "alt": "Fisch"
             },
             {
               "id": "b",
-              "text": "Trinkflasche"
+              "asset": "apfel",
+              "alt": "Apfel"
             },
             {
               "id": "c",
-              "text": "Turnhalle"
+              "asset": "buch",
+              "alt": "Buch"
             }
           ],
           "correctOption": "b"
         },
         {
           "id": "eiche-09",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Bei Regen trägt Mila eine ____.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du das Fahrrad?",
           "options": [
             {
               "id": "a",
-              "text": "Regenjacke"
+              "asset": "fahrrad",
+              "alt": "Fahrrad"
             },
             {
               "id": "b",
-              "text": "Rechnung"
+              "asset": "hund",
+              "alt": "Hund"
             },
             {
               "id": "c",
-              "text": "Richtung"
+              "asset": "ball",
+              "alt": "Ball"
             }
           ],
           "correctOption": "a"
