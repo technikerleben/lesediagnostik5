@@ -33,6 +33,7 @@ docs/
   04-aufgabenpool-v0.1.md
   05-qualitaetspruefung-parallelformen.md
   06-datenschutz-lokaler-speicher.md
+  07-datenpflege-und-versionierung.md
 ```
 
 ## Technische Architektur
@@ -82,9 +83,19 @@ Ein statischer Webhost muss lediglich:
 
 Für Vercel sollte kein Framework über eine Repo-Datei erzwungen werden. Die Projektkonfiguration kann als einfache statische Website / ohne Framework geführt werden.
 
+## Daten als Source of Truth
+
+- Aufgaben und Texte: `data/sets/*.json`
+- Schwellen und Empfehlungslogik: `data/scoring/pilot-rules.json`
+- Farben und Grunddesign: `data/design.json`
+
+Die Auswertungslogik in `index.html` enthält keine fest verdrahteten Schwellenwerte mehr.
+
+Details: `docs/07-datenpflege-und-versionierung.md`
+
 ## Status
 
-**Statischer Prototyp / Version 0.3**
+**Statischer Prototyp / Version 0.4**
 
 Vor einem echten Schüler-Pilot:
 
