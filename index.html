@@ -545,6 +545,7 @@ button:disabled {
   <script>
 "use strict";
 
+const APP_VERSION = "0.4";
 const PREFIX = "lesediagnostik5:v1";
 const PARTICIPANTS_KEY = PREFIX + ":participants";
 const RUNS_KEY = PREFIX + ":runs";
@@ -563,6 +564,7 @@ const INITIAL_SCORES = {
 const state = {
   sets: [],
   rules: null,
+  design: null,
   stage: "intro",
   runSeed: null,
   activeSet: null,
@@ -588,10 +590,13 @@ async function init() {
       loadJson("./data/sets/eiche.json"),
       loadJson("./data/sets/ahorn.json"),
       loadJson("./data/sets/birke.json"),
-      loadJson("./data/scoring/pilot-rules.json")
+      loadJson("./data/scoring/pilot-rules.json"),
+      loadJson("./data/design.json")
     ]);
     state.sets = values.slice(0, 3);
     state.rules = values[3];
+    state.design = values[4];
+    applyDesignConfig();
     render();
   } catch (error) {
     console.error(error);
@@ -788,30 +793,95 @@ function pickRunSeed() {
   return Date.now() % 2147483647;
 }
 
-function recommendationFrom(scores) {
-  let primary = "magnifier";
-  if (scores.reading_base < 7) {
-    primary = "wave";
-  } else if (scores.word_sentence < 9 || scores.text_basic < 6) {
-    primary = "compass";
+function applyDesignConfig() {
+  if (!state.design) return;
+
+  const root = document.documentElement;
+  const theme = state.design.theme || {};
+  const paths = state.design.paths || {};
+
+  if (theme.background) root.style.setProperty("--white", theme.background);
+  if (theme.text) root.style.setProperty("--text", theme.text);
+  if (theme.lightGray) root.style.setProperty("--panel", theme.lightGray);
+
+  if (paths.wave && paths.wave.color) {
+    root.style.setProperty("--blue", paths.wave.color);
+  }
+  if (paths.compass && paths.compass.color) {
+    root.style.setProperty("--mint", paths.compass.color);
+  }
+  if (paths.magnifier && paths.magnifier.color) {
+    root.style.setProperty("--orange", paths.magnifier.color);
   }
 
-  let secondary = null;
-  if (
-    primary === "wave" &&
-    scores.reading_base >= 5 &&
-    scores.reading_base <= 6 &&
-    scores.word_sentence >= 9 &&
-    scores.text_basic >= 6
-  ) secondary = "compass";
+  if (theme.fontBody) {
+    document.body.style.fontFamily =
+      '"' + theme.fontBody + '", "Aptos", "Segoe UI", Arial, sans-serif';
+  }
+}
 
-  if (
-    primary === "compass" &&
-    scores.text_deep >= 5 &&
-    (scores.word_sentence === 8 || scores.text_basic === 5)
-  ) secondary = "magnifier";
+function compareValue(actual, rule) {
+  if (actual == null || !rule || typeof rule !== "object") return false;
+  if (rule.lt != null && !(actual < rule.lt)) return false;
+  if (rule.lte != null && !(actual <= rule.lte)) return false;
+  if (rule.gt != null && !(actual > rule.gt)) return false;
+  if (rule.gte != null && !(actual >= rule.gte)) return false;
+  if (rule.eq != null && !(actual === rule.eq)) return false;
+  return true;
+}
 
-  return { primary: primary, secondary: secondary, strategyHint: scores.strategy <= 1 };
+function matchesCondition(condition, scores, context) {
+  if (!condition || typeof condition !== "object") return false;
+  context = context || {};
+
+  if (condition.primary != null && context.primary !== condition.primary) {
+    return false;
+  }
+
+  if (Array.isArray(condition.any)) {
+    const anyMatches = condition.any.some(function (part) {
+      return matchesCondition(part, scores, context);
+    });
+    if (!anyMatches) return false;
+  }
+
+  return Object.keys(condition).every(function (key) {
+    if (key === "any" || key === "primary") return true;
+    return compareValue(scores[key], condition[key]);
+  });
+}
+
+function firstMatchingRecommendation(rules, scores, context) {
+  const match = (rules || []).find(function (entry) {
+    return matchesCondition(entry.when, scores, context);
+  });
+  return match ? match.recommend : null;
+}
+
+function recommendationFrom(scores) {
+  const primary = firstMatchingRecommendation(
+    state.rules.primaryLogic,
+    scores,
+    {}
+  ) || "magnifier";
+
+  const secondary = firstMatchingRecommendation(
+    state.rules.secondaryLogic,
+    scores,
+    { primary: primary }
+  );
+
+  const strategyHint = matchesCondition(
+    state.rules.strategyHint && state.rules.strategyHint.when,
+    scores,
+    { primary: primary }
+  );
+
+  return {
+    primary: primary,
+    secondary: secondary,
+    strategyHint: strategyHint
+  };
 }
 
 function applyScore(scores, item, optionId) {
@@ -869,7 +939,7 @@ function renderIntro(message) {
     '<div class="navigator">' +
       '<header class="brandline"><div><h1>Lese-Navigator</h1>' +
       '<p>Finde heraus, welche Leseübungen gerade gut zu dir passen.</p></div>' +
-      '<span class="note">Pilotversion 0.3 · HTML</span></header>' +
+      '<span class="note">Pilotversion ' + APP_VERSION + ' · HTML</span></header>' +
       '<div class="path-row" aria-label="Drei Lesewege">' +
         '<div class="path-card wave">' + pathIcon("wave") + '<span>Welle</span></div>' +
         '<div class="path-card compass">' + pathIcon("compass") + '<span>Kompass</span></div>' +
@@ -1145,6 +1215,8 @@ function completeRun() {
       classNameSnapshot: state.currentParticipant.className,
       setId: state.activeSet.setId,
       setVersion: state.activeSet.version,
+      rulesVersion: state.rules.version,
+      appVersion: APP_VERSION,
       scores: state.scores,
       responses: state.responses,
       itemResults: itemResults,
@@ -1268,6 +1340,7 @@ function exportSummaryCsv() {
   const runs = loadRuns();
   const rows = [[
     "teilnehmer_id","name_oder_kuerzel","klasse","zeitpunkt","parallelform",
+    "aufgabensatz_version","auswertungsregeln_version","app_version",
     "lesebasis","wort_satz","textverstaendnis","tiefes_textverstaendnis",
     "worterschliessung","strategiewissen","lesetempo_kontrollfragen",
     "woerter_pro_minute","lesezeit_sekunden","hauptempfehlung",
@@ -1282,6 +1355,9 @@ function exportSummaryCsv() {
       participant ? participant.className : (run.classNameSnapshot || ""),
       run.completedAt,
       run.setId,
+      run.setVersion || "",
+      run.rulesVersion || "",
+      run.appVersion || "",
       run.scores && run.scores.reading_base != null ? run.scores.reading_base : "",
       run.scores && run.scores.word_sentence != null ? run.scores.word_sentence : "",
       run.scores && run.scores.text_basic != null ? run.scores.text_basic : "",
@@ -1311,6 +1387,7 @@ function exportItemCsv() {
   const runs = loadRuns();
   const rows = [[
     "teilnehmer_id","name_oder_kuerzel","klasse","zeitpunkt","parallelform",
+    "aufgabensatz_version","auswertungsregeln_version","app_version",
     "item_id","antwort","kompetenz","auswertungsbereich","richtig"
   ]];
 
@@ -1324,6 +1401,9 @@ function exportItemCsv() {
         participant ? participant.className : (run.classNameSnapshot || ""),
         run.completedAt,
         run.setId,
+        run.setVersion || "",
+        run.rulesVersion || "",
+        run.appVersion || "",
         item.itemId,
         item.response,
         item.competency || "",
