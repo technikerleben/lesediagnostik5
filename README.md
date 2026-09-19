@@ -37,8 +37,10 @@ Die Webapp ist als Next.js-App-Router-Anwendung angelegt und kann über Vercel a
 - Next.js 16.3.3
 - React 19.3.0
 - keine Anmeldung
-- keine Namenseingabe
-- keine dauerhafte Speicherung von Schülerergebnissen
+- Name oder Kürzel und optional Klasse werden ausschließlich lokal im Browser gespeichert
+- Diagnoseergebnisse werden ausschließlich lokal im Browser gespeichert
+- keine serverseitige Speicherung oder Diagnose-API
+- lokaler CSV-Export für Ergebnisübersicht und Itemdaten
 - drei zufällig ausgewählte Parallelformen
 - Lesetempo wird lokal während des Durchlaufs gemessen
 - Pilot-Auswertung erfolgt im Browser
@@ -86,6 +88,10 @@ docs/
 4. Pilotprotokoll für anonyme Itemdaten festlegen.
 5. erst danach Kalibrierung mit Schülerinnen und Schülern.
 
-## Datenschutz
+## Datenschutz und lokale Verarbeitung
 
-Im aktuellen Prototyp werden keine Namen oder Kontodaten abgefragt. Ergebnisse werden nicht an GitHub übertragen und nicht dauerhaft gespeichert.
+Die App wird statisch ausgeliefert. Schüleridentitäten und Diagnoseergebnisse werden ausschließlich in `localStorage` des verwendeten Browsers gespeichert.
+
+Es gibt keine Diagnose-API und keine Datenbank. Die App überträgt diese Daten weder an GitHub noch an Vercel. Für die schulinterne Weiterverarbeitung können Ergebnisübersichten und Itemdaten lokal als CSV exportiert werden.
+
+Details: `docs/06-datenschutz-lokaler-speicher.md`
