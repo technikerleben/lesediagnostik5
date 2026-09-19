@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "setId": "birke",
-  "version": "0.2",
+  "version": "0.3",
   "internalName": "Birke",
   "childVisibleName": null,
   "sections": [
@@ -14,210 +14,225 @@
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „Fahrrad“?",
+          "prompt": "Wo siehst du den Stern?",
           "options": [
             {
               "id": "a",
-              "symbol": "🚲",
-              "alt": "Fahrrad"
+              "asset": "mond",
+              "alt": "Mond"
             },
             {
               "id": "b",
-              "symbol": "🛴",
-              "alt": "Roller"
+              "asset": "stern",
+              "alt": "Stern"
             },
             {
               "id": "c",
-              "symbol": "🚌",
-              "alt": "Bus"
+              "asset": "blume",
+              "alt": "Blume"
             }
           ],
-          "correctOption": "a",
-          "needsFinalIllustration": true
+          "correctOption": "b"
         },
         {
           "id": "birke-02",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „tragen“?",
+          "prompt": "Wo siehst du den Mond?",
           "options": [
             {
               "id": "a",
-              "symbol": "⚽",
-              "alt": "Kind wirft einen Ball"
+              "asset": "mond",
+              "alt": "Mond"
             },
             {
               "id": "b",
-              "symbol": "📦",
-              "alt": "Kind trägt eine Kiste"
+              "asset": "teller",
+              "alt": "Teller"
             },
             {
               "id": "c",
-              "symbol": "🪟",
-              "alt": "Kind öffnet ein Fenster"
+              "asset": "kerze",
+              "alt": "Kerze"
             }
           ],
-          "correctOption": "b",
-          "needsFinalIllustration": true
+          "correctOption": "a"
         },
         {
           "id": "birke-03",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „Hammer“?",
+          "prompt": "Wo siehst du die Blume?",
           "options": [
             {
               "id": "a",
-              "symbol": "🔨",
-              "alt": "Hammer"
+              "asset": "gabel",
+              "alt": "Gabel"
             },
             {
               "id": "b",
-              "symbol": "✂️",
+              "asset": "schere",
               "alt": "Schere"
             },
             {
               "id": "c",
-              "symbol": "🥤",
-              "alt": "Becher"
+              "asset": "blume",
+              "alt": "Blume"
             }
           ],
-          "correctOption": "a",
-          "needsFinalIllustration": true
+          "correctOption": "c"
         },
         {
           "id": "birke-04",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: Fahrrad. Tippe genau dasselbe Wort an.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du den Teller?",
           "options": [
             {
               "id": "a",
-              "text": "Fahrad"
+              "asset": "tomate",
+              "alt": "Tomate"
             },
             {
               "id": "b",
-              "text": "Fahrrad"
+              "asset": "teller",
+              "alt": "Teller"
             },
             {
               "id": "c",
-              "text": "Fahrräder"
+              "asset": "schule",
+              "alt": "Schule"
             }
           ],
           "correctOption": "b"
         },
         {
           "id": "birke-05",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: fragen. Tippe genau dasselbe Wort an.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Kerze?",
           "options": [
             {
               "id": "a",
-              "text": "fahren"
+              "asset": "kerze",
+              "alt": "Kerze"
             },
             {
               "id": "b",
-              "text": "tragen"
+              "asset": "stern",
+              "alt": "Stern"
             },
             {
               "id": "c",
-              "text": "fragen"
+              "asset": "mond",
+              "alt": "Mond"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-06",
+          "type": "visual_choice",
+          "scoreKey": "reading_base",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Gabel?",
+          "options": [
+            {
+              "id": "a",
+              "asset": "schere",
+              "alt": "Schere"
+            },
+            {
+              "id": "b",
+              "asset": "tomate",
+              "alt": "Tomate"
+            },
+            {
+              "id": "c",
+              "asset": "gabel",
+              "alt": "Gabel"
             }
           ],
           "correctOption": "c"
         },
         {
-          "id": "birke-06",
-          "type": "choice",
-          "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: finden. Tippe genau dasselbe Wort an.",
-          "options": [
-            {
-              "id": "a",
-              "text": "binden"
-            },
-            {
-              "id": "b",
-              "text": "finden"
-            },
-            {
-              "id": "c",
-              "text": "fingen"
-            }
-          ],
-          "correctOption": "b"
-        },
-        {
           "id": "birke-07",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Vor dem Essen sollst du deine Hände ____.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Schere?",
           "options": [
             {
               "id": "a",
-              "text": "wechseln"
+              "asset": "schule",
+              "alt": "Schule"
             },
             {
               "id": "b",
-              "text": "waschen"
+              "asset": "schere",
+              "alt": "Schere"
             },
             {
               "id": "c",
-              "text": "wachsen"
+              "asset": "teller",
+              "alt": "Teller"
             }
           ],
           "correctOption": "b"
         },
         {
           "id": "birke-08",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Die Klasse wartet an der ____ auf den Bus.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Tomate?",
           "options": [
             {
               "id": "a",
-              "text": "Hausaufgabe"
+              "asset": "tomate",
+              "alt": "Tomate"
             },
             {
               "id": "b",
-              "text": "Haltestelle"
+              "asset": "blume",
+              "alt": "Blume"
             },
             {
               "id": "c",
-              "text": "Himmelsrichtung"
+              "asset": "kerze",
+              "alt": "Kerze"
             }
           ],
-          "correctOption": "b"
+          "correctOption": "a"
         },
         {
           "id": "birke-09",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Im Unterricht schreibt Noah die Aufgabe in sein ____.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Schule?",
           "options": [
             {
               "id": "a",
-              "text": "Haus"
+              "asset": "stern",
+              "alt": "Stern"
             },
             {
               "id": "b",
-              "text": "Heft"
+              "asset": "gabel",
+              "alt": "Gabel"
             },
             {
               "id": "c",
-              "text": "Hemd"
+              "asset": "schule",
+              "alt": "Schule"
             }
           ],
-          "correctOption": "b"
+          "correctOption": "c"
         }
       ]
     },

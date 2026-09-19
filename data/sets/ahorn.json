@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "setId": "ahorn",
-  "version": "0.2",
+  "version": "0.3",
   "internalName": "Ahorn",
   "childVisibleName": null,
   "sections": [
@@ -14,210 +14,225 @@
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „Rucksack“?",
+          "prompt": "Wo siehst du die Maus?",
           "options": [
             {
               "id": "a",
-              "symbol": "🧳",
-              "alt": "Koffer"
+              "asset": "baum",
+              "alt": "Baum"
             },
             {
               "id": "b",
-              "symbol": "🎒",
-              "alt": "Rucksack"
+              "asset": "maus",
+              "alt": "Maus"
             },
             {
               "id": "c",
-              "symbol": "📘",
-              "alt": "Buch"
+              "asset": "brot",
+              "alt": "Brot"
             }
           ],
-          "correctOption": "b",
-          "needsFinalIllustration": true
+          "correctOption": "b"
         },
         {
           "id": "ahorn-02",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „flüstern“?",
+          "prompt": "Wo siehst du den Baum?",
           "options": [
             {
               "id": "a",
-              "symbol": "🤫",
-              "alt": "zwei Kinder sprechen sehr leise"
+              "asset": "baum",
+              "alt": "Baum"
             },
             {
               "id": "b",
-              "symbol": "🏃",
-              "alt": "ein Kind rennt"
+              "asset": "tasse",
+              "alt": "Tasse"
             },
             {
               "id": "c",
-              "symbol": "😴",
-              "alt": "ein Kind schläft"
+              "asset": "vogel",
+              "alt": "Vogel"
             }
           ],
-          "correctOption": "a",
-          "needsFinalIllustration": true
+          "correctOption": "a"
         },
         {
           "id": "ahorn-03",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Welches Bild passt zu „Briefkasten“?",
+          "prompt": "Wo siehst du das Brot?",
           "options": [
             {
               "id": "a",
-              "symbol": "📮",
-              "alt": "Briefkasten"
+              "asset": "uhr",
+              "alt": "Uhr"
             },
             {
               "id": "b",
-              "symbol": "📚",
-              "alt": "Bücherregal"
+              "asset": "jacke",
+              "alt": "Jacke"
             },
             {
               "id": "c",
-              "symbol": "🗑️",
-              "alt": "Papierkorb"
+              "asset": "brot",
+              "alt": "Brot"
             }
           ],
-          "correctOption": "a",
-          "needsFinalIllustration": true
+          "correctOption": "c"
         },
         {
           "id": "ahorn-04",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: Frühstück. Tippe genau dasselbe Wort an.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Tasse?",
           "options": [
             {
               "id": "a",
-              "text": "Frühstück"
+              "asset": "banane",
+              "alt": "Banane"
             },
             {
               "id": "b",
-              "text": "Frühstuck"
+              "asset": "tasse",
+              "alt": "Tasse"
             },
             {
               "id": "c",
-              "text": "Früstük"
+              "asset": "fenster",
+              "alt": "Fenster"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "b"
         },
         {
           "id": "ahorn-05",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: Schuhe. Tippe genau dasselbe Wort an.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Uhr?",
           "options": [
             {
               "id": "a",
-              "text": "Schule"
+              "asset": "uhr",
+              "alt": "Uhr"
             },
             {
               "id": "b",
-              "text": "Schuhe"
+              "asset": "maus",
+              "alt": "Maus"
             },
             {
               "id": "c",
-              "text": "Schuhle"
+              "asset": "baum",
+              "alt": "Baum"
             }
           ],
-          "correctOption": "b"
+          "correctOption": "a"
         },
         {
           "id": "ahorn-06",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "reading_accuracy",
-          "prompt": "Oben steht: bringen. Tippe genau dasselbe Wort an.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du den Vogel?",
           "options": [
             {
               "id": "a",
-              "text": "bringen"
+              "asset": "jacke",
+              "alt": "Jacke"
             },
             {
               "id": "b",
-              "text": "springen"
+              "asset": "banane",
+              "alt": "Banane"
             },
             {
               "id": "c",
-              "text": "dringen"
+              "asset": "vogel",
+              "alt": "Vogel"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "c"
         },
         {
           "id": "ahorn-07",
-          "type": "choice",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Nach dem Rennen muss Amir sich kurz ____.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Jacke?",
           "options": [
             {
               "id": "a",
-              "text": "erholen"
+              "asset": "fenster",
+              "alt": "Fenster"
             },
             {
               "id": "b",
-              "text": "erzählen"
+              "asset": "jacke",
+              "alt": "Jacke"
             },
             {
               "id": "c",
-              "text": "erinnern"
-            }
-          ],
-          "correctOption": "a"
-        },
-        {
-          "id": "ahorn-08",
-          "type": "choice",
-          "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Ben stellt das Buch zurück ins ____.",
-          "options": [
-            {
-              "id": "a",
-              "text": "Rezept"
-            },
-            {
-              "id": "b",
-              "text": "Regal"
-            },
-            {
-              "id": "c",
-              "text": "Rätsel"
+              "asset": "brot",
+              "alt": "Brot"
             }
           ],
           "correctOption": "b"
         },
         {
-          "id": "ahorn-09",
-          "type": "choice",
+          "id": "ahorn-08",
+          "type": "visual_choice",
           "scoreKey": "reading_base",
-          "competency": "word_in_sentence",
-          "prompt": "Mit einer Lupe kann man kleine Dinge genauer ____.",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du die Banane?",
           "options": [
             {
               "id": "a",
-              "text": "betrachten"
+              "asset": "banane",
+              "alt": "Banane"
             },
             {
               "id": "b",
-              "text": "bezahlen"
+              "asset": "tasse",
+              "alt": "Tasse"
             },
             {
               "id": "c",
-              "text": "beginnen"
+              "asset": "uhr",
+              "alt": "Uhr"
             }
           ],
           "correctOption": "a"
+        },
+        {
+          "id": "ahorn-09",
+          "type": "visual_choice",
+          "scoreKey": "reading_base",
+          "competency": "word_recognition",
+          "prompt": "Wo siehst du das Fenster?",
+          "options": [
+            {
+              "id": "a",
+              "asset": "maus",
+              "alt": "Maus"
+            },
+            {
+              "id": "b",
+              "asset": "vogel",
+              "alt": "Vogel"
+            },
+            {
+              "id": "c",
+              "asset": "fenster",
+              "alt": "Fenster"
+            }
+          ],
+          "correctOption": "c"
         }
       ]
     },
