@@ -216,7 +216,11 @@
     "childText": "Extra-Tipp: Nutze beim Üben eine Strategiekarte."
   },
   "privacy": {
-    "storesPersonalDataByDefault": false,
-    "repositoryMustNotContainStudentData": true
+    "storageMode": "browser_local_only",
+    "storesPersonalDataLocally": true,
+    "transmitsDiagnosticData": false,
+    "serverApi": false,
+    "repositoryMustNotContainStudentData": true,
+    "csvExportLocalOnly": true
   }
 }
