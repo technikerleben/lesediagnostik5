@@ -98,9 +98,34 @@ button {
   height: 54px;
 }
 
-.wave { color: var(--blue); }
-.compass { color: #198f83; }
-.magnifier { color: #b8642d; }
+.wave { --path-accent: var(--blue); }
+.compass { --path-accent: var(--mint); }
+.magnifier { --path-accent: var(--orange); }
+
+.path-card.wave,
+.path-card.compass,
+.path-card.magnifier,
+.result-main.wave,
+.result-main.compass,
+.result-main.magnifier,
+.result-secondary.wave,
+.result-secondary.compass,
+.result-secondary.magnifier {
+  color: var(--text);
+  border-color: var(--path-accent);
+}
+
+.path-card.wave svg,
+.path-card.compass svg,
+.path-card.magnifier svg,
+.result-main.wave svg,
+.result-main.compass svg,
+.result-main.magnifier svg,
+.result-secondary.wave svg,
+.result-secondary.compass svg,
+.result-secondary.magnifier svg {
+  color: var(--path-accent);
+}
 
 .intro-card,
 .task-card,
