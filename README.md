@@ -12,37 +12,19 @@ Digitaler Förderwegweiser für die Leseförderung direkt nach dem Übergang in 
 
 Die Kinder sehen keine Niveau-Bezeichnungen, keine Zahlen-/Buchstabenstufen und keine Rangfolge.
 
-## Technische Architektur
-
-Die Webapp ist bewusst eine **reine statische HTML/CSS/JavaScript-Anwendung**.
-
-Es gibt:
-
-- kein Next.js
-- kein React
-- kein npm-/Node-Build
-- keine API
-- keine Server-Funktionen
-- keine Datenbank
-- keine Analytics- oder Tracking-Integration
-
-Vercel veröffentlicht ausschließlich den Ordner `public/`.
-
-## Repository-Struktur
+## Endgültige Repo-Struktur
 
 ```
-public/
-  index.html
-  styles.css
-  app.js
-  data/
-    design.json
-    sets/
-      eiche.json
-      ahorn.json
-      birke.json
-    scoring/
-      pilot-rules.json
+index.html
+
+data/
+  design.json
+  sets/
+    eiche.json
+    ahorn.json
+    birke.json
+  scoring/
+    pilot-rules.json
 
 docs/
   01-kompetenzraster.md
@@ -51,15 +33,34 @@ docs/
   04-aufgabenpool-v0.1.md
   05-qualitaetspruefung-parallelformen.md
   06-datenschutz-lokaler-speicher.md
-
-vercel.json
 ```
+
+## Technische Architektur
+
+Die App besteht aus genau **einer selbstständigen `index.html` im Hauptverzeichnis**.
+
+CSS und JavaScript sind direkt in dieser Datei eingebettet.
+
+Die App lädt lediglich die fachlichen JSON-Daten aus `data/`.
+
+Es gibt:
+
+- kein Framework
+- kein Next.js
+- kein React
+- kein npm
+- kein Node-Build
+- kein `vercel.json`
+- keine API
+- keine Server-Funktionen
+- keine Datenbank
+- keine Analytics- oder Tracking-Integration
 
 ## Datenschutz und lokale Verarbeitung
 
-Schüleridentitäten und Diagnoseergebnisse werden ausschließlich in `localStorage` des verwendeten Browsers gespeichert.
+Schüleridentitäten und Diagnoseergebnisse werden ausschließlich im `localStorage` des verwendeten Browsers gespeichert.
 
-Die App sendet diese Daten nicht an Vercel, GitHub oder einen anderen Server.
+Die App sendet diese Daten nicht an den Webserver.
 
 Die lokale Lehrkraftverwaltung ist durch eine gerätebezogene PIN geschützt. Die PIN selbst wird nicht gespeichert; lokal liegt nur ein abgeleiteter Prüfwert.
 
@@ -68,27 +69,18 @@ CSV-Export:
 - Ergebnisübersicht: eine Zeile pro Diagnosedurchlauf
 - Itemdaten: eine Zeile pro beantwortetem Item
 
-Die CSV-Dateien werden ausschließlich lokal im Browser erzeugt.
-
 Details: `docs/06-datenschutz-lokaler-speicher.md`
 
-## Vercel Deployment
+## Deployment
 
-Das Projekt wird als statische Website deployt.
+Das Repository benötigt selbst **keine Build- oder Deployment-Konfiguration**.
 
-`vercel.json`:
+Ein statischer Webhost muss lediglich:
 
-```json
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "other",
-  "installCommand": "",
-  "buildCommand": "echo Static HTML - no build required",
-  "outputDirectory": "public"
-}
-```
+1. `index.html` aus dem Repository-Hauptverzeichnis ausliefern,
+2. den Ordner `data/` unverändert unter `/data/` bereitstellen.
 
-Es müssen keine Dependencies installiert werden und es sind keine Environment Variables erforderlich.
+Für Vercel sollte kein Framework über eine Repo-Datei erzwungen werden. Die Projektkonfiguration kann als einfache statische Website / ohne Framework geführt werden.
 
 ## Status
 
