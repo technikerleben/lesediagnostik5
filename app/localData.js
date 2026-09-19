@@ -135,10 +135,10 @@ export function hasTeacherPin() {
 
 export async function setTeacherPin(pin) {
   const clean = String(pin || "").trim();
-  if (!/^\\d{4,10}$/.test(clean)) {
+  if (!/^\d{4,10}$/.test(clean)) {
     throw new Error("Die Lehrkraft-PIN muss aus 4 bis 10 Ziffern bestehen.");
   }
-  if (!crypto?.subtle) {
+  if (typeof crypto === "undefined" || !crypto.subtle) {
     throw new Error("Dieser Browser unterstützt die lokale PIN-Sicherung nicht.");
   }
 
@@ -155,7 +155,7 @@ export async function setTeacherPin(pin) {
 }
 
 export async function verifyTeacherPin(pin) {
-  if (!crypto?.subtle) return false;
+  if (typeof crypto === "undefined" || !crypto.subtle) return false;
   const stored = safeParse(localStorage.getItem(TEACHER_PIN_KEY), null);
   if (!stored?.salt || !stored?.hash) return false;
 
@@ -195,7 +195,7 @@ function downloadCsv(filename, rows) {
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();
-  URL.revokeObjectURL(url);
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 export function exportSummaryCsv() {
