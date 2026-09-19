@@ -16,7 +16,10 @@ Die Webapp ist als Next.js-App-Router-Prototyp umgesetzt.
 - optionale Zweitempfehlung
 - Strategiekarten-Hinweis
 - keine sichtbaren Punkte oder Niveaubegriffe
-- keine dauerhafte Datenspeicherung
+- dauerhafte Speicherung ausschließlich im lokalen Browserspeicher des Dienstgeräts
+- lokale Teilnehmerverwaltung mit Name/Kürzel und optional Klasse
+- CSV-Export für Ergebnisübersicht und Itemdaten
+- vollständiges lokales Löschen
 
 ## Deployment
 
@@ -29,6 +32,8 @@ Install command: Standardwert
 Output: Standardwert
 
 Es sind aktuell keine Environment Variables erforderlich.
+
+Die App nutzt `output: "export"` und benötigt keinen Server-Endpunkt für Diagnosedaten.
 
 ## Noch nicht für den Schüler-Pilot freigegeben
 
