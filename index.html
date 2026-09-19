@@ -530,6 +530,28 @@ button:disabled {
   }
 }
 
+
+.visual-options .option-button {
+  min-height: 132px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.visual-asset {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .visual-asset {
+    width: 82px;
+    height: 82px;
+  }
+}
 </style>
 </head>
 <body>
@@ -545,7 +567,7 @@ button:disabled {
   <script>
 "use strict";
 
-const APP_VERSION = "0.4";
+const APP_VERSION = "0.5";
 const PREFIX = "lesediagnostik5:v1";
 const PARTICIPANTS_KEY = PREFIX + ":participants";
 const RUNS_KEY = PREFIX + ":runs";
@@ -1098,12 +1120,23 @@ function renderTask() {
   } else {
     const options = orderedOptions(current.options || [], state.runSeed, current.id);
     const optionHtml = options.map(function (option) {
-      const content = current.type === "visual_choice"
-        ? escapeHtml(option.symbol || option.alt || "")
-        : escapeHtml(option.text || "");
+      let content = "";
+
+      if (current.type === "visual_choice" && option.asset) {
+        content =
+          '<img class="visual-asset" src="./assets/lesebilder/' +
+          escapeAttribute(option.asset) +
+          '.png" alt="" loading="eager" decoding="async">';
+      } else if (current.type === "visual_choice") {
+        content = escapeHtml(option.symbol || option.alt || "");
+      } else {
+        content = escapeHtml(option.text || "");
+      }
+
       const aria = current.type === "visual_choice"
         ? ' aria-label="' + escapeAttribute(option.alt || "") + '"'
         : "";
+
       return '<button class="option-button" type="button" data-option="' +
         escapeAttribute(option.id) + '"' + aria + '>' + content + '</button>';
     }).join("");
