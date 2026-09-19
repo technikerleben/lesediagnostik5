@@ -180,20 +180,36 @@ export function exportItemCsv() {
     "zeitpunkt",
     "parallelform",
     "item_id",
-    "antwort"
+    "antwort",
+    "kompetenz",
+    "auswertungsbereich",
+    "richtig"
   ]];
 
   for (const run of runs) {
     const participant = participantMap.get(run.participantId);
-    for (const [itemId, answer] of Object.entries(run.responses || {})) {
+    const itemResults = Array.isArray(run.itemResults)
+      ? run.itemResults
+      : Object.entries(run.responses || {}).map(([itemId, response]) => ({
+          itemId,
+          response,
+          competency: "",
+          scoreKey: "",
+          correct: "",
+        }));
+
+    for (const item of itemResults) {
       rows.push([
         run.participantId,
         participant?.name || run.participantNameSnapshot || "",
         participant?.className || run.classNameSnapshot || "",
         run.completedAt,
         run.setId,
-        itemId,
-        answer,
+        item.itemId,
+        item.response,
+        item.competency || "",
+        item.scoreKey || "",
+        item.correct === true ? "1" : item.correct === false ? "0" : "",
       ]);
     }
   }
