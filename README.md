@@ -26,38 +26,66 @@ Er erfasst ohne freie Texteingaben:
 - Strategiewissen
 - Selbsteinschätzung
 
-Aus den Teilprofilen entsteht eine Hauptempfehlung und bei passenden Profilen ein zweiter Förderweg.
-
 ## SRL-Zyklus
 
 `herausfinden → Ziel wählen → üben → überprüfen → neu entscheiden`
 
+## Technischer Stand
+
+Die Webapp ist als Next.js-App-Router-Anwendung angelegt und kann über Vercel aus dem Repository-Root deployt werden.
+
+- Next.js 16.3.3
+- React 19.3.0
+- keine Anmeldung
+- keine Namenseingabe
+- keine dauerhafte Speicherung von Schülerergebnissen
+- drei zufällig ausgewählte Parallelformen
+- Lesetempo wird lokal während des Durchlaufs gemessen
+- Pilot-Auswertung erfolgt im Browser
+
 ## Repository-Struktur
 
 ```
+app/
+  Navigator.js
+  globals.css
+  layout.js
+  page.js
+
+data/
+  design.json
+  sets/
+    eiche.json
+    ahorn.json
+    birke.json
+  scoring/
+    pilot-rules.json
+
 docs/
   01-kompetenzraster.md
   02-diagnostischer-bauplan.md
   03-auswertungsmatrix.md
   04-aufgabenpool-v0.1.md
-
-data/
-  design.json
-  README.md
-
-app/
-  README.md
+  05-qualitaetspruefung-parallelformen.md
 ```
-
-Später enthält `app/` die über Vercel deployte Webapp. Die diagnostischen Inhalte sollen möglichst datengetrieben aus `data/` geladen werden, damit Aufgaben und Auswertungsregeln unabhängig von der Oberfläche gepflegt werden können.
 
 ## Status
 
-**Konzeptphase / Version 0.1**
+**Technischer Prototyp / Version 0.1**
 
-Nächste Schritte:
-1. Parallelformen Eiche / Ahorn / Birke auf Vergleichbarkeit prüfen.
-2. Aufgabenpool in maschinenlesbare JSON-Dateien überführen.
-3. klickbaren Web-Prototyp bauen.
-4. Pilotdurchlauf mit wenigen Schülerinnen und Schülern.
-5. Schwellenwerte und Items anhand echter Daten kalibrieren.
+### Jetzt möglich
+- Deployment auf Vercel
+- technischer Test auf Laptop/iPad/Desktop
+- Durchlauf der drei Parallelformen
+- Prüfung der Navigation, Zeitmessung und Ergebnislogik
+
+### Vor einem echten Schüler-Pilot
+1. Platzhalter der Wort-Bild-Aufgaben durch einheitliche Illustrationen ersetzen.
+2. vollständigen Durchlauf auf Bedienbarkeit prüfen.
+3. erste Lehrkraftansicht ergänzen.
+4. Pilotprotokoll für anonyme Itemdaten festlegen.
+5. erst danach Kalibrierung mit Schülerinnen und Schülern.
+
+## Datenschutz
+
+Im aktuellen Prototyp werden keine Namen oder Kontodaten abgefragt. Ergebnisse werden nicht an GitHub übertragen und nicht dauerhaft gespeichert.
