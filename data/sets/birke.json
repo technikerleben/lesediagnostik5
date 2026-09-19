@@ -1,0 +1,1073 @@
+{
+  "schemaVersion": 1,
+  "setId": "birke",
+  "version": "0.2",
+  "internalName": "Birke",
+  "childVisibleName": null,
+  "sections": [
+    {
+      "id": "reading-base",
+      "title": "Wörter lesen",
+      "items": [
+        {
+          "id": "birke-01",
+          "type": "visual_choice",
+          "scoreKey": "reading_base",
+          "competency": "word_recognition",
+          "prompt": "Welches Bild passt zu „Fahrrad“?",
+          "options": [
+            {
+              "id": "a",
+              "symbol": "🚲",
+              "alt": "Fahrrad"
+            },
+            {
+              "id": "b",
+              "symbol": "🛴",
+              "alt": "Roller"
+            },
+            {
+              "id": "c",
+              "symbol": "🚌",
+              "alt": "Bus"
+            }
+          ],
+          "correctOption": "a",
+          "needsFinalIllustration": true
+        },
+        {
+          "id": "birke-02",
+          "type": "visual_choice",
+          "scoreKey": "reading_base",
+          "competency": "word_recognition",
+          "prompt": "Welches Bild passt zu „tragen“?",
+          "options": [
+            {
+              "id": "a",
+              "symbol": "⚽",
+              "alt": "Kind wirft einen Ball"
+            },
+            {
+              "id": "b",
+              "symbol": "📦",
+              "alt": "Kind trägt eine Kiste"
+            },
+            {
+              "id": "c",
+              "symbol": "🪟",
+              "alt": "Kind öffnet ein Fenster"
+            }
+          ],
+          "correctOption": "b",
+          "needsFinalIllustration": true
+        },
+        {
+          "id": "birke-03",
+          "type": "visual_choice",
+          "scoreKey": "reading_base",
+          "competency": "word_recognition",
+          "prompt": "Welches Bild passt zu „Hammer“?",
+          "options": [
+            {
+              "id": "a",
+              "symbol": "🔨",
+              "alt": "Hammer"
+            },
+            {
+              "id": "b",
+              "symbol": "✂️",
+              "alt": "Schere"
+            },
+            {
+              "id": "c",
+              "symbol": "🥤",
+              "alt": "Becher"
+            }
+          ],
+          "correctOption": "a",
+          "needsFinalIllustration": true
+        },
+        {
+          "id": "birke-04",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "reading_accuracy",
+          "prompt": "Oben steht: Fahrrad. Tippe genau dasselbe Wort an.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Fahrad"
+            },
+            {
+              "id": "b",
+              "text": "Fahrrad"
+            },
+            {
+              "id": "c",
+              "text": "Fahrräder"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-05",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "reading_accuracy",
+          "prompt": "Oben steht: fragen. Tippe genau dasselbe Wort an.",
+          "options": [
+            {
+              "id": "a",
+              "text": "fahren"
+            },
+            {
+              "id": "b",
+              "text": "tragen"
+            },
+            {
+              "id": "c",
+              "text": "fragen"
+            }
+          ],
+          "correctOption": "c"
+        },
+        {
+          "id": "birke-06",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "reading_accuracy",
+          "prompt": "Oben steht: finden. Tippe genau dasselbe Wort an.",
+          "options": [
+            {
+              "id": "a",
+              "text": "binden"
+            },
+            {
+              "id": "b",
+              "text": "finden"
+            },
+            {
+              "id": "c",
+              "text": "fingen"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-07",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "prompt": "Vor dem Essen sollst du deine Hände ____.",
+          "options": [
+            {
+              "id": "a",
+              "text": "wechseln"
+            },
+            {
+              "id": "b",
+              "text": "waschen"
+            },
+            {
+              "id": "c",
+              "text": "wachsen"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-08",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "prompt": "Die Klasse wartet an der ____ auf den Bus.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Hausaufgabe"
+            },
+            {
+              "id": "b",
+              "text": "Haltestelle"
+            },
+            {
+              "id": "c",
+              "text": "Himmelsrichtung"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-09",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "prompt": "Im Unterricht schreibt Noah die Aufgabe in sein ____.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Haus"
+            },
+            {
+              "id": "b",
+              "text": "Heft"
+            },
+            {
+              "id": "c",
+              "text": "Hemd"
+            }
+          ],
+          "correctOption": "b"
+        }
+      ]
+    },
+    {
+      "id": "word-sentence",
+      "title": "Wörter und Sätze verstehen",
+      "items": [
+        {
+          "id": "birke-10",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary",
+          "prompt": "Was bedeutet „vermeiden“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "etwas möglichst nicht tun"
+            },
+            {
+              "id": "b",
+              "text": "etwas sammeln"
+            },
+            {
+              "id": "c",
+              "text": "etwas erklären"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-11",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary",
+          "prompt": "Was bedeutet „entdecken“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "etwas finden oder bemerken"
+            },
+            {
+              "id": "b",
+              "text": "etwas verlieren"
+            },
+            {
+              "id": "c",
+              "text": "etwas verstecken"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-12",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary",
+          "prompt": "Was bedeutet „auffällig“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "leicht zu bemerken"
+            },
+            {
+              "id": "b",
+              "text": "sehr schwer"
+            },
+            {
+              "id": "c",
+              "text": "besonders alt"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-13",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary_context",
+          "prompt": "Als das Licht plötzlich ausging, blieb Ela ruhig. Sie setzte sich hin und wartete. Was bedeutet „ruhig“ hier?",
+          "options": [
+            {
+              "id": "a",
+              "text": "ohne große Aufregung"
+            },
+            {
+              "id": "b",
+              "text": "besonders wütend"
+            },
+            {
+              "id": "c",
+              "text": "sehr laut"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-14",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary_context",
+          "prompt": "Noah antwortete zögernd. Erst dachte er lange nach, dann begann er langsam zu sprechen. Was bedeutet „zögernd“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "sofort und sicher"
+            },
+            {
+              "id": "b",
+              "text": "unsicher und langsam beginnend"
+            },
+            {
+              "id": "c",
+              "text": "sehr laut"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-15",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "vocabulary_context",
+          "prompt": "Der Hausmeister suchte eine stabile Kiste. Sie sollte auch schwere Bücher tragen können. Was bedeutet „stabil“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "fest und belastbar"
+            },
+            {
+              "id": "b",
+              "text": "bunt"
+            },
+            {
+              "id": "c",
+              "text": "leer"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-16",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "sequence",
+          "prompt": "Mila räumte ihren Platz auf, bevor sie in die Pause ging. Was geschah zuerst?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Mila ging in die Pause."
+            },
+            {
+              "id": "b",
+              "text": "Mila räumte ihren Platz auf."
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-17",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "sequence",
+          "prompt": "Noah zog seine Jacke an. Anschließend verließ er das Haus. Was geschah zuletzt?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Noah verließ das Haus."
+            },
+            {
+              "id": "b",
+              "text": "Noah zog die Jacke an."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-18",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "reference",
+          "prompt": "Amir stellte den Becher auf den Tisch. Kurz danach nahm er ihn wieder weg. Was bedeutet „ihn“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "den Becher"
+            },
+            {
+              "id": "b",
+              "text": "den Tisch"
+            },
+            {
+              "id": "c",
+              "text": "Amir"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-19",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "reference",
+          "prompt": "Nora gab Elif den Schlüssel. Elif steckte ihn in ihre Tasche. Wer steckte den Schlüssel ein?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Nora"
+            },
+            {
+              "id": "b",
+              "text": "Elif"
+            },
+            {
+              "id": "c",
+              "text": "beide"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-20",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "signal_words",
+          "prompt": "Einige Bücher waren beschädigt. Was passt?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Alle Bücher waren beschädigt."
+            },
+            {
+              "id": "b",
+              "text": "Kein Buch war beschädigt."
+            },
+            {
+              "id": "c",
+              "text": "Ein Teil der Bücher war beschädigt."
+            }
+          ],
+          "correctOption": "c"
+        },
+        {
+          "id": "birke-21",
+          "type": "choice",
+          "scoreKey": "word_sentence",
+          "competency": "signal_words",
+          "prompt": "Obwohl Ben den Weg kannte, schaute er noch einmal auf den Plan. Was passt?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ben kannte den Weg nicht."
+            },
+            {
+              "id": "b",
+              "text": "Ben schaute trotz seiner Ortskenntnis auf den Plan."
+            },
+            {
+              "id": "c",
+              "text": "Ben hatte keinen Plan."
+            }
+          ],
+          "correctOption": "b"
+        }
+      ]
+    },
+    {
+      "id": "fluency",
+      "title": "Lesetempo",
+      "items": [
+        {
+          "id": "birke-22",
+          "type": "timed_reading",
+          "competency": "reading_fluency",
+          "prompt": "Lies den Text in deinem normalen Tempo. Du musst dich nicht beeilen. Tippe auf „Fertig gelesen“, wenn du am Ende angekommen bist.",
+          "wordCount": 128,
+          "text": "In der großen Pause hörte Nora hinter der Sporthalle ein leises Miauen. Zusammen mit ihrer Freundin Elif ging sie vorsichtig nachsehen. Zwischen zwei Mülltonnen saß eine junge Katze. Sie wirkte ängstlich und trug ein Halsband, aber keine sichtbare Marke. Die beiden beobachteten sie einen Moment lang. Nora wollte das Tier zuerst auf den Arm nehmen. Elif erinnerte sie daran, dass fremde Tiere erschrecken können. Deshalb blieben beide mit etwas Abstand stehen und holten eine Lehrkraft. Die Lehrerin rief im Sekretariat an. Wenig später kam der Hausmeister mit einer Transportbox. Die Katze ließ sich ohne Probleme hineinsetzen. Noch am selben Nachmittag meldete sich eine Familie aus der Nähe. Ihre Katze war am Morgen entlaufen. Am nächsten Tag erfuhren Nora und Elif, dass das Tier wieder sicher zu Hause war."
+        },
+        {
+          "id": "birke-22a",
+          "type": "choice",
+          "scoreKey": "fluency_check",
+          "competency": "fluency_comprehension_check",
+          "prompt": "Wo saß die Katze?",
+          "options": [
+            {
+              "id": "a",
+              "text": "im Klassenraum"
+            },
+            {
+              "id": "b",
+              "text": "zwischen zwei Mülltonnen"
+            },
+            {
+              "id": "c",
+              "text": "vor dem Schultor"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-22b",
+          "type": "choice",
+          "scoreKey": "fluency_check",
+          "competency": "fluency_comprehension_check",
+          "prompt": "Was machten Nora und Elif?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Sie holten eine Lehrkraft."
+            },
+            {
+              "id": "b",
+              "text": "Sie nahmen die Katze mit nach Hause."
+            },
+            {
+              "id": "c",
+              "text": "Sie gingen sofort weg."
+            }
+          ],
+          "correctOption": "a"
+        }
+      ]
+    },
+    {
+      "id": "text-comprehension",
+      "title": "Text verstehen",
+      "passage": "Die Klasse 5b plante für das Schulfest einen kleinen Getränkestand. Zuerst wollten die Kinder möglichst viele verschiedene Getränke anbieten. Bei der Planung merkten sie aber, dass dafür viele unterschiedliche Becher, Schilder und Zutaten nötig gewesen wären. Außerdem durfte der Stand nur einen kleinen Tisch benutzen.\n\nDie Klasse änderte deshalb ihren Plan. Sie wählte Wasser, Apfelschorle und einen selbst gemischten Früchtetee aus. Für jedes Getränk gab es ein deutliches Schild.\n\nAm Morgen des Schulfests stellte die Gruppe fest, dass der Früchtetee schneller als erwartet leer wurde. Zwei Kinder wollten sofort neuen Tee kochen. Die verantwortliche Lehrerin erinnerte sie daran, dass heißes Wasser Zeit zum Abkühlen braucht. Daraufhin stellten sie zunächst mehr Apfelschorle bereit und bereiteten den Tee in einer kleineren Menge nach.\n\nAm Ende des Festes waren nur wenige Getränke übrig. Die Klasse schrieb auf, welche Mengen gut gepasst hatten, damit ein späterer Jahrgang die Erfahrungen nutzen konnte.",
+      "items": [
+        {
+          "id": "birke-23",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "find_information",
+          "prompt": "Wie viele Getränke wurden am Ende angeboten?",
+          "options": [
+            {
+              "id": "a",
+              "text": "zwei"
+            },
+            {
+              "id": "b",
+              "text": "drei"
+            },
+            {
+              "id": "c",
+              "text": "fünf"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-24",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "find_information",
+          "prompt": "Welches Getränk war schneller leer als erwartet?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Wasser"
+            },
+            {
+              "id": "b",
+              "text": "Apfelschorle"
+            },
+            {
+              "id": "c",
+              "text": "Früchtetee"
+            }
+          ],
+          "correctOption": "c"
+        },
+        {
+          "id": "birke-25",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "connect_information",
+          "prompt": "Warum änderte die Klasse ihren ersten Plan?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Viele Getränke hätten mehr Platz und Material gebraucht."
+            },
+            {
+              "id": "b",
+              "text": "Niemand wollte Getränke verkaufen."
+            },
+            {
+              "id": "c",
+              "text": "Das Schulfest wurde abgesagt."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-26",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "connect_information",
+          "prompt": "Warum wurde nicht sofort viel neuer Tee ausgegeben?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Der Tee musste erst abkühlen."
+            },
+            {
+              "id": "b",
+              "text": "Es gab kein Wasser."
+            },
+            {
+              "id": "c",
+              "text": "Die Schilder fehlten."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-27",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "main_idea",
+          "prompt": "Welche Überschrift passt am besten?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Planen und reagieren am Getränkestand"
+            },
+            {
+              "id": "b",
+              "text": "Ein neuer Stundenplan"
+            },
+            {
+              "id": "c",
+              "text": "Wie Apfelsaft hergestellt wird"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-28",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "main_idea",
+          "prompt": "Worum geht es hauptsächlich?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Die Klasse passt ihre Planung mehrfach an die Situation an."
+            },
+            {
+              "id": "b",
+              "text": "Die Klasse möchte möglichst viele Getränke trinken."
+            },
+            {
+              "id": "c",
+              "text": "Ein Kind kocht zu Hause Tee."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-29",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "relevance",
+          "prompt": "Welche Information ist für die erste Planänderung besonders wichtig?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Der Stand hatte nur wenig Platz."
+            },
+            {
+              "id": "b",
+              "text": "Das Fest war morgens."
+            },
+            {
+              "id": "c",
+              "text": "Es gab Schilder."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-30",
+          "type": "choice",
+          "scoreKey": "text_basic",
+          "competency": "relevance",
+          "prompt": "Welche Information zeigt, dass die Mengen insgesamt recht gut geplant waren?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Am Ende waren nur wenige Getränke übrig."
+            },
+            {
+              "id": "b",
+              "text": "Der Tisch war klein."
+            },
+            {
+              "id": "c",
+              "text": "Es gab Wasser."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-31",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "inference",
+          "prompt": "Warum schrieb die Klasse ihre Erfahrungen auf?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Andere können später daraus lernen."
+            },
+            {
+              "id": "b",
+              "text": "Die Kinder mussten einen Aufsatz schreiben."
+            },
+            {
+              "id": "c",
+              "text": "Sie wollten die Getränke zählen."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-32",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "inference",
+          "prompt": "Was lässt sich über die Planung sagen?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Sie wurde verändert, wenn neue Informationen auftauchten."
+            },
+            {
+              "id": "b",
+              "text": "Sie blieb vom Anfang bis zum Ende gleich."
+            },
+            {
+              "id": "c",
+              "text": "Es gab überhaupt keinen Plan."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-33",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "inference",
+          "prompt": "Warum stellten die Kinder zunächst mehr Apfelschorle bereit?",
+          "options": [
+            {
+              "id": "a",
+              "text": "So gab es weiterhin ein Getränk, während neuer Tee vorbereitet wurde."
+            },
+            {
+              "id": "b",
+              "text": "Die Apfelschorle musste abkühlen."
+            },
+            {
+              "id": "c",
+              "text": "Wasser durfte nicht verkauft werden."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-34",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "connect_clues",
+          "prompt": "Welche beiden Informationen gehören zusammen?",
+          "options": [
+            {
+              "id": "a",
+              "text": "kleiner Tisch + weniger Getränkesorten"
+            },
+            {
+              "id": "b",
+              "text": "Schulfest + Unterricht"
+            },
+            {
+              "id": "c",
+              "text": "Früchtetee + Stundenplan"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-35",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "connect_clues",
+          "prompt": "Was zeigt, dass die Kinder aus Erfahrungen lernen wollen?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Sie halten passende Mengen für später fest."
+            },
+            {
+              "id": "b",
+              "text": "Sie stellen Schilder auf."
+            },
+            {
+              "id": "c",
+              "text": "Sie benutzen einen Tisch."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-36",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "evidence",
+          "prompt": "Welche Textstelle zeigt am besten, dass die Klasse flexibel reagiert?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Die Klasse änderte deshalb ihren Plan."
+            },
+            {
+              "id": "b",
+              "text": "Die Klasse 5b plante für das Schulfest."
+            },
+            {
+              "id": "c",
+              "text": "Für jedes Getränk gab es ein Schild."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-37",
+          "type": "choice",
+          "scoreKey": "text_deep",
+          "competency": "evidence",
+          "prompt": "Welche Stelle belegt am besten, dass auch während des Festes neu entschieden wurde?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Daraufhin stellten sie zunächst mehr Apfelschorle bereit und bereiteten den Tee in einer kleineren Menge nach."
+            },
+            {
+              "id": "b",
+              "text": "Sie wählte Wasser, Apfelschorle und Früchtetee."
+            },
+            {
+              "id": "c",
+              "text": "Der Stand durfte nur einen kleinen Tisch benutzen."
+            }
+          ],
+          "correctOption": "a"
+        }
+      ]
+    },
+    {
+      "id": "word-analysis",
+      "title": "Wörter untersuchen",
+      "items": [
+        {
+          "id": "birke-38",
+          "type": "choice",
+          "scoreKey": "word_analysis",
+          "competency": "morphology",
+          "prompt": "Welches bekannte Wort hilft dir bei „Schulbibliothek“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Schule"
+            },
+            {
+              "id": "b",
+              "text": "Schuld"
+            },
+            {
+              "id": "c",
+              "text": "Schuh"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-39",
+          "type": "choice",
+          "scoreKey": "word_analysis",
+          "competency": "morphology",
+          "prompt": "Welches Wort hilft dir bei „unleserlich“?",
+          "options": [
+            {
+              "id": "a",
+              "text": "lesen"
+            },
+            {
+              "id": "b",
+              "text": "lernen"
+            },
+            {
+              "id": "c",
+              "text": "leeren"
+            }
+          ],
+          "correctOption": "a"
+        }
+      ]
+    },
+    {
+      "id": "strategy",
+      "title": "Lesestrategien",
+      "items": [
+        {
+          "id": "birke-40",
+          "type": "choice",
+          "scoreKey": "strategy",
+          "competency": "strategy_knowledge",
+          "prompt": "Du verstehst ein Wort im Text nicht. Was hilft dir am besten?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ich klicke irgendeine Antwort an."
+            },
+            {
+              "id": "b",
+              "text": "Ich lese den Satz noch einmal und schaue auf die Wörter drumherum."
+            },
+            {
+              "id": "c",
+              "text": "Ich höre sofort mit dem Text auf."
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-41",
+          "type": "choice",
+          "scoreKey": "strategy",
+          "competency": "strategy_knowledge",
+          "prompt": "Du hast einen Abschnitt gelesen und weißt nicht, worum es ging. Was kannst du tun?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ich lese den Abschnitt noch einmal langsamer."
+            },
+            {
+              "id": "b",
+              "text": "Ich überspringe den Rest des Textes."
+            },
+            {
+              "id": "c",
+              "text": "Ich schaue nur auf das längste Wort."
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-42",
+          "type": "choice",
+          "scoreKey": "strategy",
+          "competency": "strategy_knowledge",
+          "prompt": "Du sollst eine bestimmte Information im Text finden. Was hilft dir?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ich suche nach passenden Schlüsselwörtern."
+            },
+            {
+              "id": "b",
+              "text": "Ich lese nur die Überschrift."
+            },
+            {
+              "id": "c",
+              "text": "Ich rate."
+            }
+          ],
+          "correctOption": "a"
+        }
+      ]
+    },
+    {
+      "id": "self-assessment",
+      "title": "Über mein Lesen nachdenken",
+      "items": [
+        {
+          "id": "birke-43",
+          "type": "self_report",
+          "scoreKey": null,
+          "competency": "self_assessment",
+          "prompt": "Wenn ich einen Text lese …",
+          "options": [
+            {
+              "id": "a",
+              "text": "… komme ich meistens flüssig durch."
+            },
+            {
+              "id": "b",
+              "text": "… bleibe ich häufig an Wörtern hängen."
+            },
+            {
+              "id": "c",
+              "text": "… ist das sehr unterschiedlich."
+            }
+          ]
+        },
+        {
+          "id": "birke-44",
+          "type": "self_report",
+          "scoreKey": null,
+          "competency": "self_assessment",
+          "prompt": "Wenn ich einen Text gelesen habe …",
+          "options": [
+            {
+              "id": "a",
+              "text": "… weiß ich meistens, worum es ging."
+            },
+            {
+              "id": "b",
+              "text": "… verstehe ich einzelne Wörter, aber nicht immer den ganzen Text."
+            },
+            {
+              "id": "c",
+              "text": "… muss ich häufig noch einmal lesen."
+            }
+          ]
+        },
+        {
+          "id": "birke-45",
+          "type": "self_report",
+          "scoreKey": null,
+          "competency": "self_assessment",
+          "prompt": "Wenn ein Text schwierig wird …",
+          "options": [
+            {
+              "id": "a",
+              "text": "… weiß ich meistens, was ich ausprobieren kann."
+            },
+            {
+              "id": "b",
+              "text": "… brauche ich manchmal einen Tipp."
+            },
+            {
+              "id": "c",
+              "text": "… weiß ich oft noch nicht, was ich tun kann."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
