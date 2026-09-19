@@ -479,3 +479,44 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 }
+
+
+.pin-gate {
+  display: grid;
+  gap: 12px;
+}
+
+.pin-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.pin-row label {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.pin-row input {
+  min-height: 50px;
+  padding: 10px 12px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.pin-row input:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-color: var(--blue);
+}
+
+@media (max-width: 640px) {
+  .pin-row {
+    grid-template-columns: 1fr;
+  }
+}
