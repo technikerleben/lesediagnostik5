@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "version": "0.2-pilot",
+  "note": "Pilotwerte, keine Normwerte",
+  "scoreKeys": {
+    "reading_base": {
+      "max": 9,
+      "bands": [
+        {
+          "id": "secure",
+          "min": 7,
+          "max": 9
+        },
+        {
+          "id": "developing",
+          "min": 5,
+          "max": 6
+        },
+        {
+          "id": "support",
+          "min": 0,
+          "max": 4
+        }
+      ]
+    },
+    "word_sentence": {
+      "max": 12,
+      "bands": [
+        {
+          "id": "secure",
+          "min": 9,
+          "max": 12
+        },
+        {
+          "id": "developing",
+          "min": 6,
+          "max": 8
+        },
+        {
+          "id": "support",
+          "min": 0,
+          "max": 5
+        }
+      ]
+    },
+    "text_basic": {
+      "max": 8,
+      "bands": [
+        {
+          "id": "secure",
+          "min": 6,
+          "max": 8
+        },
+        {
+          "id": "developing",
+          "min": 4,
+          "max": 5
+        },
+        {
+          "id": "support",
+          "min": 0,
+          "max": 3
+        }
+      ]
+    },
+    "text_deep": {
+      "max": 7,
+      "bands": [
+        {
+          "id": "secure",
+          "min": 5,
+          "max": 7
+        },
+        {
+          "id": "developing",
+          "min": 3,
+          "max": 4
+        },
+        {
+          "id": "next_step",
+          "min": 0,
+          "max": 2
+        }
+      ]
+    },
+    "word_analysis": {
+      "max": 2
+    },
+    "strategy": {
+      "max": 3
+    },
+    "fluency_check": {
+      "max": 2
+    }
+  },
+  "fluency": {
+    "useWpmThreshold": false,
+    "checkInterpretation": {
+      "0": "do_not_use",
+      "1": "cautious",
+      "2": "usable"
+    }
+  },
+  "recommendations": {
+    "wave": {
+      "id": "wave",
+      "label": "Welle",
+      "color": "#245688",
+      "symbol": "wave",
+      "childText": "Hier kannst du üben, Wörter noch sicherer und Texte noch flüssiger zu lesen."
+    },
+    "compass": {
+      "id": "compass",
+      "label": "Kompass",
+      "color": "#48DCCB",
+      "symbol": "compass",
+      "childText": "Hier übst du, Wörter, Sätze und ganze Texte noch sicherer zu verstehen."
+    },
+    "magnifier": {
+      "id": "magnifier",
+      "label": "Lupe",
+      "color": "#F0A66F",
+      "symbol": "magnifier",
+      "childText": "Hier untersuchst du Texte besonders genau und löst knifflige Leseaufgaben."
+    }
+  },
+  "primaryLogic": [
+    {
+      "when": {
+        "reading_base": {
+          "lt": 7
+        }
+      },
+      "recommend": "wave"
+    },
+    {
+      "when": {
+        "reading_base": {
+          "gte": 7
+        },
+        "any": [
+          {
+            "word_sentence": {
+              "lt": 9
+            }
+          },
+          {
+            "text_basic": {
+              "lt": 6
+            }
+          }
+        ]
+      },
+      "recommend": "compass"
+    },
+    {
+      "when": {
+        "reading_base": {
+          "gte": 7
+        },
+        "word_sentence": {
+          "gte": 9
+        },
+        "text_basic": {
+          "gte": 6
+        }
+      },
+      "recommend": "magnifier"
+    }
+  ],
+  "secondaryLogic": [
+    {
+      "when": {
+        "primary": "wave",
+        "reading_base": {
+          "gte": 5,
+          "lte": 6
+        },
+        "word_sentence": {
+          "gte": 9
+        },
+        "text_basic": {
+          "gte": 6
+        }
+      },
+      "recommend": "compass"
+    },
+    {
+      "when": {
+        "primary": "compass",
+        "text_deep": {
+          "gte": 5
+        },
+        "any": [
+          {
+            "word_sentence": {
+              "eq": 8
+            }
+          },
+          {
+            "text_basic": {
+              "eq": 5
+            }
+          }
+        ]
+      },
+      "recommend": "magnifier"
+    }
+  ],
+  "strategyHint": {
+    "when": {
+      "strategy": {
+        "lte": 1
+      }
+    },
+    "childText": "Extra-Tipp: Nutze beim Üben eine Strategiekarte."
+  },
+  "privacy": {
+    "storageMode": "browser_local_only",
+    "storesPersonalDataLocally": true,
+    "transmitsDiagnosticData": false,
+    "serverApi": false,
+    "repositoryMustNotContainStudentData": true,
+    "csvExportLocalOnly": true
+  }
+}
