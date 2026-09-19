@@ -1,10 +1,20 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import eiche from "../data/sets/eiche.json";
 import ahorn from "../data/sets/ahorn.json";
 import birke from "../data/sets/birke.json";
 import rules from "../data/scoring/pilot-rules.json";
+import {
+  deleteAllLocalData,
+  exportItemCsv,
+  exportSummaryCsv,
+  loadParticipants,
+  loadRuns,
+  saveDiagnosticRun,
+  storageAvailable,
+  upsertParticipant,
+} from "./localData";
 
 const SETS = [eiche, ahorn, birke];
 
@@ -132,6 +142,35 @@ function pathClass(id) {
   return "magnifier";
 }
 
+function applyScore(scores, item, optionId) {
+  if (!item?.scoreKey || !item?.correctOption || optionId !== item.correctOption) {
+    return scores;
+  }
+
+  return {
+    ...scores,
+    [item.scoreKey]: (scores[item.scoreKey] || 0) + 1,
+  };
+}
+
+function buildItemResults(queue, responses) {
+  return queue
+    .filter((item) => Object.prototype.hasOwnProperty.call(responses, item.id))
+    .map((item) => {
+      const response = responses[item.id];
+      return {
+        itemId: item.id,
+        response,
+        competency: item.competency || "",
+        scoreKey: item.scoreKey || "",
+        correct:
+          item.correctOption == null
+            ? null
+            : response !== "unknown" && response === item.correctOption,
+      };
+    });
+}
+
 export default function Navigator() {
   const [stage, setStage] = useState("intro");
   const [runSeed, setRunSeed] = useState(null);
@@ -145,6 +184,25 @@ export default function Navigator() {
     seconds: null,
     wpm: null,
   });
+  const [participantName, setParticipantName] = useState("");
+  const [className, setClassName] = useState("");
+  const [currentParticipant, setCurrentParticipant] = useState(null);
+  const [storageReady, setStorageReady] = useState(null);
+  const [localCounts, setLocalCounts] = useState({ participants: 0, runs: 0 });
+  const [formError, setFormError] = useState("");
+  const [saveMessage, setSaveMessage] = useState("");
+  const [resultData, setResultData] = useState(null);
+
+  useEffect(() => {
+    const available = storageAvailable();
+    setStorageReady(available);
+    if (available) {
+      setLocalCounts({
+        participants: loadParticipants().length,
+        runs: loadRuns().length,
+      });
+    }
+  }, []);
 
   const current = queue[index] || null;
 
@@ -155,9 +213,39 @@ export default function Navigator() {
 
   const progress = queue.length ? Math.round((index / queue.length) * 100) : 0;
 
+  function refreshLocalCounts() {
+    if (!storageAvailable()) return;
+    setLocalCounts({
+      participants: loadParticipants().length,
+      runs: loadRuns().length,
+    });
+  }
+
   function startRun() {
+    setFormError("");
+
+    if (!storageAvailable()) {
+      setFormError(
+        "Der lokale Browserspeicher ist auf diesem Gerät nicht verfügbar. Der Durchlauf wird deshalb nicht gestartet."
+      );
+      return;
+    }
+
+    let participant;
+    try {
+      participant = upsertParticipant({
+        name: participantName,
+        className,
+      });
+    } catch (error) {
+      setFormError(error instanceof Error ? error.message : "Die lokalen Angaben konnten nicht gespeichert werden.");
+      return;
+    }
+
     const seed = pickRunSeed();
     const set = chooseSet(seed);
+
+    setCurrentParticipant(participant);
     setRunSeed(seed);
     setActiveSet(set);
     setQueue(flattenSet(set));
@@ -165,40 +253,76 @@ export default function Navigator() {
     setScores(INITIAL_SCORES);
     setResponses({});
     setFluency({ startedAt: null, seconds: null, wpm: null });
+    setResultData(null);
+    setSaveMessage("");
     setStage("task");
+    refreshLocalCounts();
   }
 
-  function finishOrAdvance(nextIndex = index + 1) {
+  function completeRun(finalScores, finalResponses) {
+    const recommendation = recommendationFrom(finalScores);
+    const itemResults = buildItemResults(queue, finalResponses);
+
+    const result = {
+      scores: finalScores,
+      responses: finalResponses,
+      recommendation,
+      itemResults,
+    };
+
+    setResultData(result);
+    setScores(finalScores);
+    setResponses(finalResponses);
+
+    try {
+      saveDiagnosticRun({
+        participantId: currentParticipant.id,
+        participantNameSnapshot: currentParticipant.name,
+        classNameSnapshot: currentParticipant.className,
+        setId: activeSet.setId,
+        setVersion: activeSet.version,
+        scores: finalScores,
+        responses: finalResponses,
+        itemResults,
+        fluency: {
+          seconds: fluency.seconds,
+          wpm: fluency.wpm,
+        },
+        recommendation,
+      });
+      setSaveMessage("Ergebnis wurde nur auf diesem Gerät gespeichert.");
+      refreshLocalCounts();
+    } catch {
+      setSaveMessage(
+        "Das Ergebnis konnte nicht im lokalen Browserspeicher gespeichert werden."
+      );
+    }
+
+    setStage("result");
+  }
+
+  function finishOrAdvance(finalScores, finalResponses, nextIndex = index + 1) {
     if (nextIndex >= queue.length) {
-      setStage("result");
+      completeRun(finalScores, finalResponses);
       return;
     }
+    setScores(finalScores);
+    setResponses(finalResponses);
     setIndex(nextIndex);
   }
 
   function answer(optionId) {
     if (!current) return;
 
-    setResponses((old) => ({ ...old, [current.id]: optionId }));
-
-    if (
-      current.scoreKey &&
-      current.correctOption &&
-      optionId === current.correctOption
-    ) {
-      setScores((old) => ({
-        ...old,
-        [current.scoreKey]: (old[current.scoreKey] || 0) + 1,
-      }));
-    }
-
-    finishOrAdvance();
+    const nextResponses = { ...responses, [current.id]: optionId };
+    const nextScores = applyScore(scores, current, optionId);
+    finishOrAdvance(nextScores, nextResponses);
   }
 
   function answerUnknown() {
     if (!current) return;
-    setResponses((old) => ({ ...old, [current.id]: "unknown" }));
-    finishOrAdvance();
+    const nextResponses = { ...responses, [current.id]: "unknown" };
+    finishOrAdvance(scores, nextResponses);
   }
 
   function startTimedReading() {
@@ -210,10 +334,16 @@ export default function Navigator() {
     const seconds = Math.max(1, (performance.now() - fluency.startedAt) / 1000);
     const wpm = Math.round((current.wordCount / seconds) * 60);
     setFluency({ startedAt: fluency.startedAt, seconds, wpm });
-    finishOrAdvance();
+
+    const nextIndex = index + 1;
+    if (nextIndex >= queue.length) {
+      completeRun(scores, responses);
+    } else {
+      setIndex(nextIndex);
+    }
   }
 
-  function restart() {
+  function restart({ keepParticipant = true } = {}) {
     setStage("intro");
     setRunSeed(null);
     setActiveSet(null);
@@ -222,6 +352,28 @@ export default function Navigator() {
     setScores(INITIAL_SCORES);
     setResponses({});
     setFluency({ startedAt: null, seconds: null, wpm: null });
+    setResultData(null);
+    setSaveMessage("");
+
+    if (!keepParticipant) {
+      setParticipantName("");
+      setClassName("");
+      setCurrentParticipant(null);
+    }
+  }
+
+  function handleDeleteAll() {
+    const confirmed = window.confirm(
+      "Alle lokal gespeicherten Namen/Kürzel und Diagnoseergebnisse auf diesem Browser wirklich löschen?"
+    );
+    if (!confirmed) return;
+
+    deleteAllLocalData();
+    setParticipantName("");
+    setClassName("");
+    setCurrentParticipant(null);
+    setLocalCounts({ participants: 0, runs: 0 });
+    setSaveMessage("");
   }
 
   if (stage === "intro") {
@@ -232,7 +384,7 @@ export default function Navigator() {
             <h1>Lese-Navigator</h1>
             <p>Finde heraus, welche Leseübungen gerade gut zu dir passen.</p>
           </div>
-          <span className="note">Pilotversion 0.1</span>
+          <span className="note">Pilotversion 0.2</span>
         </header>
 
         <div className="path-row" aria-label="Drei Lesewege">
@@ -260,22 +412,108 @@ export default function Navigator() {
             Du bekommst keine Note. Am Ende erhältst du einen Tipp, mit welchen
             Übungen du weiterarbeiten kannst.
           </p>
-          <button className="primary-button" type="button" onClick={startRun}>
+
+          <div className="participant-box">
+            <h3>Dieser Durchlauf</h3>
+            <p className="note">
+              Die Angaben werden nur im Browser dieses Geräts gespeichert.
+              Du kannst auch ein eindeutiges Kürzel statt des Namens verwenden.
+            </p>
+            <div className="form-grid">
+              <label>
+                <span>Name oder Kürzel</span>
+                <input
+                  type="text"
+                  value={participantName}
+                  onChange={(event) => setParticipantName(event.target.value)}
+                  autoComplete="off"
+                  maxLength={80}
+                />
+              </label>
+              <label>
+                <span>Klasse (optional)</span>
+                <input
+                  type="text"
+                  value={className}
+                  onChange={(event) => setClassName(event.target.value)}
+                  autoComplete="off"
+                  maxLength={40}
+                />
+              </label>
+            </div>
+          </div>
+
+          {formError && <p className="error-message">{formError}</p>}
+
+          <button
+            className="primary-button"
+            type="button"
+            onClick={startRun}
+            disabled={storageReady === false}
+          >
             Lese-Navigator starten
           </button>
-          <p className="dev-note">
-            Es werden keine Namen abgefragt und keine Ergebnisse dauerhaft gespeichert.
+
+          <p className="local-only-note">
+            <strong>Nur lokal:</strong> Diagnoseergebnisse werden nicht an einen
+            Server gesendet. Vercel stellt ausschließlich die App-Dateien bereit.
           </p>
         </section>
+
+        <details className="local-admin">
+          <summary>Lokale Datenverwaltung – Lehrkraft</summary>
+          <div className="local-admin-body">
+            <p>
+              Auf diesem Browser gespeichert: <strong>{localCounts.participants}</strong>{" "}
+              Teilnehmer · <strong>{localCounts.runs}</strong> Durchläufe
+            </p>
+            <p className="note">
+              Browserdaten können beim Löschen des Website-Speichers verloren gehen.
+              Sichere die Ergebnisse deshalb bei Bedarf als CSV in deinem geschützten
+              schulischen Ablageort.
+            </p>
+            <div className="result-actions">
+              <button
+                className="secondary-button"
+                type="button"
+                onClick={exportSummaryCsv}
+                disabled={localCounts.runs === 0}
+              >
+                Ergebnisse als CSV
+              </button>
+              <button
+                className="secondary-button"
+                type="button"
+                onClick={exportItemCsv}
+                disabled={localCounts.runs === 0}
+              >
+                Itemdaten als CSV
+              </button>
+              <button
+                className="danger-button"
+                type="button"
+                onClick={handleDeleteAll}
+                disabled={localCounts.participants === 0 && localCounts.runs === 0}
+              >
+                Lokale Daten löschen
+              </button>
+            </div>
+          </div>
+        </details>
       </div>
     );
   }
 
   if (stage === "result") {
-    const result = recommendationFrom(scores);
-    const primary = rules.recommendations[result.primary];
-    const secondary = result.secondary
-      ? rules.recommendations[result.secondary]
+    const result = resultData || {
+      scores,
+      responses,
+      recommendation: recommendationFrom(scores),
+    };
+    const recommendation = result.recommendation;
+    const primary = rules.recommendations[recommendation.primary];
+    const secondary = recommendation.secondary
+      ? rules.recommendations[recommendation.secondary]
       : null;
 
     return (
@@ -288,9 +526,9 @@ export default function Navigator() {
         </header>
 
         <section className="result-card">
-          <div className={`result-main ${pathClass(result.primary)}`}>
+          <div className={`result-main ${pathClass(recommendation.primary)}`}>
             <div className="path-symbol">
-              <PathIcon type={result.primary} />
+              <PathIcon type={recommendation.primary} />
             </div>
             <div>
               <h3>Starte mit {primary.label}</h3>
@@ -299,9 +537,9 @@ export default function Navigator() {
           </div>
 
           {secondary && (
-            <div className={`result-secondary ${pathClass(result.secondary)}`}>
+            <div className={`result-secondary ${pathClass(recommendation.secondary)}`}>
               <div className="path-symbol">
-                <PathIcon type={result.secondary} />
+                <PathIcon type={recommendation.secondary} />
               </div>
               <div>
                 <h3>Auch passend: {secondary.label}</h3>
@@ -310,7 +548,7 @@ export default function Navigator() {
             </div>
           )}
 
-          {result.strategyHint && (
+          {recommendation.strategyHint && (
             <p className="strategy-hint">
               <strong>Extra-Tipp:</strong> Nutze beim Üben eine Strategiekarte.
             </p>
@@ -320,9 +558,22 @@ export default function Navigator() {
             Der Lese-Navigator zeigt dir einen Startpunkt. Er ist kein Test mit Note.
           </p>
 
+          {saveMessage && <p className="save-message">{saveMessage}</p>}
+
           <div className="result-actions">
-            <button className="primary-button" type="button" onClick={restart}>
-              Noch einmal starten
+            <button
+              className="primary-button"
+              type="button"
+              onClick={() => restart({ keepParticipant: false })}
+            >
+              Nächster Durchlauf
+            </button>
+            <button
+              className="secondary-button"
+              type="button"
+              onClick={() => restart({ keepParticipant: true })}
+            >
+              Noch einmal für dieselbe Person
             </button>
           </div>
         </section>
@@ -429,7 +680,7 @@ export default function Navigator() {
       </section>
 
       <p className="dev-note" aria-hidden="true">
-        Durchlauf ohne Namens- oder Kontodaten.
+        Dieser Durchlauf wird ausschließlich lokal im Browser gespeichert.
       </p>
     </div>
   );
