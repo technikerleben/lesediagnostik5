@@ -1,6 +1,7 @@
 const PREFIX = "lesediagnostik5:v1";
 const PARTICIPANTS_KEY = `${PREFIX}:participants`;
 const RUNS_KEY = `${PREFIX}:runs`;
+const TEACHER_PIN_KEY = `${PREFIX}:teacher-pin`;
 
 function safeParse(value, fallback) {
   try {
@@ -91,6 +92,87 @@ export function saveDiagnosticRun(run) {
 export function deleteAllLocalData() {
   localStorage.removeItem(PARTICIPANTS_KEY);
   localStorage.removeItem(RUNS_KEY);
+}
+
+function bytesToBase64(bytes) {
+  let binary = "";
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+  return btoa(binary);
+}
+
+function base64ToBytes(value) {
+  const binary = atob(value);
+  return Uint8Array.from(binary, (char) => char.charCodeAt(0));
+}
+
+async function derivePinHash(pin, salt) {
+  const material = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(pin),
+    "PBKDF2",
+    false,
+    ["deriveBits"]
+  );
+
+  const bits = await crypto.subtle.deriveBits(
+    {
+      name: "PBKDF2",
+      salt,
+      iterations: 180000,
+      hash: "SHA-256",
+    },
+    material,
+    256
+  );
+
+  return new Uint8Array(bits);
+}
+
+export function hasTeacherPin() {
+  if (!storageAvailable()) return false;
+  return Boolean(localStorage.getItem(TEACHER_PIN_KEY));
+}
+
+export async function setTeacherPin(pin) {
+  const clean = String(pin || "").trim();
+  if (!/^\\d{4,10}$/.test(clean)) {
+    throw new Error("Die Lehrkraft-PIN muss aus 4 bis 10 Ziffern bestehen.");
+  }
+  if (!crypto?.subtle) {
+    throw new Error("Dieser Browser unterstützt die lokale PIN-Sicherung nicht.");
+  }
+
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const hash = await derivePinHash(clean, salt);
+  localStorage.setItem(
+    TEACHER_PIN_KEY,
+    JSON.stringify({
+      version: 1,
+      salt: bytesToBase64(salt),
+      hash: bytesToBase64(hash),
+    })
+  );
+}
+
+export async function verifyTeacherPin(pin) {
+  if (!crypto?.subtle) return false;
+  const stored = safeParse(localStorage.getItem(TEACHER_PIN_KEY), null);
+  if (!stored?.salt || !stored?.hash) return false;
+
+  const salt = base64ToBytes(stored.salt);
+  const expected = base64ToBytes(stored.hash);
+  const actual = await derivePinHash(String(pin || "").trim(), salt);
+
+  if (actual.length !== expected.length) return false;
+  let difference = 0;
+  for (let i = 0; i < actual.length; i += 1) {
+    difference |= actual[i] ^ expected[i];
+  }
+  return difference === 0;
+}
+
+export function clearTeacherPin() {
+  localStorage.removeItem(TEACHER_PIN_KEY);
 }
 
 function csvEscape(value) {
