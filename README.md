@@ -10,58 +10,39 @@ Digitaler Förderwegweiser für die Leseförderung direkt nach dem Übergang in 
 | 🧭 | Türkisgrün `#48DCCB` | Kompass | Regelniveau: Wort-, Satz- und Textverständnis |
 | 🔍 | Orange `#F0A66F` | Lupe | Expertenniveau: Schlussfolgern, Belegen, anspruchsvolles Lesen |
 
-Die Kinder sehen **keine Niveau-Bezeichnungen**, keine Zahlen-/Buchstabenstufen und keine Rangfolge. Alle drei Wege werden gleich groß und gleichwertig dargestellt.
+Die Kinder sehen keine Niveau-Bezeichnungen, keine Zahlen-/Buchstabenstufen und keine Rangfolge.
 
-## Prinzip
+## Technische Architektur
 
-Der Navigator ist ein **Förderwegweiser und kein normierter diagnostischer Test**.
+Die Webapp ist bewusst eine **reine statische HTML/CSS/JavaScript-Anwendung**.
 
-Er erfasst ohne freie Texteingaben:
-- Worterkennung und Lesegenauigkeit
-- Wortschatz
-- Satzverständnis
-- Lesegeschwindigkeit
-- grundlegendes Textverständnis
-- Schlussfolgern und Belegen
-- Strategiewissen
-- Selbsteinschätzung
+Es gibt:
 
-## SRL-Zyklus
+- kein Next.js
+- kein React
+- kein npm-/Node-Build
+- keine API
+- keine Server-Funktionen
+- keine Datenbank
+- keine Analytics- oder Tracking-Integration
 
-`herausfinden → Ziel wählen → üben → überprüfen → neu entscheiden`
-
-## Technischer Stand
-
-Die Webapp ist als Next.js-App-Router-Anwendung angelegt und kann über Vercel aus dem Repository-Root deployt werden.
-
-- Next.js 16.3.3
-- React 19.3.0
-- keine Anmeldung
-- Name oder Kürzel und optional Klasse werden ausschließlich lokal im Browser gespeichert
-- Diagnoseergebnisse werden ausschließlich lokal im Browser gespeichert
-- keine serverseitige Speicherung oder Diagnose-API
-- lokaler CSV-Export für Ergebnisübersicht und Itemdaten
-- drei zufällig ausgewählte Parallelformen
-- Lesetempo wird lokal während des Durchlaufs gemessen
-- Pilot-Auswertung erfolgt im Browser
+Vercel veröffentlicht ausschließlich den Ordner `public/`.
 
 ## Repository-Struktur
 
 ```
-app/
-  Navigator.js
-  globals.css
-  layout.js
-  page.js
-
-data/
-  design.json
-  sets/
-    eiche.json
-    ahorn.json
-    birke.json
-  scoring/
-    pilot-rules.json
+public/
+  index.html
+  styles.css
+  app.js
+  data/
+    design.json
+    sets/
+      eiche.json
+      ahorn.json
+      birke.json
+    scoring/
+      pilot-rules.json
 
 docs/
   01-kompetenzraster.md
@@ -69,29 +50,53 @@ docs/
   03-auswertungsmatrix.md
   04-aufgabenpool-v0.1.md
   05-qualitaetspruefung-parallelformen.md
+  06-datenschutz-lokaler-speicher.md
+
+vercel.json
 ```
-
-## Status
-
-**Technischer Prototyp / Version 0.1**
-
-### Jetzt möglich
-- Deployment auf Vercel
-- technischer Test auf Laptop/iPad/Desktop
-- Durchlauf der drei Parallelformen
-- Prüfung der Navigation, Zeitmessung und Ergebnislogik
-
-### Vor einem echten Schüler-Pilot
-1. Platzhalter der Wort-Bild-Aufgaben durch einheitliche Illustrationen ersetzen.
-2. vollständigen Durchlauf auf Bedienbarkeit prüfen.
-3. erste Lehrkraftansicht ergänzen.
-4. Pilotprotokoll für anonyme Itemdaten festlegen.
-5. erst danach Kalibrierung mit Schülerinnen und Schülern.
 
 ## Datenschutz und lokale Verarbeitung
 
-Die App wird statisch ausgeliefert. Schüleridentitäten und Diagnoseergebnisse werden ausschließlich in `localStorage` des verwendeten Browsers gespeichert.
+Schüleridentitäten und Diagnoseergebnisse werden ausschließlich in `localStorage` des verwendeten Browsers gespeichert.
 
-Es gibt keine Diagnose-API und keine Datenbank. Die App überträgt diese Daten weder an GitHub noch an Vercel. Für die schulinterne Weiterverarbeitung können Ergebnisübersichten und Itemdaten lokal als CSV exportiert werden.
+Die App sendet diese Daten nicht an Vercel, GitHub oder einen anderen Server.
+
+Die lokale Lehrkraftverwaltung ist durch eine gerätebezogene PIN geschützt. Die PIN selbst wird nicht gespeichert; lokal liegt nur ein abgeleiteter Prüfwert.
+
+CSV-Export:
+
+- Ergebnisübersicht: eine Zeile pro Diagnosedurchlauf
+- Itemdaten: eine Zeile pro beantwortetem Item
+
+Die CSV-Dateien werden ausschließlich lokal im Browser erzeugt.
 
 Details: `docs/06-datenschutz-lokaler-speicher.md`
+
+## Vercel Deployment
+
+Das Projekt wird als statische Website deployt.
+
+`vercel.json`:
+
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "other",
+  "installCommand": "",
+  "buildCommand": "echo Static HTML - no build required",
+  "outputDirectory": "public"
+}
+```
+
+Es müssen keine Dependencies installiert werden und es sind keine Environment Variables erforderlich.
+
+## Status
+
+**Statischer Prototyp / Version 0.3**
+
+Vor einem echten Schüler-Pilot:
+
+1. Wort-Bild-Platzhalter durch einheitliche Illustrationen ersetzen.
+2. Bedienung auf den vorgesehenen Dienstgeräten testen.
+3. CSV-Export und lokale Löschfunktion praktisch testen.
+4. Pilotdurchläufe durchführen und Items/Schwellenwerte kalibrieren.
