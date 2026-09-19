@@ -17,6 +17,10 @@ Die Kinder sehen keine Niveau-Bezeichnungen, keine Zahlen-/Buchstabenstufen und 
 ```
 index.html
 
+assets/
+  lesebilder/
+    27 PNG-Dateien für die Wort-Bild-Aufgaben
+
 data/
   design.json
   sets/
@@ -95,11 +99,32 @@ Details: `docs/07-datenpflege-und-versionierung.md`
 
 ## Status
 
-**Statischer Prototyp / Version 0.4**
+**Statischer Prototyp / App-Version 0.5**
 
-Vor einem echten Schüler-Pilot:
+Aktueller fachlicher Stand:
 
-1. Wort-Bild-Platzhalter durch einheitliche Illustrationen ersetzen.
-2. Bedienung auf den vorgesehenen Dienstgeräten testen.
-3. CSV-Export und lokale Löschfunktion praktisch testen.
-4. Pilotdurchläufe durchführen und Items/Schwellenwerte kalibrieren.
+- Eiche: Set-Version **0.3**
+- Ahorn: Set-Version **0.3**
+- Birke: Set-Version **0.3**
+- alle drei Parallelformen enthalten jeweils **9 echte Wort-Bild-Aufgaben**
+- insgesamt **27 einheitliche PNG-Lesebilder** unter `assets/lesebilder/`
+- die Bildaufgaben werden direkt aus den JSON-Sets geladen
+- die Empfehlungslogik wird aus `data/scoring/pilot-rules.json` gelesen
+- Diagnosedurchläufe werden ausschließlich lokal im Browser gespeichert
+- Ergebnis- und Itemdaten können als CSV exportiert werden
+
+Die Implementierungsphase des aktuellen Prototyps ist damit abgeschlossen.
+
+### Nächster Projektabschnitt: technischer Test und Pilotierung
+
+Vor einem breiteren Einsatz mit Schülerinnen und Schülern:
+
+1. Bedienung auf den vorgesehenen Schulgeräten und Browsern testen.
+2. Prüfen, ob alle 27 Bildassets zuverlässig geladen werden.
+3. CSV-Export, lokale Speicherung und Löschfunktion praktisch testen.
+4. Einen kleinen Pilot mit unterschiedlich starken Leserinnen und Lesern durchführen.
+5. Bearbeitungszeit, Aufgabenverständnis und Passung der Förderempfehlungen auswerten.
+6. Empfehlungen mit vorhandenen Lautlesedaten bzw. pädagogischen Einschätzungen vergleichen.
+7. Erst danach Itemschwierigkeiten, Schwellenwerte und ggf. die Parallelformen kalibrieren.
+
+Die aktuellen Schwellenwerte sind ausdrücklich **Pilotwerte und keine Normwerte**.
