@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Materialtheke Sprint 01 – Sammeldruck</title>
+<link rel="stylesheet" href="print.css">
+<style>
+.toolbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #C9D0D4;padding:10px;font-family:Arial,sans-serif;font-size:14px}
+.toolbar button{font:inherit;padding:8px 12px}
+.status{margin-left:10px;color:#5E6C76}
+@media print{.toolbar{display:none}.page:last-child{break-after:auto}}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button type="button" onclick="window.print()">Drucken</button>
+  <span class="status" id="status">Material wird geladen …</span>
+</div>
+<div id="pages"></div>
+<script>
+const files=[
+  "W-GW-001.html","W-LS-001.html","W-TL-001.html",
+  "K-KO-001.html","K-SV-001.html","K-IF-001.html","K-IV-001.html","K-HA-001.html",
+  "L-SF-001.html","L-BE-001.html","L-BB-001.html"
+];
+async function load(){
+  const target=document.getElementById("pages");
+  const status=document.getElementById("status");
+  try{
+    for(const file of files){
+      const response=await fetch("schueler/"+file,{cache:"no-store"});
+      if(!response.ok) throw new Error(file+" konnte nicht geladen werden.");
+      const source=await response.text();
+      const doc=new DOMParser().parseFromString(source,"text/html");
+      const page=doc.querySelector("main.page");
+      if(!page) throw new Error(file+" enthält keine Druckseite.");
+      target.appendChild(document.importNode(page,true));
+    }
+    status.textContent=files.length+" A5-Seiten bereit.";
+  }catch(error){
+    status.textContent="Fehler: "+error.message;
+  }
+}
+load();
+</script>
+</body>
+</html>
