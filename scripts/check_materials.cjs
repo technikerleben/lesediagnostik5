@@ -77,5 +77,14 @@ test('all prototype student materials include child goal and reflection', () => 
   }
 });
 
+test('teacher material shelf exists and navigator links to it', () => {
+  assert.ok(fs.existsSync(path.join(root, 'material/lehrkraft.html')), 'teacher shelf missing');
+  const shelf = read('material/lehrkraft.html');
+  assert.ok(shelf.includes('../data/material-catalog.json'), 'teacher shelf must load material catalog');
+  const navigator = read('index.html');
+  assert.ok(navigator.includes('./material/lehrkraft.html'), 'navigator teacher link missing');
+  assert.ok(navigator.includes('Materialtheke öffnen'), 'navigator teacher link label missing');
+});
+
 console.log(tests.map(t => 'PASS ' + t).join('\n'));
 console.log('\n' + tests.length + ' material checks passed.');
