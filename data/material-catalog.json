@@ -35,7 +35,7 @@
       "format": "Wortdetektiv",
       "theme": "Schulweg",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "separate_solution"
     },
     {
@@ -45,7 +45,7 @@
       "format": "Lesestreifen",
       "theme": "Schultag",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "partner_card"
     },
     {
@@ -55,7 +55,7 @@
       "format": "Tandemtext",
       "theme": "Fundstück auf dem Schulhof",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "tandem_routine"
     },
     {
@@ -65,7 +65,7 @@
       "format": "Wort-im-Kontext-Karte",
       "theme": "Schulhof",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "separate_solution"
     },
     {
@@ -75,7 +75,7 @@
       "format": "Satzdetektiv",
       "theme": "Freizeit",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "separate_solution"
     },
     {
@@ -85,7 +85,7 @@
       "format": "Textsucher",
       "theme": "Natur",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "marked_text_solution"
     },
     {
@@ -95,7 +95,7 @@
       "format": "Zwei-Stellen-Karte",
       "theme": "Natur",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "separate_solution"
     },
     {
@@ -105,7 +105,7 @@
       "format": "Hauptaussagen-Karte",
       "theme": "Natur",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "separate_solution"
     },
     {
@@ -115,7 +115,7 @@
       "format": "Detektivkarte",
       "theme": "Schule",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "solution_with_evidence"
     },
     {
@@ -125,7 +125,7 @@
       "format": "Antwort + Beleg",
       "theme": "Schule",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "separate_solution"
     },
     {
@@ -135,7 +135,7 @@
       "format": "Sortierkarte",
       "theme": "Tiere",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "back_side"
     },
     {
@@ -145,7 +145,7 @@
       "format": "Strategiekarte",
       "theme": "Schwieriges Wort",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "none"
     },
     {
@@ -155,7 +155,7 @@
       "format": "Strategiekarte",
       "theme": "Abschnitt nicht verstanden",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "none"
     },
     {
@@ -165,7 +165,7 @@
       "format": "Strategiekarte",
       "theme": "Information suchen",
       "priority": "P1",
-      "status": "planned",
+      "status": "prototype",
       "control": "none"
     }
   ]
