@@ -20,6 +20,8 @@ Die Anschlussförderung wird in `material/` aufgebaut. Sie übersetzt diagnostis
 
 - [Materialtheke und Produktionsworkflow](material/README.md)
 - [Materialmatrix](material/materialmatrix.md)
+- [Pilot 01 Materialtheke](material/druck/pilot-01/index.html)
+- [Sprint-02-Backlog](material/SPRINT-02-BACKLOG.md)
 - `data/material-catalog.json`: maschinenlesbarer Status der Materialien
 
 Die Förderwege Welle, Kompass und Lupe bleiben gleichwertige Orientierungspunkte. Materialien werden über **Teilkompetenzen** ausgewählt; eine Hauptempfehlung ist keine dauerhafte Gruppenzuordnung.
@@ -75,6 +77,7 @@ Optional lokal, ohne Installation von Paketen:
 
 ```sh
 node scripts/check.cjs
+node scripts/check_materials.cjs
 python3 scripts/check_assets.py
 ```
 
