@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "version": "0.2-pilot",
+  "schemaVersion": 2,
+  "version": "0.3-pilot",
   "note": "Pilotwerte, keine Normwerte",
   "scoreKeys": {
     "reading_base": {
@@ -21,7 +21,8 @@
           "min": 0,
           "max": 4
         }
-      ]
+      ],
+      "label": "Lesebasis"
     },
     "word_sentence": {
       "max": 12,
@@ -41,7 +42,8 @@
           "min": 0,
           "max": 5
         }
-      ]
+      ],
+      "label": "Wort- und Satzverständnis"
     },
     "text_basic": {
       "max": 8,
@@ -61,7 +63,8 @@
           "min": 0,
           "max": 3
         }
-      ]
+      ],
+      "label": "Grundlegendes Textverständnis"
     },
     "text_deep": {
       "max": 7,
@@ -81,16 +84,20 @@
           "min": 0,
           "max": 2
         }
-      ]
+      ],
+      "label": "Tieferes Textverständnis"
     },
     "word_analysis": {
-      "max": 2
+      "max": 2,
+      "label": "Worterschließung"
     },
     "strategy": {
-      "max": 3
+      "max": 3,
+      "label": "Strategiewissen"
     },
     "fluency_check": {
-      "max": 2
+      "max": 2,
+      "label": "Kontrollfragen zum Lesetempo"
     }
   },
   "fluency": {
@@ -99,6 +106,12 @@
       "0": "do_not_use",
       "1": "cautious",
       "2": "usable"
+    },
+    "label": "Stilles Lesetempo (Selbstmeldung)",
+    "checkLabels": {
+      "do_not_use": "Nicht als Tempo-Hinweis verwenden: keine Kontrollfrage richtig.",
+      "cautious": "Vorsichtig einordnen: eine Kontrollfrage richtig.",
+      "usable": "Mit Lautlesebeobachtung vergleichen; zwei Kontrollfragen richtig."
     }
   },
   "recommendations": {
@@ -195,9 +208,15 @@
           {
             "word_sentence": {
               "eq": 8
+            },
+            "text_basic": {
+              "gte": 6
             }
           },
           {
+            "word_sentence": {
+              "gte": 9
+            },
             "text_basic": {
               "eq": 5
             }
@@ -222,5 +241,20 @@
     "serverApi": false,
     "repositoryMustNotContainStudentData": true,
     "csvExportLocalOnly": true
-  }
+  },
+  "readingBaseComponents": {
+    "word_recognition": {
+      "label": "Wort–Bild-Zuordnung",
+      "max": 3
+    },
+    "orthographic_discrimination": {
+      "label": "Genaues Wortunterscheiden",
+      "max": 3
+    },
+    "word_in_sentence": {
+      "label": "Wort im Satz",
+      "max": 3
+    }
+  },
+  "pilotNote": "Die Grenzen bleiben vorläufig. Lesebasis 0.4 ist fachlich breiter als 0.3; Werte sind nicht unmittelbar vergleichbar. Drei Items pro Teilbereich erlauben nur erste Hinweise."
 }

@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "setId": "ahorn",
-  "version": "0.3",
+  "version": "0.4",
   "internalName": "Ahorn",
   "childVisibleName": null,
   "sections": [
@@ -10,11 +10,11 @@
       "title": "Wörter lesen",
       "items": [
         {
-          "id": "ahorn-01",
+          "id": "ahorn-base-v04-01",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Wo siehst du die Maus?",
+          "prompt": "Welches Bild passt?",
           "options": [
             {
               "id": "a",
@@ -32,114 +32,15 @@
               "alt": "Brot"
             }
           ],
-          "correctOption": "b"
+          "correctOption": "b",
+          "stimulus": "Maus"
         },
         {
-          "id": "ahorn-02",
+          "id": "ahorn-base-v04-02",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Wo siehst du den Baum?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "baum",
-              "alt": "Baum"
-            },
-            {
-              "id": "b",
-              "asset": "tasse",
-              "alt": "Tasse"
-            },
-            {
-              "id": "c",
-              "asset": "vogel",
-              "alt": "Vogel"
-            }
-          ],
-          "correctOption": "a"
-        },
-        {
-          "id": "ahorn-03",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du das Brot?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "uhr",
-              "alt": "Uhr"
-            },
-            {
-              "id": "b",
-              "asset": "jacke",
-              "alt": "Jacke"
-            },
-            {
-              "id": "c",
-              "asset": "brot",
-              "alt": "Brot"
-            }
-          ],
-          "correctOption": "c"
-        },
-        {
-          "id": "ahorn-04",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du die Tasse?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "banane",
-              "alt": "Banane"
-            },
-            {
-              "id": "b",
-              "asset": "tasse",
-              "alt": "Tasse"
-            },
-            {
-              "id": "c",
-              "asset": "fenster",
-              "alt": "Fenster"
-            }
-          ],
-          "correctOption": "b"
-        },
-        {
-          "id": "ahorn-05",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du die Uhr?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "uhr",
-              "alt": "Uhr"
-            },
-            {
-              "id": "b",
-              "asset": "maus",
-              "alt": "Maus"
-            },
-            {
-              "id": "c",
-              "asset": "baum",
-              "alt": "Baum"
-            }
-          ],
-          "correctOption": "a"
-        },
-        {
-          "id": "ahorn-06",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du den Vogel?",
+          "prompt": "Welches Bild passt?",
           "options": [
             {
               "id": "a",
@@ -157,39 +58,15 @@
               "alt": "Vogel"
             }
           ],
-          "correctOption": "c"
+          "correctOption": "c",
+          "stimulus": "Vogel"
         },
         {
-          "id": "ahorn-07",
+          "id": "ahorn-base-v04-03",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Wo siehst du die Jacke?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "fenster",
-              "alt": "Fenster"
-            },
-            {
-              "id": "b",
-              "asset": "jacke",
-              "alt": "Jacke"
-            },
-            {
-              "id": "c",
-              "asset": "brot",
-              "alt": "Brot"
-            }
-          ],
-          "correctOption": "b"
-        },
-        {
-          "id": "ahorn-08",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du die Banane?",
+          "prompt": "Welches Bild passt?",
           "options": [
             {
               "id": "a",
@@ -207,29 +84,143 @@
               "alt": "Uhr"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Banane"
         },
         {
-          "id": "ahorn-09",
-          "type": "visual_choice",
+          "id": "ahorn-base-v04-04",
+          "type": "choice",
           "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du das Fenster?",
+          "competency": "orthographic_discrimination",
+          "stimulus": "Schulbus",
+          "prompt": "Tippe auf dasselbe Wort.",
           "options": [
             {
               "id": "a",
-              "asset": "maus",
-              "alt": "Maus"
+              "text": "Schulbuch"
             },
             {
               "id": "b",
-              "asset": "vogel",
-              "alt": "Vogel"
+              "text": "Schulbus"
             },
             {
               "id": "c",
-              "asset": "fenster",
-              "alt": "Fenster"
+              "text": "Schulbau"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "ahorn-base-v04-05",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "orthographic_discrimination",
+          "stimulus": "Jacke",
+          "prompt": "Tippe auf dasselbe Wort.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Backe"
+            },
+            {
+              "id": "b",
+              "text": "Jacke"
+            },
+            {
+              "id": "c",
+              "text": "Hacke"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "ahorn-base-v04-06",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "orthographic_discrimination",
+          "stimulus": "laufen",
+          "prompt": "Tippe auf dasselbe Wort.",
+          "options": [
+            {
+              "id": "a",
+              "text": "kaufen"
+            },
+            {
+              "id": "b",
+              "text": "laufen"
+            },
+            {
+              "id": "c",
+              "text": "raufen"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "ahorn-base-v04-07",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "stimulus": "Vor dem Essen sollst du deine Hände ____.",
+          "prompt": "Welches Wort passt in die Lücke?",
+          "options": [
+            {
+              "id": "a",
+              "text": "waschen"
+            },
+            {
+              "id": "b",
+              "text": "wachsen"
+            },
+            {
+              "id": "c",
+              "text": "warten"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "ahorn-base-v04-08",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "stimulus": "Ben stellt das Buch zurück ins ____.",
+          "prompt": "Welches Wort passt in die Lücke?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Rad"
+            },
+            {
+              "id": "b",
+              "text": "Regal"
+            },
+            {
+              "id": "c",
+              "text": "Radio"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "ahorn-base-v04-09",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "stimulus": "Zum Schreiben nimmt Mara einen ____.",
+          "prompt": "Welches Wort passt in die Lücke?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Stein"
+            },
+            {
+              "id": "b",
+              "text": "Stuhl"
+            },
+            {
+              "id": "c",
+              "text": "Stift"
             }
           ],
           "correctOption": "c"
@@ -311,7 +302,7 @@
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "vocabulary_context",
-          "prompt": "Finn ging vorsichtig über den glatten Boden. Er setzte jeden Fuß langsam auf. Was bedeutet „vorsichtig“ hier?",
+          "prompt": "Was bedeutet „vorsichtig“ hier?",
           "options": [
             {
               "id": "a",
@@ -326,14 +317,15 @@
               "text": "besonders schnell"
             }
           ],
-          "correctOption": "b"
+          "correctOption": "b",
+          "stimulus": "Finn ging vorsichtig über den glatten Boden. Er setzte jeden Fuß langsam auf."
         },
         {
           "id": "ahorn-14",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "vocabulary_context",
-          "prompt": "Der Weg war nach dem Regen rutschig. Mehrere Kinder gingen deshalb besonders langsam. Was bedeutet „rutschig“?",
+          "prompt": "Was bedeutet „rutschig“?",
           "options": [
             {
               "id": "a",
@@ -348,14 +340,15 @@
               "text": "Der Weg ist besonders kurz."
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Der Weg war nach dem Regen rutschig. Mehrere Kinder gingen deshalb besonders langsam."
         },
         {
           "id": "ahorn-15",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "vocabulary_context",
-          "prompt": "Die Lehrerin erklärte die Aufgabe noch einmal ausführlich. Danach kannten die Kinder auch die einzelnen Schritte. Was bedeutet „ausführlich“?",
+          "prompt": "Was bedeutet „ausführlich“?",
           "options": [
             {
               "id": "a",
@@ -370,14 +363,15 @@
               "text": "sehr kurz"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Die Lehrerin erklärte die Aufgabe noch einmal ausführlich. Danach kannten die Kinder auch die einzelnen Schritte."
         },
         {
           "id": "ahorn-16",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "sequence",
-          "prompt": "Nachdem Ben seine Hausaufgaben beendet hatte, traf er seinen Freund. Was geschah zuerst?",
+          "prompt": "Was geschah zuerst?",
           "options": [
             {
               "id": "a",
@@ -388,14 +382,15 @@
               "text": "Ben traf seinen Freund."
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Nachdem Ben seine Hausaufgaben beendet hatte, traf er seinen Freund."
         },
         {
           "id": "ahorn-17",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "sequence",
-          "prompt": "Nachdem Sara den Bus verlassen hatte, rief sie ihren Vater an. Was geschah zuletzt?",
+          "prompt": "Was geschah zuletzt?",
           "options": [
             {
               "id": "a",
@@ -406,14 +401,15 @@
               "text": "Sara rief ihren Vater an."
             }
           ],
-          "correctOption": "b"
+          "correctOption": "b",
+          "stimulus": "Nachdem Sara den Bus verlassen hatte, rief sie ihren Vater an."
         },
         {
           "id": "ahorn-18",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "reference",
-          "prompt": "Mira legte das Buch in ihren Rucksack. Später holte sie es wieder heraus. Was bedeutet „es“?",
+          "prompt": "Was bedeutet „es“?",
           "options": [
             {
               "id": "a",
@@ -428,14 +424,15 @@
               "text": "das Buch"
             }
           ],
-          "correctOption": "c"
+          "correctOption": "c",
+          "stimulus": "Mira legte das Buch in ihren Rucksack. Später holte sie es wieder heraus."
         },
         {
           "id": "ahorn-19",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "reference",
-          "prompt": "Bens Vater nahm die Zeitung und begann sofort darin zu lesen. Wer begann zu lesen?",
+          "prompt": "Wer begann zu lesen?",
           "options": [
             {
               "id": "a",
@@ -450,14 +447,15 @@
               "text": "niemand"
             }
           ],
-          "correctOption": "b"
+          "correctOption": "b",
+          "stimulus": "Bens Vater nahm die Zeitung und begann sofort darin zu lesen."
         },
         {
           "id": "ahorn-20",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "signal_words",
-          "prompt": "Nur Mila hatte einen Regenschirm dabei. Was passt?",
+          "prompt": "Was passt?",
           "options": [
             {
               "id": "a",
@@ -472,14 +470,15 @@
               "text": "Mila war die Einzige mit einem Regenschirm."
             }
           ],
-          "correctOption": "c"
+          "correctOption": "c",
+          "stimulus": "Nur Mila hatte einen Regenschirm dabei."
         },
         {
           "id": "ahorn-21",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "signal_words",
-          "prompt": "Mira war müde, trotzdem beendete sie ihre Aufgabe. Was passt?",
+          "prompt": "Was passt?",
           "options": [
             {
               "id": "a",
@@ -494,7 +493,8 @@
               "text": "Mira schlief sofort ein."
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Mira war müde, trotzdem beendete sie ihre Aufgabe."
         }
       ]
     },
@@ -650,7 +650,7 @@
           "correctOption": "a"
         },
         {
-          "id": "ahorn-27",
+          "id": "ahorn-27-v04",
           "type": "choice",
           "scoreKey": "text_basic",
           "competency": "main_idea",
@@ -662,11 +662,11 @@
             },
             {
               "id": "b",
-              "text": "Wie Bücher gedruckt werden"
+              "text": "Neue Sachbücher für die Schülerbücherei"
             },
             {
               "id": "c",
-              "text": "Zehn neue Schulbücher"
+              "text": "Drei Schülerinnen sammeln zehn Bücher"
             }
           ],
           "correctOption": "a"
@@ -738,7 +738,7 @@
           "correctOption": "a"
         },
         {
-          "id": "ahorn-31",
+          "id": "ahorn-31-v04",
           "type": "choice",
           "scoreKey": "text_deep",
           "competency": "inference",
@@ -746,21 +746,21 @@
           "options": [
             {
               "id": "a",
-              "text": "Sie wollte prüfen, ob das System funktioniert."
+              "text": "Sie wollte prüfen, ob das System bei der Auswahl hilft."
             },
             {
               "id": "b",
-              "text": "Sie wollte kontrollieren, wer Bücher mitnimmt."
+              "text": "Sie wollte prüfen, welches Symbol am schönsten aussieht."
             },
             {
               "id": "c",
-              "text": "Sie wollte Bücher zählen."
+              "text": "Sie wollte prüfen, welche Kinder ein Buch mitbringen."
             }
           ],
           "correctOption": "a"
         },
         {
-          "id": "ahorn-32",
+          "id": "ahorn-32-v04",
           "type": "choice",
           "scoreKey": "text_deep",
           "competency": "inference",
@@ -768,15 +768,15 @@
           "options": [
             {
               "id": "a",
-              "text": "Es kann noch verbessert werden."
+              "text": "Es kann noch Probleme geben, die bisher nicht auffielen."
             },
             {
               "id": "b",
-              "text": "Die Symbole müssen jeden Tag wechseln."
+              "text": "Alle Kinder müssen jeden Tag dieselben Bücher wählen."
             },
             {
               "id": "c",
-              "text": "Das Regal soll bald abgeschafft werden."
+              "text": "Die Bücher müssen nach jeder Nutzung neue Symbole bekommen."
             }
           ],
           "correctOption": "a"
@@ -804,45 +804,45 @@
           "correctOption": "a"
         },
         {
-          "id": "ahorn-34",
+          "id": "ahorn-34-v04",
           "type": "choice",
           "scoreKey": "text_deep",
           "competency": "connect_clues",
-          "prompt": "Welche beiden Informationen zeigen eine Verbesserung?",
+          "prompt": "Welche zwei Informationen sprechen gemeinsam für die Erklärung?",
           "options": [
             {
               "id": "a",
-              "text": "Erklärung aufgehängt + acht Kinder finden sich gut zurecht"
+              "text": "Erst unklare Symbole; später finden acht Kinder sich zurecht."
             },
             {
               "id": "b",
-              "text": "viele Bücher + drei Schülerinnen"
+              "text": "Erst viele Bücher; später werden zehn Kinder befragt."
             },
             {
               "id": "c",
-              "text": "Freitag + Montag"
+              "text": "Erst drei Schülerinnen; später hängt ein Schild am Regal."
             }
           ],
           "correctOption": "a"
         },
         {
-          "id": "ahorn-35",
+          "id": "ahorn-35-v04",
           "type": "choice",
           "scoreKey": "text_deep",
           "competency": "connect_clues",
-          "prompt": "Was war zuerst das eigentliche Problem?",
+          "prompt": "Ein neues Kind kennt die Symbole nicht. Was sollte ihm jetzt helfen?",
           "options": [
             {
               "id": "a",
-              "text": "Die Orientierung im Regal war schwierig."
+              "text": "Es kann die Erklärung lesen und das passende Regalbrett suchen."
             },
             {
               "id": "b",
-              "text": "Es gab keine Bücher."
+              "text": "Es kann die Bücher zählen und dann das vollste Regalbrett wählen."
             },
             {
               "id": "c",
-              "text": "Die Bücherei war geschlossen."
+              "text": "Es kann das Datum prüfen und bis zur nächsten Woche warten."
             }
           ],
           "correctOption": "a"
@@ -920,7 +920,7 @@
           "correctOption": "a"
         },
         {
-          "id": "ahorn-39",
+          "id": "ahorn-39-v04",
           "type": "choice",
           "scoreKey": "word_analysis",
           "competency": "morphology",
@@ -932,7 +932,7 @@
             },
             {
               "id": "b",
-              "text": "wenden"
+              "text": "verweilen"
             },
             {
               "id": "c",
@@ -948,7 +948,7 @@
       "title": "Lesestrategien",
       "items": [
         {
-          "id": "ahorn-40",
+          "id": "ahorn-40-v04",
           "type": "choice",
           "scoreKey": "strategy",
           "competency": "strategy_knowledge",
@@ -956,21 +956,21 @@
           "options": [
             {
               "id": "a",
-              "text": "Ich klicke irgendeine Antwort an."
+              "text": "Ich lese nur das unbekannte Wort immer wieder."
             },
             {
               "id": "b",
-              "text": "Ich lese den Satz noch einmal und schaue auf die Wörter drumherum."
+              "text": "Ich lese den Satz und schaue auf die Wörter drumherum."
             },
             {
               "id": "c",
-              "text": "Ich höre sofort mit dem Text auf."
+              "text": "Ich lese schnell weiter, ohne auf das Wort zu achten."
             }
           ],
           "correctOption": "b"
         },
         {
-          "id": "ahorn-41",
+          "id": "ahorn-41-v04",
           "type": "choice",
           "scoreKey": "strategy",
           "competency": "strategy_knowledge",
@@ -982,17 +982,17 @@
             },
             {
               "id": "b",
-              "text": "Ich überspringe den Rest des Textes."
+              "text": "Ich lese den nächsten Abschnitt schneller."
             },
             {
               "id": "c",
-              "text": "Ich schaue nur auf das längste Wort."
+              "text": "Ich schaue nur die Überschrift noch einmal an."
             }
           ],
           "correctOption": "a"
         },
         {
-          "id": "ahorn-42",
+          "id": "ahorn-42-v04",
           "type": "choice",
           "scoreKey": "strategy",
           "competency": "strategy_knowledge",
@@ -1004,11 +1004,11 @@
             },
             {
               "id": "b",
-              "text": "Ich lese nur die Überschrift."
+              "text": "Ich lese nur den ersten Satz des Textes."
             },
             {
               "id": "c",
-              "text": "Ich rate."
+              "text": "Ich schaue zuerst auf die längsten Wörter."
             }
           ],
           "correctOption": "a"
@@ -1083,6 +1083,158 @@
           ]
         }
       ]
+    }
+  ],
+  "reserveItems": [
+    {
+      "id": "ahorn-02",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du den Baum?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "baum",
+          "alt": "Baum"
+        },
+        {
+          "id": "b",
+          "asset": "tasse",
+          "alt": "Tasse"
+        },
+        {
+          "id": "c",
+          "asset": "vogel",
+          "alt": "Vogel"
+        }
+      ],
+      "correctOption": "a"
+    },
+    {
+      "id": "ahorn-03",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du das Brot?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "uhr",
+          "alt": "Uhr"
+        },
+        {
+          "id": "b",
+          "asset": "jacke",
+          "alt": "Jacke"
+        },
+        {
+          "id": "c",
+          "asset": "brot",
+          "alt": "Brot"
+        }
+      ],
+      "correctOption": "c"
+    },
+    {
+      "id": "ahorn-04",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du die Tasse?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "banane",
+          "alt": "Banane"
+        },
+        {
+          "id": "b",
+          "asset": "tasse",
+          "alt": "Tasse"
+        },
+        {
+          "id": "c",
+          "asset": "fenster",
+          "alt": "Fenster"
+        }
+      ],
+      "correctOption": "b"
+    },
+    {
+      "id": "ahorn-05",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du die Uhr?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "uhr",
+          "alt": "Uhr"
+        },
+        {
+          "id": "b",
+          "asset": "maus",
+          "alt": "Maus"
+        },
+        {
+          "id": "c",
+          "asset": "baum",
+          "alt": "Baum"
+        }
+      ],
+      "correctOption": "a"
+    },
+    {
+      "id": "ahorn-07",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du die Jacke?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "fenster",
+          "alt": "Fenster"
+        },
+        {
+          "id": "b",
+          "asset": "jacke",
+          "alt": "Jacke"
+        },
+        {
+          "id": "c",
+          "asset": "brot",
+          "alt": "Brot"
+        }
+      ],
+      "correctOption": "b"
+    },
+    {
+      "id": "ahorn-09",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du das Fenster?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "maus",
+          "alt": "Maus"
+        },
+        {
+          "id": "b",
+          "asset": "vogel",
+          "alt": "Vogel"
+        },
+        {
+          "id": "c",
+          "asset": "fenster",
+          "alt": "Fenster"
+        }
+      ],
+      "correctOption": "c"
     }
   ]
 }

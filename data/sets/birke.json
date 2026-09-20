@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "setId": "birke",
-  "version": "0.3",
+  "version": "0.4",
   "internalName": "Birke",
   "childVisibleName": null,
   "sections": [
@@ -10,36 +10,11 @@
       "title": "Wörter lesen",
       "items": [
         {
-          "id": "birke-01",
+          "id": "birke-base-v04-01",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Wo siehst du den Stern?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "mond",
-              "alt": "Mond"
-            },
-            {
-              "id": "b",
-              "asset": "stern",
-              "alt": "Stern"
-            },
-            {
-              "id": "c",
-              "asset": "blume",
-              "alt": "Blume"
-            }
-          ],
-          "correctOption": "b"
-        },
-        {
-          "id": "birke-02",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du den Mond?",
+          "prompt": "Welches Bild passt?",
           "options": [
             {
               "id": "a",
@@ -57,64 +32,15 @@
               "alt": "Kerze"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Mond"
         },
         {
-          "id": "birke-03",
+          "id": "birke-base-v04-02",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Wo siehst du die Blume?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "gabel",
-              "alt": "Gabel"
-            },
-            {
-              "id": "b",
-              "asset": "schere",
-              "alt": "Schere"
-            },
-            {
-              "id": "c",
-              "asset": "blume",
-              "alt": "Blume"
-            }
-          ],
-          "correctOption": "c"
-        },
-        {
-          "id": "birke-04",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du den Teller?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "tomate",
-              "alt": "Tomate"
-            },
-            {
-              "id": "b",
-              "asset": "teller",
-              "alt": "Teller"
-            },
-            {
-              "id": "c",
-              "asset": "schule",
-              "alt": "Schule"
-            }
-          ],
-          "correctOption": "b"
-        },
-        {
-          "id": "birke-05",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du die Kerze?",
+          "prompt": "Welches Bild passt?",
           "options": [
             {
               "id": "a",
@@ -132,64 +58,15 @@
               "alt": "Mond"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Kerze"
         },
         {
-          "id": "birke-06",
+          "id": "birke-base-v04-03",
           "type": "visual_choice",
           "scoreKey": "reading_base",
           "competency": "word_recognition",
-          "prompt": "Wo siehst du die Gabel?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "schere",
-              "alt": "Schere"
-            },
-            {
-              "id": "b",
-              "asset": "tomate",
-              "alt": "Tomate"
-            },
-            {
-              "id": "c",
-              "asset": "gabel",
-              "alt": "Gabel"
-            }
-          ],
-          "correctOption": "c"
-        },
-        {
-          "id": "birke-07",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du die Schere?",
-          "options": [
-            {
-              "id": "a",
-              "asset": "schule",
-              "alt": "Schule"
-            },
-            {
-              "id": "b",
-              "asset": "schere",
-              "alt": "Schere"
-            },
-            {
-              "id": "c",
-              "asset": "teller",
-              "alt": "Teller"
-            }
-          ],
-          "correctOption": "b"
-        },
-        {
-          "id": "birke-08",
-          "type": "visual_choice",
-          "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du die Tomate?",
+          "prompt": "Welches Bild passt?",
           "options": [
             {
               "id": "a",
@@ -207,32 +84,146 @@
               "alt": "Kerze"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Tomate"
         },
         {
-          "id": "birke-09",
-          "type": "visual_choice",
+          "id": "birke-base-v04-04",
+          "type": "choice",
           "scoreKey": "reading_base",
-          "competency": "word_recognition",
-          "prompt": "Wo siehst du die Schule?",
+          "competency": "orthographic_discrimination",
+          "stimulus": "Schulweg",
+          "prompt": "Tippe auf dasselbe Wort.",
           "options": [
             {
               "id": "a",
-              "asset": "stern",
-              "alt": "Stern"
+              "text": "Schulwerk"
             },
             {
               "id": "b",
-              "asset": "gabel",
-              "alt": "Gabel"
+              "text": "Schulwelt"
             },
             {
               "id": "c",
-              "asset": "schule",
-              "alt": "Schule"
+              "text": "Schulweg"
             }
           ],
           "correctOption": "c"
+        },
+        {
+          "id": "birke-base-v04-05",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "orthographic_discrimination",
+          "stimulus": "Teller",
+          "prompt": "Tippe auf dasselbe Wort.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Keller"
+            },
+            {
+              "id": "b",
+              "text": "Teller"
+            },
+            {
+              "id": "c",
+              "text": "Teiler"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-base-v04-06",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "orthographic_discrimination",
+          "stimulus": "finden",
+          "prompt": "Tippe auf dasselbe Wort.",
+          "options": [
+            {
+              "id": "a",
+              "text": "binden"
+            },
+            {
+              "id": "b",
+              "text": "finden"
+            },
+            {
+              "id": "c",
+              "text": "fingen"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-base-v04-07",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "stimulus": "Nach dem Rennen muss Amir sich kurz ____.",
+          "prompt": "Welches Wort passt in die Lücke?",
+          "options": [
+            {
+              "id": "a",
+              "text": "erholen"
+            },
+            {
+              "id": "b",
+              "text": "erzählen"
+            },
+            {
+              "id": "c",
+              "text": "erfinden"
+            }
+          ],
+          "correctOption": "a"
+        },
+        {
+          "id": "birke-base-v04-08",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "stimulus": "Zum Schneiden von Papier nimmt Nora eine ____.",
+          "prompt": "Welches Wort passt in die Lücke?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Schale"
+            },
+            {
+              "id": "b",
+              "text": "Schere"
+            },
+            {
+              "id": "c",
+              "text": "Schiene"
+            }
+          ],
+          "correctOption": "b"
+        },
+        {
+          "id": "birke-base-v04-09",
+          "type": "choice",
+          "scoreKey": "reading_base",
+          "competency": "word_in_sentence",
+          "stimulus": "Elif hängt ihre Jacke an den ____.",
+          "prompt": "Welches Wort passt in die Lücke?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Haken"
+            },
+            {
+              "id": "b",
+              "text": "Hafen"
+            },
+            {
+              "id": "c",
+              "text": "Hasen"
+            }
+          ],
+          "correctOption": "a"
         }
       ]
     },
@@ -311,7 +302,7 @@
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "vocabulary_context",
-          "prompt": "Als das Licht plötzlich ausging, blieb Ela ruhig. Sie setzte sich hin und wartete. Was bedeutet „ruhig“ hier?",
+          "prompt": "Was bedeutet „ruhig“ hier?",
           "options": [
             {
               "id": "a",
@@ -326,14 +317,15 @@
               "text": "sehr laut"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Als das Licht plötzlich ausging, blieb Ela ruhig. Sie setzte sich hin und wartete."
         },
         {
           "id": "birke-14",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "vocabulary_context",
-          "prompt": "Noah antwortete zögernd. Erst dachte er lange nach, dann begann er langsam zu sprechen. Was bedeutet „zögernd“?",
+          "prompt": "Was bedeutet „zögernd“?",
           "options": [
             {
               "id": "a",
@@ -348,14 +340,15 @@
               "text": "sehr laut"
             }
           ],
-          "correctOption": "b"
+          "correctOption": "b",
+          "stimulus": "Noah antwortete zögernd. Erst dachte er lange nach, dann begann er langsam zu sprechen."
         },
         {
           "id": "birke-15",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "vocabulary_context",
-          "prompt": "Der Hausmeister suchte eine stabile Kiste. Sie sollte auch schwere Bücher tragen können. Was bedeutet „stabil“?",
+          "prompt": "Was bedeutet „stabil“?",
           "options": [
             {
               "id": "a",
@@ -370,14 +363,15 @@
               "text": "leer"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Der Hausmeister suchte eine stabile Kiste. Sie sollte auch schwere Bücher tragen können."
         },
         {
           "id": "birke-16",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "sequence",
-          "prompt": "Mila räumte ihren Platz auf, bevor sie in die Pause ging. Was geschah zuerst?",
+          "prompt": "Was geschah zuerst?",
           "options": [
             {
               "id": "a",
@@ -388,14 +382,15 @@
               "text": "Mila räumte ihren Platz auf."
             }
           ],
-          "correctOption": "b"
+          "correctOption": "b",
+          "stimulus": "Mila räumte ihren Platz auf, bevor sie in die Pause ging."
         },
         {
           "id": "birke-17",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "sequence",
-          "prompt": "Noah zog seine Jacke an. Anschließend verließ er das Haus. Was geschah zuletzt?",
+          "prompt": "Was geschah zuletzt?",
           "options": [
             {
               "id": "a",
@@ -406,14 +401,15 @@
               "text": "Noah zog die Jacke an."
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Noah zog seine Jacke an. Anschließend verließ er das Haus."
         },
         {
-          "id": "birke-18",
+          "id": "birke-18-v04",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "reference",
-          "prompt": "Amir stellte den Becher auf den Tisch. Kurz danach nahm er ihn wieder weg. Was bedeutet „ihn“?",
+          "prompt": "Was bedeutet „ihn“?",
           "options": [
             {
               "id": "a",
@@ -421,21 +417,22 @@
             },
             {
               "id": "b",
-              "text": "den Tisch"
+              "text": "die Bank"
             },
             {
               "id": "c",
               "text": "Amir"
             }
           ],
-          "correctOption": "a"
+          "correctOption": "a",
+          "stimulus": "Amir stellte den Becher auf die Bank. Kurz danach nahm er ihn wieder weg."
         },
         {
           "id": "birke-19",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "reference",
-          "prompt": "Nora gab Elif den Schlüssel. Elif steckte ihn in ihre Tasche. Wer steckte den Schlüssel ein?",
+          "prompt": "Wer steckte den Schlüssel ein?",
           "options": [
             {
               "id": "a",
@@ -450,14 +447,15 @@
               "text": "beide"
             }
           ],
-          "correctOption": "b"
+          "correctOption": "b",
+          "stimulus": "Nora gab Elif den Schlüssel. Elif steckte ihn in ihre Tasche."
         },
         {
           "id": "birke-20",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "signal_words",
-          "prompt": "Einige Bücher waren beschädigt. Was passt?",
+          "prompt": "Was passt?",
           "options": [
             {
               "id": "a",
@@ -472,14 +470,15 @@
               "text": "Ein Teil der Bücher war beschädigt."
             }
           ],
-          "correctOption": "c"
+          "correctOption": "c",
+          "stimulus": "Einige Bücher waren beschädigt."
         },
         {
           "id": "birke-21",
           "type": "choice",
           "scoreKey": "word_sentence",
           "competency": "signal_words",
-          "prompt": "Obwohl Ben den Weg kannte, schaute er noch einmal auf den Plan. Was passt?",
+          "prompt": "Was passt?",
           "options": [
             {
               "id": "a",
@@ -494,7 +493,8 @@
               "text": "Ben hatte keinen Plan."
             }
           ],
-          "correctOption": "b"
+          "correctOption": "b",
+          "stimulus": "Obwohl Ben den Weg kannte, schaute er noch einmal auf den Plan."
         }
       ]
     },
@@ -650,7 +650,7 @@
           "correctOption": "a"
         },
         {
-          "id": "birke-27",
+          "id": "birke-27-v04",
           "type": "choice",
           "scoreKey": "text_basic",
           "competency": "main_idea",
@@ -662,11 +662,11 @@
             },
             {
               "id": "b",
-              "text": "Ein neuer Stundenplan"
+              "text": "Die Klasse kocht ein neues Teerezept"
             },
             {
               "id": "c",
-              "text": "Wie Apfelsaft hergestellt wird"
+              "text": "Ein großer Tisch für viele Getränke"
             }
           ],
           "correctOption": "a"
@@ -738,7 +738,7 @@
           "correctOption": "a"
         },
         {
-          "id": "birke-31",
+          "id": "birke-31-v04",
           "type": "choice",
           "scoreKey": "text_deep",
           "competency": "inference",
@@ -746,21 +746,21 @@
           "options": [
             {
               "id": "a",
-              "text": "Andere können später daraus lernen."
+              "text": "Ein späterer Jahrgang kann die Mengen besser planen."
             },
             {
               "id": "b",
-              "text": "Die Kinder mussten einen Aufsatz schreiben."
+              "text": "Ein späterer Jahrgang muss genau dieselben Getränke anbieten."
             },
             {
               "id": "c",
-              "text": "Sie wollten die Getränke zählen."
+              "text": "Ein späterer Jahrgang braucht dann keine Planung mehr."
             }
           ],
           "correctOption": "a"
         },
         {
-          "id": "birke-32",
+          "id": "birke-32-v04",
           "type": "choice",
           "scoreKey": "text_deep",
           "competency": "inference",
@@ -768,15 +768,15 @@
           "options": [
             {
               "id": "a",
-              "text": "Sie wurde verändert, wenn neue Informationen auftauchten."
+              "text": "Neue Informationen führten zu Änderungen am Plan."
             },
             {
               "id": "b",
-              "text": "Sie blieb vom Anfang bis zum Ende gleich."
+              "text": "Alle Änderungen waren schon vor dem Fest beschlossen."
             },
             {
               "id": "c",
-              "text": "Es gab überhaupt keinen Plan."
+              "text": "Die Mengen wurden erst nach dem Fest zum ersten Mal geplant."
             }
           ],
           "correctOption": "a"
@@ -804,45 +804,45 @@
           "correctOption": "a"
         },
         {
-          "id": "birke-34",
+          "id": "birke-34-v04",
           "type": "choice",
           "scoreKey": "text_deep",
           "competency": "connect_clues",
-          "prompt": "Welche beiden Informationen gehören zusammen?",
+          "prompt": "Welche zwei Angaben erklären zusammen die erste Planänderung?",
           "options": [
             {
               "id": "a",
-              "text": "kleiner Tisch + weniger Getränkesorten"
+              "text": "Wenig Platz und viel Material für viele Getränkesorten."
             },
             {
               "id": "b",
-              "text": "Schulfest + Unterricht"
+              "text": "Wenig Tee und heißes Wasser am Morgen des Fests."
             },
             {
               "id": "c",
-              "text": "Früchtetee + Stundenplan"
+              "text": "Deutliche Schilder und wenige Reste nach dem Fest."
             }
           ],
           "correctOption": "a"
         },
         {
-          "id": "birke-35",
+          "id": "birke-35-v04",
           "type": "choice",
           "scoreKey": "text_deep",
           "competency": "connect_clues",
-          "prompt": "Was zeigt, dass die Kinder aus Erfahrungen lernen wollen?",
+          "prompt": "Was wäre beim nächsten Fest mit ähnlicher Nachfrage sinnvoll?",
           "options": [
             {
               "id": "a",
-              "text": "Sie halten passende Mengen für später fest."
+              "text": "Tee früher vorbereiten und genug Zeit zum Abkühlen lassen."
             },
             {
               "id": "b",
-              "text": "Sie stellen Schilder auf."
+              "text": "Erst Tee kochen, wenn die letzte Portion verkauft ist."
             },
             {
               "id": "c",
-              "text": "Sie benutzen einen Tisch."
+              "text": "Mehr Getränkesorten auf denselben kleinen Tisch stellen."
             }
           ],
           "correctOption": "a"
@@ -948,7 +948,7 @@
       "title": "Lesestrategien",
       "items": [
         {
-          "id": "birke-40",
+          "id": "birke-40-v04",
           "type": "choice",
           "scoreKey": "strategy",
           "competency": "strategy_knowledge",
@@ -956,21 +956,21 @@
           "options": [
             {
               "id": "a",
-              "text": "Ich klicke irgendeine Antwort an."
+              "text": "Ich lese nur das unbekannte Wort immer wieder."
             },
             {
               "id": "b",
-              "text": "Ich lese den Satz noch einmal und schaue auf die Wörter drumherum."
+              "text": "Ich lese den Satz und schaue auf die Wörter drumherum."
             },
             {
               "id": "c",
-              "text": "Ich höre sofort mit dem Text auf."
+              "text": "Ich lese schnell weiter, ohne auf das Wort zu achten."
             }
           ],
           "correctOption": "b"
         },
         {
-          "id": "birke-41",
+          "id": "birke-41-v04",
           "type": "choice",
           "scoreKey": "strategy",
           "competency": "strategy_knowledge",
@@ -982,17 +982,17 @@
             },
             {
               "id": "b",
-              "text": "Ich überspringe den Rest des Textes."
+              "text": "Ich lese den nächsten Abschnitt schneller."
             },
             {
               "id": "c",
-              "text": "Ich schaue nur auf das längste Wort."
+              "text": "Ich schaue nur die Überschrift noch einmal an."
             }
           ],
           "correctOption": "a"
         },
         {
-          "id": "birke-42",
+          "id": "birke-42-v04",
           "type": "choice",
           "scoreKey": "strategy",
           "competency": "strategy_knowledge",
@@ -1004,11 +1004,11 @@
             },
             {
               "id": "b",
-              "text": "Ich lese nur die Überschrift."
+              "text": "Ich lese nur den ersten Satz des Textes."
             },
             {
               "id": "c",
-              "text": "Ich rate."
+              "text": "Ich schaue zuerst auf die längsten Wörter."
             }
           ],
           "correctOption": "a"
@@ -1083,6 +1083,158 @@
           ]
         }
       ]
+    }
+  ],
+  "reserveItems": [
+    {
+      "id": "birke-01",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du den Stern?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "mond",
+          "alt": "Mond"
+        },
+        {
+          "id": "b",
+          "asset": "stern",
+          "alt": "Stern"
+        },
+        {
+          "id": "c",
+          "asset": "blume",
+          "alt": "Blume"
+        }
+      ],
+      "correctOption": "b"
+    },
+    {
+      "id": "birke-03",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du die Blume?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "gabel",
+          "alt": "Gabel"
+        },
+        {
+          "id": "b",
+          "asset": "schere",
+          "alt": "Schere"
+        },
+        {
+          "id": "c",
+          "asset": "blume",
+          "alt": "Blume"
+        }
+      ],
+      "correctOption": "c"
+    },
+    {
+      "id": "birke-04",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du den Teller?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "tomate",
+          "alt": "Tomate"
+        },
+        {
+          "id": "b",
+          "asset": "teller",
+          "alt": "Teller"
+        },
+        {
+          "id": "c",
+          "asset": "schule",
+          "alt": "Schule"
+        }
+      ],
+      "correctOption": "b"
+    },
+    {
+      "id": "birke-06",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du die Gabel?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "schere",
+          "alt": "Schere"
+        },
+        {
+          "id": "b",
+          "asset": "tomate",
+          "alt": "Tomate"
+        },
+        {
+          "id": "c",
+          "asset": "gabel",
+          "alt": "Gabel"
+        }
+      ],
+      "correctOption": "c"
+    },
+    {
+      "id": "birke-07",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du die Schere?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "schule",
+          "alt": "Schule"
+        },
+        {
+          "id": "b",
+          "asset": "schere",
+          "alt": "Schere"
+        },
+        {
+          "id": "c",
+          "asset": "teller",
+          "alt": "Teller"
+        }
+      ],
+      "correctOption": "b"
+    },
+    {
+      "id": "birke-09",
+      "type": "visual_choice",
+      "scoreKey": "reading_base",
+      "competency": "word_recognition",
+      "prompt": "Wo siehst du die Schule?",
+      "options": [
+        {
+          "id": "a",
+          "asset": "stern",
+          "alt": "Stern"
+        },
+        {
+          "id": "b",
+          "asset": "gabel",
+          "alt": "Gabel"
+        },
+        {
+          "id": "c",
+          "asset": "schule",
+          "alt": "Schule"
+        }
+      ],
+      "correctOption": "c"
     }
   ]
 }
