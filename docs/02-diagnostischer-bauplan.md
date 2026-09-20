@@ -1,85 +1,34 @@
-# Diagnostischer Bauplan – Lese-Navigator Jahrgang 5
+# Diagnostischer Bauplan – App 0.7 / Sets 0.4
 
-## Ziel
+Ziel: selbstständig nutzbarer Förderwegweiser für Jahrgang 5, ohne Benotung oder normierte Aussagekraft. Zielzeit 15–20 Minuten; im Pilot prüfen.
 
-Der Lese-Navigator ist ein **digitaler Förderwegweiser**, kein normierter Test. Er soll in etwa 15–20 Minuten selbstständig bearbeitbar sein und ohne freie Texteingaben auskommen.
+| Abschnitt | Aufgaben | Funktion |
+|---|---:|---|
+| Bedienbeispiel | 1, ungewertet | auswählen, ändern, mit „Weiter“ bestätigen |
+| Wort–Bild-Zuordnung | 3 | geschriebene konkrete Wörter Bildern zuordnen |
+| Genaues Wortunterscheiden | 3 | identisches Wort zwischen ähnlichen Schriftbildern erkennen |
+| Wort im Satz | 3 | Satz passend ergänzen |
+| Wort-/Satzverständnis | 12 | Wortschatz, Kontext, Reihenfolge, Bezüge, Signalwörter |
+| Stiller Lesetext | 1 | selbst gemeldete Lesezeit; Text erst nach Start sichtbar |
+| Kontrollfragen | 2 | Hinweise zur Einordnung der Lesezeit |
+| Grundlegendes Textverständnis | 8 | Informationen finden/verbinden, Hauptaussagen, Relevanz |
+| Tieferes Textverständnis | 7 | Schlussfolgern, Hinweise verbinden, Belege wählen |
+| Worterschließung | 2 | Wortbausteine und Wortfamilien |
+| Strategiewissen | 3 | passende Strategie in einer Situation erkennen |
+| Selbsteinschätzung | 3, ungewertet | Gespräch über flüssiges Lesen, Verstehen und Hilfe |
 
-## Erfassbare Bereiche
+47 Schritte nach dem Bedienbeispiel, davon 43 gewertete Antworten. Sechs weitere Bildaufgaben pro Set bleiben Reserve und werden weder angezeigt noch gewertet.
 
-1. Worterkennung
-2. Lesegenauigkeit
-3. Wortschatz
-4. Satzverständnis
-5. Leseflüssigkeit / Lesegeschwindigkeit
-6. Informationen finden
-7. Textverständnis
-8. Schlussfolgern und Belegen
-9. Worterschließung
-10. Strategiewissen
-11. Selbsteinschätzung
+## Schüleroberfläche
 
-## Nicht ausschließlich digital beurteilen
+Ein Bildschirm – eine Aufgabe – eine Entscheidung. Satz/Stimulus und Frage sind getrennt. Text und Aufgabe stehen im Querformat nebeneinander, auf kleinen Displays untereinander. Lesetext bleibt bei den 15 Verständnisfragen zum Nachschlagen sichtbar; Scrollposition bleibt erhalten. „Weiter“ hat einen festen Platz und wird nach Auswahl freigegeben. „Ich weiß es nicht“ ist eine eigene Option, die wie eine falsche Antwort null Punkte erhält, aber separat auswertbar bleibt.
 
-Folgende Kompetenzen werden nicht zuverlässig über Klickaufgaben erfasst:
-- eigenes betontes Lesen
-- Aussprache beim lauten Lesen
-- Selbstkorrekturen während des Vorlesens
-- Lesegenauigkeit beim tatsächlichen lauten Lesen
+Vor dem stillen Lesen wird normales Tempo verlangt, kein Wettlesen. Der Text erscheint erst nach „Text zeigen“. „Fertig gelesen“ beendet die Zeitmessung. Der Text ist danach für die beiden Kontrollfragen nicht mehr sichtbar; diese erfassen daher auch Erinnern. Unterbrechungen werden vermerkt. Keine automatischen WPM-Grenzen.
 
-Dafür bleibt ein Lautleseverfahren sinnvoll.
+## Wiederholungen
 
-## Geplanter Ablauf
+Sets werden aus den zuletzt nicht verwendeten Parallelformen gewählt. Dabei zählen die letzten zwei abgeschlossenen Durchläufe derselben lokalen Teilnehmer-ID. Gleiche Person wird anhand Kürzel/Name und Klasse erkannt. Geänderte Kürzel oder ein anderer Browser umgehen diese Wiedererkennung. Strategiewissen und Selbsteinschätzung sind gemeinsame Anker, keine vollständig unabhängigen Parallelitems.
 
-### 0. Probeaufgabe
-Nicht gewertet. Prüft nur, ob die Bedienung verstanden wurde.
+## Grenzen
 
-### 1. Lesebasis
-- Wort–Bild-Zuordnung
-- ähnlich aussehende Wörter unterscheiden
-- passendes Wort im Satz
-
-### 2. Wort- und Satzverständnis
-- Wortbedeutungen
-- Bedeutung aus Kontext
-- Reihenfolgen
-- Pronomen-/Textbezüge
-- Signalwörter wie *nur, nicht alle, obwohl, trotzdem*
-
-### 3. Leseflüssigkeit
-Kurzer Text mit Start- und Fertig-Knopf. Anschließend zwei einfache Verständnisfragen. Geschwindigkeit wird nur interpretiert, wenn die Kontrollfragen ausreichend gelöst werden.
-
-### 4. Textverständnis
-Text bleibt sichtbar. Aufgaben zu:
-- direkt genannten Informationen
-- Informationen verbinden
-- Hauptaussage
-- Wichtiges / Unwichtiges
-
-### 5. Tiefes Textverständnis
-- Schlussfolgerungen
-- Hinweise verbinden
-- Aussage mit passender Textstelle belegen
-
-### 6. Worterschließung
-Zusammengesetzte Wörter, Wortstämme, Wortfamilien.
-
-### 7. Lesestrategien
-Situative Multiple-Choice-Aufgaben. Dienen vor allem der SRL-Rückmeldung.
-
-### 8. Selbsteinschätzung
-Nicht bewertet. Vergleich zwischen subjektiver Einschätzung und Aufgabenprofil.
-
-## Ausgabe an Kinder
-
-Keine Punkte, Noten oder Leistungsstufen.
-
-Beispiel:
-> **Dein Startpunkt heute: 🌊 Welle**  
-> Hier kannst du dein Lesen sicherer und flüssiger machen.
-
-Optional:
-> **Auch passend für dich: 🧭 Kompass**
-
-## Wiederholung
-
-Der Navigator soll regelmäßig erneut nutzbar sein. Deshalb werden parallele Item-Sets vorgesehen: **Eiche, Ahorn, Birke**. Diese Namen sind nur intern.
+Die App beobachtet keine Aussprache, Betonung, tatsächliche Lesefehler oder Selbstkorrekturen. Wortunterscheiden kann durch visuellen Vergleich gelöst werden. Zwei richtige Kontrollfragen validieren keinen Tempowert. Für die Förderentscheidung Teilprofile, Lautlesetest und Unterrichtsbeobachtungen gemeinsam nutzen. Wiederholte Fragen zum selben Text sind voneinander abhängig; eine Summe ist keine präzise Kompetenzskala.

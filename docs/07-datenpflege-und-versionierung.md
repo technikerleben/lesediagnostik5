@@ -1,208 +1,50 @@
-# Datenpflege – Lese-Navigator
+# Datenpflege und Versionierung
 
-## Grundsatz
+## Verbindliche Quellen
 
-Die fachlichen Inhalte des Lese-Navigators werden möglichst vollständig im Ordner `data/` gepflegt.
+- Aufgaben: `data/sets/eiche.json`, `ahorn.json`, `birke.json` – Version 0.4, Schema 2.
+- Regeln: `data/scoring/pilot-rules.json` – Version 0.3-pilot, Schema 2.
+- Design: `data/design.json`.
+- Anwendung: `index.html` – App 0.7.
 
-`index.html` enthält die allgemeine Programmlogik und sollte für normale fachliche Änderungen nicht bearbeitet werden müssen.
+Die App prüft beim Laden IDs, Typen, Optionen, Lösungsschlüssel, Punktmaxima, Lesebasis-Komponenten und Wortzahlen. Empfehlungsregeln müssen für alle zulässigen grundlegenden Score-Kombinationen genau einen Hauptweg liefern. Alle Bilddateien werden vor dem Start geladen.
 
-## 1. Aufgaben und Texte
+## Aufgabenfelder
 
-Dateien:
+- `id`: eindeutige, versionsübergreifend nachvollziehbare ID.
+- `type`: `visual_choice`, `choice`, `timed_reading` oder `self_report`.
+- `stimulus` (optional): gesondert dargestelltes Zielwort oder Kontextsatz.
+- `prompt`: kurze eigentliche Frage/Anweisung.
+- `scoreKey`, `competency`, `options`, `correctOption`: für gewertete Auswahlaufgaben erforderlich.
+- `section.passage`: bei Textaufgaben dauerhaft sichtbarer Text.
+- `text`, `wordCount`: nur für den zeitgemessenen Text; Wortzahl anhand Leerraumtrennung.
+- `reserveItems`: nicht angezeigter, nicht gewerteter Aufgabenpool. Keine zufällige Einmischung ohne neue Konzeption/Versionierung.
 
-```
-data/sets/eiche.json
-data/sets/ahorn.json
-data/sets/birke.json
-```
+Bei deutlicher Inhalts-/Kompetenzänderung neue ID vergeben. Beispiele: `eiche-base-v04-04`, `birke-18-v04`. Kleine Darstellungsaufteilungen können die ID behalten, werden aber über die Set-Version sichtbar. Änderungen am gemeinsamen Passage-Text können alle abhängigen Items betreffen.
 
-Hier werden gepflegt:
+## Regeln
 
-- Aufgabenstellungen
-- Antwortoptionen
-- richtige Antworten
-- Kompetenzcodes
-- Auswertungsbereiche
-- Lesetexte
-- Wortzahl der Lesetexte
-- Parallelform
-- Versionsnummer des Aufgabensatzes
+`scoreKeys` enthält Labels und Maxima. `readingBaseComponents` definiert die drei Teilbereiche. `primaryLogic`, `secondaryLogic`, `strategyHint` und deren Texte sind datengetrieben. Vergleichsoperatoren: `lt`, `lte`, `gt`, `gte`, `eq`; `any` gruppiert Alternativen. Unbekannte Operatoren oder Bereiche sind Fehler, keine stillschweigenden Treffer.
 
-### Stabile Item-IDs
+Score-Zählung bleibt ein Punkt je richtiger Antwort; Selbstberichte werden nicht gewertet. Gewichte erfordern eine ausdrücklich geplante Modelländerung. `fluency.checkInterpretation` und `checkLabels` steuern die vorsichtige Tempo-Einordnung; keine WPM-Schwellen.
 
-Bestehende Item-IDs sollen nicht wiederverwendet werden, wenn sich die diagnostische Bedeutung einer Aufgabe wesentlich ändert.
+## Versionen und alte Ergebnisse
 
-Beispiel:
+Jeder Durchlauf enthält `appVersion`, `setVersion`, `rulesVersion`, `schemaVersion`, eine eindeutige Durchlauf-ID und Zeitstempel. Regeln bei Auswertungsänderungen erhöhen, Sets bei Inhaltsänderungen erhöhen, App bei Verhaltensänderungen erhöhen. Ein Versionssprung garantiert keine Vergleichbarkeit.
 
-```
-eiche-14
-```
+Alte lokale Ergebnisse werden nicht neu berechnet. Vor App-Updates keine Speicherkeys löschen/umbenennen. Prüfungen müssen historische Ergebnisse und beschädigte Speicherinhalte abdecken.
 
-Wird nur ein Tippfehler korrigiert, kann die ID bleiben.
+## Exporte
 
-Wird die Aufgabe inhaltlich ersetzt, sollte eine neue ID bzw. eine dokumentierte neue Set-Version verwendet werden.
+Ergebnis-CSV enthält zusätzlich Lesebasis-Teilwerte, Tempo-Einordnung, Gesamtdauer, Unterbrechungen und Durchlauf-ID. Item-CSV enthält Antwortreihenfolge und Durchlauf-ID. Historische Snapshots von Kürzel/Name und Klasse haben Vorrang vor später veränderten Teilnehmerdaten. Nicht erhobene Zusatzdaten bleiben leer. Rohsicherung enthält originale JSON-Zeichenfolgen und keinen PIN-Prüfwert.
 
-## 2. Auswertungslogik
+## Wartungsprüfung
 
-Datei:
-
-```
-data/scoring/pilot-rules.json
+```sh
+node scripts/check.cjs
+python3 scripts/check_assets.py
 ```
 
-Diese Datei ist die **verbindliche Quelle** für:
+Beide Skripte laufen ohne Paketinstallation. Node ist ausschließlich optionales Wartungswerkzeug; die App benötigt weiterhin weder Node noch einen Build. Funktionstests verwenden synthetische Daten und einen DOM-/Speicher-Testdouble. Echte Layout-, Touch- und Safari-Tests bleiben erforderlich.
 
-- sichere / noch unsichere Bereiche
-- Schwellenwerte
-- Hauptempfehlung Welle / Kompass / Lupe
-- Zweitempfehlungen
-- Strategietipp
-- spätere Regeln zur Lesegeschwindigkeit
-
-Die App liest `primaryLogic`, `secondaryLogic` und `strategyHint` direkt aus dieser Datei.
-
-### Beispiel
-
-```json
-{
-  "when": {
-    "reading_base": {
-      "lt": 7
-    }
-  },
-  "recommend": "wave"
-}
-```
-
-Unterstützte Vergleichsoperatoren:
-
-- `lt` = kleiner als
-- `lte` = kleiner oder gleich
-- `gt` = größer als
-- `gte` = größer oder gleich
-- `eq` = genau gleich
-
-Mit `any` können alternative Bedingungen formuliert werden.
-
-## 3. Design
-
-Datei:
-
-```
-data/design.json
-```
-
-Die App übernimmt daraus aktuell:
-
-- Hintergrundfarbe
-- Textfarbe
-- helle Flächenfarbe
-- Blau der Welle
-- Türkis des Kompasses
-- Orange der Lupe
-- Grundschriftfamilie
-
-Die drei Förderwege bleiben für Kinder gleichwertig dargestellt.
-
-## 4. Versionierung
-
-Jeder gespeicherte Diagnosedurchlauf erhält automatisch:
-
-- `appVersion`
-- `setVersion`
-- `rulesVersion`
-
-Diese Angaben werden auch in beide CSV-Exporte geschrieben.
-
-Dadurch bleibt später nachvollziehbar, mit welcher Aufgaben- und Auswertungsfassung ein Ergebnis entstanden ist.
-
-### Aufgabensatz-Version erhöhen
-
-In jeder Parallelform:
-
-```json
-"version": "0.2"
-```
-
-Die Versionsnummer sollte erhöht werden, wenn:
-
-- Aufgaben ersetzt werden,
-- diagnostische Anforderungen verändert werden,
-- Texte deutlich überarbeitet werden,
-- Items ergänzt oder entfernt werden.
-
-Reine Tippfehlerkorrekturen müssen nicht zwingend eine neue Version erzeugen.
-
-### Regeln-Version erhöhen
-
-In:
-
-```
-data/scoring/pilot-rules.json
-```
-
-Beispiel:
-
-```json
-"version": "0.2-pilot"
-```
-
-Erhöhen bei:
-
-- neuen Schwellenwerten
-- geänderter Empfehlungslogik
-- neuer Gewichtung
-- Einbeziehung der Lesegeschwindigkeit
-- Änderungen an Zweitempfehlungen
-
-## 5. Vor jeder Pilotphase prüfen
-
-1. Alle drei JSON-Sets sind syntaktisch gültig.
-2. Jede auswertbare Aufgabe hat eine `correctOption`.
-3. Jede gewertete Aufgabe hat einen `scoreKey`.
-4. Jede Aufgabe besitzt eine eindeutige Item-ID.
-5. Lesetext und hinterlegte `wordCount` stimmen überein.
-6. Parallelformen bleiben ungefähr vergleichbar.
-7. `pilot-rules.json` enthält für alle erwartbaren Profile eine Hauptempfehlung.
-8. Versionsnummern wurden bei inhaltlichen Änderungen angepasst.
-
-## 6. CSV-Daten
-
-### Ergebnisübersicht
-
-Jeder Durchlauf enthält unter anderem:
-
-- Person/Kürzel
-- Klasse
-- Zeitpunkt
-- Parallelform
-- Aufgabensatz-Version
-- Auswertungsregeln-Version
-- App-Version
-- Teilbereichswerte
-- Wörter pro Minute
-- Empfehlung
-
-### Itemdaten
-
-Zusätzlich pro Aufgabe:
-
-- Item-ID
-- Antwort
-- Kompetenz
-- Auswertungsbereich
-- richtig/falsch
-
-Damit können Pilotdaten später auch dann ausgewertet werden, wenn sich die App inzwischen weiterentwickelt hat.
-
-## 7. Was nicht in das Repository gehört
-
-Nie committen:
-
-- Schülernamen
-- Schülerkürzel mit Personenbezug
-- einzelne Diagnoseergebnisse
-- exportierte CSV-Dateien mit Schülerdaten
-- Browser-Speicherstände
-
-Das Repository enthält ausschließlich App-Code, fachliche Daten und Dokumentation.
+Nie Schülerdaten, lokale Speicherstände, Exporte oder personenbezogene Screenshots committen. Auch Test-Fixtures ausschließlich synthetisch erzeugen.

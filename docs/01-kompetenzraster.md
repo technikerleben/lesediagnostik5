@@ -28,8 +28,16 @@ Diese Niveau-Bezeichnungen werden Kindern **nicht angezeigt**.
 Für Schülermaterial:
 - ✓ Das kann ich sicher.
 - → Das übe ich gerade.
-- ★ Das möchte ich als Nächstes können.
+- ○ Das möchte ich als Nächstes können.
 
 ## Grundsatz
 
 Das Raster soll Lernwege sichtbar machen, nicht Kinder dauerhaft Gruppen zuordnen. Ein Kind kann in verschiedenen Teilbereichen unterschiedliche Stärken zeigen.
+
+## Abdeckung durch App 0.7 / Sets 0.4
+
+Das Raster beschreibt Lernziele, nicht vollständig digital geprüfte Fähigkeiten. Die Lesebasis umfasst je drei Wort–Bild-Zuordnungen, visuelle Wortunterscheidungen und Satzergänzungen. Das Wiedererkennen eines identischen Schriftbilds belegt keine korrekte Aussprache, Automatisierung oder Selbstkorrektur beim tatsächlichen Lesen.
+
+Betonung, Lesefehler und Selbstkorrekturen werden durch Lautlesen beobachtet. Die App misst lediglich selbst gemeldete stille Lesezeit mit zwei Kontrollfragen. Strategiewissen ist keine Beobachtung tatsächlichen Strategieeinsatzes. Selbstberichte sind Gesprächsanlässe, keine bepunktete Kompetenzmessung.
+
+Drei Items pro Lesebasis-Teilbereich liefern nur erste Hinweise. Wortschatz, Sprachlernerfahrung und Bildverständnis können die Leistung beeinflussen. Die Lehrkraft prüft widersprüchliche Teilprofile, statt aus einem Summenwert eine feste Gruppe abzuleiten.

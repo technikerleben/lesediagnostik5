@@ -1,3 +1,5 @@
+> **Historisches Konzept (Version 0.1), keine aktuelle Aufgabenquelle.** Die folgenden Beispiele dokumentieren die Entstehung. Verbindlich für App 0.7 sind `data/sets/*.json` Version 0.4 und `docs/02-diagnostischer-bauplan.md`. Alte Freigaben und Hinweise „vor Programmierung“ beschreiben den damaligen Stand. Aktuell drei Bild-, drei Wortunterscheidungs- und drei Satzergänzungsaufgaben. Die übrigen sechs Bilditems je Set liegen in `reserveItems`.
+
 # Aufgabenpool Version 0.1
 
 ## Parallelformen
