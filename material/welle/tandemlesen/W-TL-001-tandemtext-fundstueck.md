@@ -26,14 +26,11 @@ Einen kurzen Text durch gemeinsames und wiederholtes Lesen zunehmend flüssig le
 
 ## Text
 
-In der großen Pause entdeckt Leni etwas neben der Bank.  
-Dort liegt ein kleiner schwarzer Beutel. Sie hebt ihn auf und schaut nach einem Namen. Auf der Außenseite steht nichts.
+In der großen Pause entdeckt Leni einen schwarzen Beutel neben einer Bank. Ein Name steht nicht darauf. Sie zeigt ihn Amir. Beide überlegen kurz. Sie öffnen den Beutel nicht, sondern bringen ihn ins Sekretariat.
 
-Leni geht mit dem Beutel zu Amir. Gemeinsam überlegen sie, was sie tun sollen. Sie öffnen ihn nicht. Stattdessen bringen sie den Fund ins Sekretariat.
+Kurz vor dem Klingeln kommt ein Junge aus der sechsten Klasse. Er sucht seinen Sportbeutel. Die Sekretärin fragt, wie er aussieht und was darin ist. Der Junge nennt die Farbe und beschreibt den Inhalt genau.
 
-Kurz vor Unterrichtsbeginn kommt ein Junge aus der sechsten Klasse dorthin. Er sucht seinen Sportbeutel. Er kann genau beschreiben, wie der Beutel aussieht und was darin ist.
-
-Die Sekretärin gibt ihm den Fund zurück. Der Junge bedankt sich bei Leni und Amir. Dann laufen alle schnell zu ihren Klassen.
+Alles passt. Die Sekretärin gibt ihm den Beutel zurück. Er bedankt sich bei Leni und Amir. Dann laufen die beiden schnell zu ihrer Klasse.
 
 ## Kurze Kontrolle
 **Wo bringen Leni und Amir den Beutel hin?**
