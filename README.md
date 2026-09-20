@@ -14,6 +14,16 @@ Ein niedrigschwelliger, nicht normierter Förderwegweiser nach dem Übergang in 
 
 Alle Wege werden gleichwertig dargestellt. Die Kinder sehen keine Punktwerte. Ein Weg ist ein vorläufiger Startpunkt, keine dauerhafte Zuordnung.
 
+## Anschlussförderung / Materialtheke
+
+Die Anschlussförderung wird in `material/` aufgebaut. Sie übersetzt diagnostische Hinweise und Unterrichtsbeobachtungen in konkrete Lernziele und selbstständig nutzbare Übungsformate.
+
+- [Materialtheke und Produktionsworkflow](material/README.md)
+- [Materialmatrix](material/materialmatrix.md)
+- `data/material-catalog.json`: maschinenlesbarer Status der Materialien
+
+Die Förderwege Welle, Kompass und Lupe bleiben gleichwertige Orientierungspunkte. Materialien werden über **Teilkompetenzen** ausgewählt; eine Hauptempfehlung ist keine dauerhafte Gruppenzuordnung.
+
 ## Architektur und Deployment
 
 - `index.html`: statisches HTML mit eingebettetem CSS und Vanilla-JavaScript.
