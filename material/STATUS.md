@@ -22,6 +22,9 @@ Stand: 20.09.2026
 - [x] A6-Sammeldruck der Lösungskarten
 - [x] Sammeldruck aller Schülerseiten und eigener Druck-Hub
 - [x] Pilotprotokoll Sprint 01 mit Beobachtungs- und Freigabekriterien
+- [x] Lehrkraft-Pilotpaket mit Zuordnungsbogen und Beobachtungsseite
+- [x] automatischer Material-Preflight (`scripts/check_materials.cjs`)
+- [x] Sprint-02-Backlog für freigegebene Serienformate
 
 ## Sprint 01 – Prototypen
 
