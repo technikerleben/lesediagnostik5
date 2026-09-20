@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "project": "Lese-Navigator Jahrgang 5",
+  "updated": "2026-09-20",
+  "note": "Materialkatalog für Anschlussförderung. Keine sichtbaren Leistungsstufen.",
+  "statuses": [
+    "planned",
+    "prototype",
+    "pilot",
+    "series"
+  ],
+  "paths": {
+    "wave": {
+      "label": "Welle",
+      "color": "#245688"
+    },
+    "compass": {
+      "label": "Kompass",
+      "color": "#48DCCB"
+    },
+    "magnifier": {
+      "label": "Lupe",
+      "color": "#F0A66F"
+    },
+    "strategy": {
+      "label": "Strategien",
+      "color": null
+    }
+  },
+  "items": [
+    {
+      "id": "W-GW-001",
+      "path": "wave",
+      "competence": "Genaues Wortunterscheiden",
+      "format": "Wortdetektiv",
+      "theme": "Schulweg",
+      "priority": "P1",
+      "status": "planned",
+      "control": "separate_solution"
+    },
+    {
+      "id": "W-LS-001",
+      "path": "wave",
+      "competence": "Sinnvolle Wortgruppen / Leseflüssigkeit",
+      "format": "Lesestreifen",
+      "theme": "Schultag",
+      "priority": "P1",
+      "status": "planned",
+      "control": "partner_card"
+    },
+    {
+      "id": "W-TL-001",
+      "path": "wave",
+      "competence": "Leseflüssigkeit",
+      "format": "Tandemtext",
+      "theme": "Fundstück auf dem Schulhof",
+      "priority": "P1",
+      "status": "planned",
+      "control": "tandem_routine"
+    },
+    {
+      "id": "K-KO-001",
+      "path": "compass",
+      "competence": "Bedeutung aus Kontext",
+      "format": "Wort-im-Kontext-Karte",
+      "theme": "Schulhof",
+      "priority": "P1",
+      "status": "planned",
+      "control": "separate_solution"
+    },
+    {
+      "id": "K-SV-001",
+      "path": "compass",
+      "competence": "Satzbedeutung",
+      "format": "Satzdetektiv",
+      "theme": "Freizeit",
+      "priority": "P1",
+      "status": "planned",
+      "control": "separate_solution"
+    },
+    {
+      "id": "K-IF-001",
+      "path": "compass",
+      "competence": "Informationen finden",
+      "format": "Textsucher",
+      "theme": "Natur",
+      "priority": "P1",
+      "status": "planned",
+      "control": "marked_text_solution"
+    },
+    {
+      "id": "K-IV-001",
+      "path": "compass",
+      "competence": "Informationen verbinden",
+      "format": "Zwei-Stellen-Karte",
+      "theme": "Natur",
+      "priority": "P1",
+      "status": "planned",
+      "control": "separate_solution"
+    },
+    {
+      "id": "K-HA-001",
+      "path": "compass",
+      "competence": "Hauptaussage",
+      "format": "Hauptaussagen-Karte",
+      "theme": "Natur",
+      "priority": "P1",
+      "status": "planned",
+      "control": "separate_solution"
+    },
+    {
+      "id": "L-SF-001",
+      "path": "magnifier",
+      "competence": "Schlussfolgern",
+      "format": "Detektivkarte",
+      "theme": "Schule",
+      "priority": "P1",
+      "status": "planned",
+      "control": "solution_with_evidence"
+    },
+    {
+      "id": "L-BE-001",
+      "path": "magnifier",
+      "competence": "Belegen",
+      "format": "Antwort + Beleg",
+      "theme": "Schule",
+      "priority": "P1",
+      "status": "planned",
+      "control": "separate_solution"
+    },
+    {
+      "id": "L-BB-001",
+      "path": "magnifier",
+      "competence": "Behauptung oder Beleg",
+      "format": "Sortierkarte",
+      "theme": "Tiere",
+      "priority": "P1",
+      "status": "planned",
+      "control": "back_side"
+    },
+    {
+      "id": "S-WORT",
+      "path": "strategy",
+      "competence": "Strategiewissen",
+      "format": "Strategiekarte",
+      "theme": "Schwieriges Wort",
+      "priority": "P1",
+      "status": "planned",
+      "control": "none"
+    },
+    {
+      "id": "S-ABS",
+      "path": "strategy",
+      "competence": "Strategiewissen",
+      "format": "Strategiekarte",
+      "theme": "Abschnitt nicht verstanden",
+      "priority": "P1",
+      "status": "planned",
+      "control": "none"
+    },
+    {
+      "id": "S-SUCHE",
+      "path": "strategy",
+      "competence": "Strategiewissen",
+      "format": "Strategiekarte",
+      "theme": "Information suchen",
+      "priority": "P1",
+      "status": "planned",
+      "control": "none"
+    }
+  ]
+}
