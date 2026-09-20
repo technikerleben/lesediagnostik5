@@ -88,3 +88,8 @@ Wenn das nicht eindeutig mit „ja“ beantwortet werden kann, wird das Material
 - [Lösungskarten](druck/sprint-01/loesungskarten.html)
 
 Status: **druckfertiger Prototyp / pilotbereit**. Noch keine Serienfreigabe.
+
+## Pilotierung
+
+- [Pilotprotokoll Sprint 01](PILOT-01.md)
+- [Beobachtungsbogen](pilotbogen.md)
