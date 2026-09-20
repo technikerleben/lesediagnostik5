@@ -16,6 +16,7 @@ Stand: 20.09.2026
 - [x] drei ordnerübergreifende Strategiekarten
 - [x] separate Lösungssammlung für Sprint 01
 - [x] Haupt-README mit der Materialtheke verknüpft
+- [x] wiederverwendbare Druck-Master für A5-Aufgabenkarte, A5-Tandemtext, A6-Strategiekarte und A6-Lösungskarte
 
 ## Sprint 01 – Prototypen
 
@@ -46,11 +47,11 @@ Stand: 20.09.2026
 Die Inhalte sind als **Prototypen** angelegt, nicht als fertige Serien.
 
 Als Nächstes:
-1. grafische A5/A6-Master für die wiederkehrenden Formate bauen,
-2. Vorderseite und Lösung konsequent trennen,
-3. Prototypen druckfertig setzen,
-4. kleinen heterogenen Schülerpilot durchführen,
-5. Beobachtungen mit `pilotbogen.md` sichern,
+1. die vorhandenen Inhaltsprototypen in die fertigen A5/A6-Master setzen,
+2. Vorderseiten und separate Lösungskarten druckfertig erzeugen,
+3. kleinen heterogenen Schülerpilot durchführen,
+4. Beobachtungen mit `pilotbogen.md` sichern,
+5. Prototypen überarbeiten und im Katalog auf `pilot` setzen,
 6. erst danach bewährte Formate auf weitere Themen skalieren.
 
 Ein Format wechselt im Katalog erst nach Unterrichtserprobung von `prototype` zu `pilot` bzw. später zu `series`.
