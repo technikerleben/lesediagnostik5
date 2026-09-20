@@ -25,6 +25,8 @@ Stand: 20.09.2026
 - [x] Lehrkraft-Pilotpaket mit Zuordnungsbogen und Beobachtungsseite
 - [x] automatischer Material-Preflight (`scripts/check_materials.cjs`)
 - [x] Sprint-02-Backlog für freigegebene Serienformate
+- [x] datengetriebene Lehrkraft-Materialübersicht mit Suche und Förderwegfiltern
+- [x] Materialtheke im Abschnitt „Für die Lehrkraft“ des Navigators verlinkt
 - [x] aktueller `main` mit 61 Material-Preflight-Prüfungen erfolgreich geprüft
 
 ## Sprint 01 – Prototypen
