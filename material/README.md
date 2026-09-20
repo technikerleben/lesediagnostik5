@@ -72,3 +72,10 @@ Zu jeder fertigen Serie gehören möglichst:
 > Hilft diese Aufgabe einem Kind dabei, genau die Lesekompetenz zu üben, wegen der es dieses Material ausgewählt hat?
 
 Wenn das nicht eindeutig mit „ja“ beantwortet werden kann, wird das Material vereinfacht oder überarbeitet.
+
+## Arbeitsstand
+
+- [Umsetzungsstand](STATUS.md)
+- [Pilotbogen](pilotbogen.md)
+- [Layoutstandard](vorlagen/layout-standard.md)
+- [Lösungskarten Sprint 01](loesungen/sprint-01-loesungskarten.md)
