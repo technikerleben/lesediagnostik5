@@ -93,3 +93,8 @@ Status: **druckfertiger Prototyp / pilotbereit**. Noch keine Serienfreigabe.
 
 - [Pilotprotokoll Sprint 01](PILOT-01.md)
 - [Beobachtungsbogen](pilotbogen.md)
+
+## Lehrkraft-Übersicht
+
+- [Materialtheke für Lehrkräfte](lehrkraft.html) – automatische Übersicht aus `data/material-catalog.json` mit Suche, Förderwegfiltern und direkten Drucklinks.
+- Die Seite ist im Lese-Navigator im Abschnitt **„Für die Lehrkraft“** verlinkt.
