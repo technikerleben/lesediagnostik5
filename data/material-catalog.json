@@ -36,7 +36,9 @@
       "theme": "Schulweg",
       "priority": "P1",
       "status": "prototype",
-      "control": "separate_solution"
+      "control": "separate_solution",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/W-GW-001.html"
     },
     {
       "id": "W-LS-001",
@@ -46,7 +48,9 @@
       "theme": "Schultag",
       "priority": "P1",
       "status": "prototype",
-      "control": "partner_card"
+      "control": "partner_card",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/W-LS-001.html"
     },
     {
       "id": "W-TL-001",
@@ -56,7 +60,9 @@
       "theme": "Fundstück auf dem Schulhof",
       "priority": "P1",
       "status": "prototype",
-      "control": "tandem_routine"
+      "control": "tandem_routine",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/W-TL-001.html"
     },
     {
       "id": "K-KO-001",
@@ -66,7 +72,9 @@
       "theme": "Schulhof",
       "priority": "P1",
       "status": "prototype",
-      "control": "separate_solution"
+      "control": "separate_solution",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/K-KO-001.html"
     },
     {
       "id": "K-SV-001",
@@ -76,7 +84,9 @@
       "theme": "Freizeit",
       "priority": "P1",
       "status": "prototype",
-      "control": "separate_solution"
+      "control": "separate_solution",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/K-SV-001.html"
     },
     {
       "id": "K-IF-001",
@@ -86,7 +96,9 @@
       "theme": "Natur",
       "priority": "P1",
       "status": "prototype",
-      "control": "marked_text_solution"
+      "control": "marked_text_solution",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/K-IF-001.html"
     },
     {
       "id": "K-IV-001",
@@ -96,7 +108,9 @@
       "theme": "Natur",
       "priority": "P1",
       "status": "prototype",
-      "control": "separate_solution"
+      "control": "separate_solution",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/K-IV-001.html"
     },
     {
       "id": "K-HA-001",
@@ -106,7 +120,9 @@
       "theme": "Natur",
       "priority": "P1",
       "status": "prototype",
-      "control": "separate_solution"
+      "control": "separate_solution",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/K-HA-001.html"
     },
     {
       "id": "L-SF-001",
@@ -116,7 +132,9 @@
       "theme": "Schule",
       "priority": "P1",
       "status": "prototype",
-      "control": "solution_with_evidence"
+      "control": "solution_with_evidence",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/L-SF-001.html"
     },
     {
       "id": "L-BE-001",
@@ -126,7 +144,9 @@
       "theme": "Schule",
       "priority": "P1",
       "status": "prototype",
-      "control": "separate_solution"
+      "control": "separate_solution",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/L-BE-001.html"
     },
     {
       "id": "L-BB-001",
@@ -136,7 +156,9 @@
       "theme": "Tiere",
       "priority": "P1",
       "status": "prototype",
-      "control": "back_side"
+      "control": "back_side",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/schueler/L-BB-001.html"
     },
     {
       "id": "S-WORT",
@@ -146,7 +168,9 @@
       "theme": "Schwieriges Wort",
       "priority": "P1",
       "status": "prototype",
-      "control": "none"
+      "control": "none",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/strategiekarten.html"
     },
     {
       "id": "S-ABS",
@@ -156,7 +180,9 @@
       "theme": "Abschnitt nicht verstanden",
       "priority": "P1",
       "status": "prototype",
-      "control": "none"
+      "control": "none",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/strategiekarten.html"
     },
     {
       "id": "S-SUCHE",
@@ -166,7 +192,12 @@
       "theme": "Information suchen",
       "priority": "P1",
       "status": "prototype",
-      "control": "none"
+      "control": "none",
+      "printReady": true,
+      "printPath": "material/druck/sprint-01/strategiekarten.html"
     }
-  ]
+  ],
+  "printHub": "material/druck/sprint-01/index.html",
+  "studentBundle": "material/druck/sprint-01/schueler-sammeldruck.html",
+  "solutionBundle": "material/druck/sprint-01/loesungskarten.html"
 }
