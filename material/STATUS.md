@@ -21,6 +21,7 @@ Stand: 20.09.2026
 - [x] A6-Sammeldruck der 3 Strategiekarten
 - [x] A6-Sammeldruck der Lösungskarten
 - [x] Sammeldruck aller Schülerseiten und eigener Druck-Hub
+- [x] Pilotprotokoll Sprint 01 mit Beobachtungs- und Freigabekriterien
 
 ## Sprint 01 – Prototypen
 
@@ -52,7 +53,7 @@ Die Inhalte sind als **Prototypen** angelegt, nicht als fertige Serien.
 
 Als Nächstes:
 1. Drucksatz aus dem Druck-Hub ausgeben,
-2. kleinen heterogenen Schülerpilot durchführen,
+2. Pilot nach `PILOT-01.md` mit einer kleinen heterogenen Gruppe durchführen,
 3. Beobachtungen mit `pilotbogen.md` sichern,
 4. Prototypen überarbeiten und im Katalog auf `pilot` setzen,
 5. erst danach bewährte Formate auf weitere Themen skalieren.
