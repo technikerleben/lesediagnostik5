@@ -8,853 +8,135 @@
   <title>Lese-Navigator Jahrgang 5</title>
   <style>
 :root {
-  --blue: #245688;
-  --mint: #48DCCB;
-  --orange: #F0A66F;
-  --text: #1f2933;
-  --muted: #66727f;
-  --line: #d9e0e5;
-  --panel: #f6f8f9;
-  --white: #ffffff;
-  --focus: #111827;
+  --blue: #245688; --mint: #48DCCB; --orange: #F0A66F;
+  --text: #18324a; --muted: #3d5061; --line: #c5d0d9;
+  --panel: #f2f4f6; --white: #fff; --focus: #18324a;
+  --font-heading: "Gagalin", "Segoe UI", Arial, sans-serif;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background: var(--white);
-}
-
-body {
-  margin: 0;
-  color: var(--text);
-  background: var(--white);
-  font-family: "Glacial Indifference", "Aptos", "Segoe UI", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-button,
-input,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-.page-shell {
-  width: min(100%, 980px);
-  margin: 0 auto;
-  padding: 28px 18px 60px;
-}
-
-.navigator {
-  display: grid;
-  gap: 24px;
-}
-
-.brandline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.brandline h1,
-.task-card h2,
-.result-card h2 {
-  margin: 0;
-  font-family: "Gagalin", "Aptos Display", "Segoe UI", Arial, sans-serif;
-  letter-spacing: 0.01em;
-}
-
-.brandline h1 {
-  font-size: clamp(1.8rem, 4vw, 2.7rem);
-}
-
-.brandline p {
-  margin: 4px 0 0;
-  color: var(--muted);
-}
-
-.path-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.path-card {
-  display: grid;
-  place-items: center;
-  gap: 8px;
-  min-height: 140px;
-  padding: 16px 10px;
-  border: 2px solid currentColor;
-  border-radius: 18px;
-  background: var(--white);
-  text-align: center;
-  font-weight: 700;
-}
-
-.path-card svg,
-.path-symbol svg {
-  width: 54px;
-  height: 54px;
-}
-
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--white); color: var(--text); }
+body { font-family: "Glacial Indifference", "Segoe UI", Arial, sans-serif; font-size: 20px; line-height: 1.55; }
+button, input { font: inherit; }
+button { cursor: pointer; touch-action: manipulation; }
+button:disabled { cursor: default; background: #edf0f3; border-color: #c5d0d9; color: #586776; }
+button:focus-visible, input:focus-visible, summary:focus-visible, [tabindex="0"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+[tabindex="-1"]:focus { outline: none; }
+[hidden] { display: none !important; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-family: var(--font-heading); font-size: clamp(30px, 3.8vw, 44px); line-height: 1.2; margin-bottom: 20px; letter-spacing: -.02em; }
+h2 { font-size: 25px; line-height: 1.3; }
+h3 { font-size: 21px; }
+p:last-child { margin-bottom: 0; }
+.page-shell { max-width: 1240px; margin: auto; padding: 16px 24px; }
+.navigator { display: grid; gap: 24px; }
+.intro-layout { max-width: 880px; margin: 5vh auto 24px; }
+.intro-card, .result-card { border: 1px solid var(--line); border-radius: 24px; padding: clamp(24px, 4vw, 44px); background: var(--white); }
+.student-intro { border-top: 5px solid var(--blue); }
+.student-intro > p { max-width: 52ch; }
+.eyebrow { font-size: 16px; letter-spacing: .06em; color: var(--blue); font-weight: 700; margin-bottom: 12px; }
+.form-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; margin: 28px 0; }
+label { display: grid; align-content: start; gap: 8px; font-weight: 700; }
+input { width: 100%; min-width: 0; min-height: 56px; padding: 10px 14px; color: var(--text); border: 2px solid var(--line); border-radius: 12px; background: var(--white); }
+small { font-size: 15px; font-weight: 400; color: var(--muted); }
+.primary-button, .secondary-button, .danger-button { min-height: 60px; padding: 12px 24px; border: 2px solid var(--blue); border-radius: 14px; font-weight: 700; }
+.primary-button { color: #fff; background: var(--blue); }
+.primary-button span { margin-left: 12px; }
+.secondary-button { color: var(--blue); background: var(--white); }
+.danger-button { border-color: #893c1c; color: #893c1c; background: var(--white); }
+.local-only-note { border-top: 1px solid var(--line); padding-top: 20px; margin-top: 28px; font-size: 17px; color: var(--muted); }
+.note, .teacher-kicker { color: var(--muted); font-size: 16px; }
+.error-message, .pilot-note { padding: 16px; border-left: 4px solid #a94a1a; background: #fff8f2; border-radius: 8px; }
+.error-message { font-size: 18px; }
+.pilot-note { font-size: 16px; }
+/* A stable task frame: text scrolls inside the panel; confirmation never moves. */
+.student-screen { height: calc(100vh - 32px); height: calc(100svh - 32px); grid-template-rows: 12px minmax(0, 1fr); gap: 16px; }
+.progress-wrap { padding: 2px 0; }
+.progress-track { height: 8px; border-radius: 8px; background: #e3eaf0; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--blue); border-radius: inherit; transition: width 160ms ease; }
+.task-layout { display: grid; min-height: 0; gap: 20px; }
+.task-layout.single-task { grid-template-columns: minmax(0, 860px); justify-content: center; }
+.task-layout.has-passage { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
+.question-panel, .passage-panel { border: 1px solid var(--line); border-radius: 24px; min-height: 0; min-width: 0; padding: 22px 26px; }
+.question-panel { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 18px; background: var(--white); }
+.screen-label { display: inline-flex; align-items: center; justify-self: start; min-height: 32px; padding: 4px 12px; border: 1px solid #bdd4e7; border-radius: 8px; font-size: 15px; font-weight: 700; }
+.task-label { background: #eff5fa; color: var(--blue); }
+.example-label { background: #effcfa; border-color: #19766f; color: #195e59; }
+.text-label { color: var(--muted); background: var(--white); border-color: var(--line); }
+.example-card { border-top: 5px solid var(--mint); }
+.question-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 4px 5px 12px; scrollbar-gutter: stable; }
+.question-body > * + * { margin-top: 20px; }
+.prompt { font-family: inherit; font-size: clamp(22px, 2.5vw, 28px); font-weight: 700; line-height: 1.4; letter-spacing: normal; margin-bottom: 0; }
+.stimulus { padding: 16px 20px; border-left: 4px solid var(--blue); border-radius: 8px; background: #eff5fa; font-size: 23px; line-height: 1.6; }
+.target-word { background: none; border: none; padding: 4px 0; font-size: 38px; font-weight: 700; line-height: 1.25; }
+.options { display: grid; gap: 12px; }
+.option-button, .unknown-button { position: relative; width: 100%; text-align: left; color: var(--text); background: var(--white); border: 2px solid var(--line); border-radius: 14px; font-size: 20px; line-height: 1.45; min-height: 62px; padding: 14px 40px 14px 18px; }
+.option-button.is-selected, .unknown-button.is-selected { border-color: var(--blue); background: #eff5fa; box-shadow: inset 0 0 0 1px var(--blue); }
+.option-button.is-selected::after, .unknown-button.is-selected::after { content: "✓"; position: absolute; right: 12px; top: 12px; color: var(--blue); font-weight: 800; }
+.unknown-button { border-style: dashed; color: var(--muted); font-size: 18px; min-height: 56px; }
+.visual-options, .practice-options { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.visual-options .option-button { display: grid; place-items: center; padding: 20px 10px; min-height: 176px; }
+.visual-asset { width: min(136px, 100%); height: 136px; object-fit: contain; }
+.practice-option { text-align: center; font-size: 48px; min-height: 150px; padding: 16px; }
+.action-row { display: flex; justify-content: flex-end; align-items: center; min-height: 76px; border-top: 1px solid #dfe5ea; padding-top: 14px; }
+.action-row .primary-button { min-width: 174px; font-size: 21px; }
+.passage-panel { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 16px; background: var(--panel); }
+.passage-content { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 2px 8px 8px 2px; font-size: 21px; line-height: 1.7; scrollbar-gutter: stable; }
+.passage-content p { margin-bottom: 20px; }
+.timed-text { max-width: 64ch; font-size: 23px; line-height: 1.75; margin: auto; }
+.result-layout { max-width: 920px; margin: 24px auto; }
+.result-card { display: grid; gap: 24px; }
+.result-card h1, .result-card h2, .result-card p { margin-bottom: 0; }
 .wave { --path-accent: var(--blue); }
 .compass { --path-accent: var(--mint); }
 .magnifier { --path-accent: var(--orange); }
-
-.path-card.wave,
-.path-card.compass,
-.path-card.magnifier,
-.result-main.wave,
-.result-main.compass,
-.result-main.magnifier,
-.result-secondary.wave,
-.result-secondary.compass,
-.result-secondary.magnifier {
-  color: var(--text);
-  border-color: var(--path-accent);
-}
-
-.path-card.wave svg,
-.path-card.compass svg,
-.path-card.magnifier svg,
-.result-main.wave svg,
-.result-main.compass svg,
-.result-main.magnifier svg,
-.result-secondary.wave svg,
-.result-secondary.compass svg,
-.result-secondary.magnifier svg {
-  color: var(--path-accent);
-}
-
-.intro-card,
-.task-card,
-.result-card,
-.passage-card {
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--white);
-}
-
-.intro-card,
-.task-card,
-.result-card {
-  padding: clamp(20px, 4vw, 36px);
-}
-
-.intro-card p {
-  max-width: 700px;
-}
-
-.note {
-  color: var(--muted);
-  font-size: 0.94rem;
-}
-
-.primary-button,
-.secondary-button,
-.option-button,
-.unknown-button {
-  min-height: 52px;
-  border-radius: 14px;
-  padding: 12px 16px;
-  border: 2px solid transparent;
-}
-
-.primary-button {
-  background: var(--blue);
-  color: white;
-  font-weight: 800;
-  padding-inline: 24px;
-}
-
-.secondary-button {
-  background: var(--white);
-  color: var(--text);
-  border-color: var(--line);
-  font-weight: 700;
-}
-
-.primary-button:hover,
-.primary-button:focus-visible {
-  filter: brightness(0.95);
-}
-
-button:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-
-.progress-wrap {
-  display: grid;
-  gap: 8px;
-}
-
-.progress-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.progress-track {
-  height: 10px;
-  width: 100%;
-  border-radius: 999px;
-  background: #e8edf0;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  border-radius: inherit;
-  background: var(--blue);
-  transition: width 180ms ease;
-}
-
-.task-card {
-  display: grid;
-  gap: 20px;
-}
-
-.task-card h2 {
-  font-size: clamp(1.35rem, 3vw, 1.8rem);
-}
-
-.prompt {
-  margin: 0;
-  font-size: clamp(1.16rem, 2.8vw, 1.42rem);
-  font-weight: 700;
-}
-
-.options {
-  display: grid;
-  gap: 12px;
-}
-
-.option-button,
-.unknown-button {
-  width: 100%;
-  text-align: left;
-  background: var(--white);
-  border-color: var(--line);
-  color: var(--text);
-}
-
-.option-button:hover,
-.option-button:focus-visible {
-  border-color: var(--blue);
-  background: #f7fafc;
-}
-
-.unknown-button {
-  margin-top: 4px;
-  color: var(--muted);
-  border-style: dashed;
-}
-
-.visual-options {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.visual-options .option-button {
-  min-height: 112px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  font-size: 2.2rem;
-}
-
-.passage-card {
-  padding: 20px;
-  background: var(--panel);
-  white-space: pre-line;
-}
-
-.passage-card p {
-  margin: 0;
-  line-height: 1.72;
-}
-
-.timed-reading {
-  display: grid;
-  gap: 18px;
-}
-
-.timed-text {
-  padding: 20px;
-  border-radius: 16px;
-  background: var(--panel);
-  line-height: 1.8;
-  font-size: 1.08rem;
-}
-
-.result-card {
-  display: grid;
-  gap: 22px;
-}
-
-.result-main,
-.result-secondary {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 18px;
-  align-items: center;
-  padding: 18px;
-  border: 2px solid currentColor;
-  border-radius: 18px;
-}
-
-.result-main h3,
-.result-secondary h3 {
-  margin: 0 0 4px;
-  font-size: 1.45rem;
-}
-
-.result-main p,
-.result-secondary p {
-  margin: 0;
-  color: var(--text);
-}
-
-.path-symbol {
-  display: grid;
-  place-items: center;
-}
-
-.strategy-hint {
-  padding: 14px 16px;
-  border-left: 5px solid var(--mint);
-  background: #f3fcfa;
-  border-radius: 10px;
-}
-
-.result-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.dev-note {
-  margin-top: 4px;
-  font-size: 0.86rem;
-  color: var(--muted);
-}
-
-@media (max-width: 640px) {
-  body {
-    font-size: 17px;
-  }
-
-  .page-shell {
-    padding: 18px 12px 44px;
-  }
-
-  .path-row {
-    grid-template-columns: 1fr;
-  }
-
-  .path-card {
-    min-height: 96px;
-    grid-template-columns: auto 1fr;
-    justify-items: start;
-    text-align: left;
-  }
-
-  .visual-options {
-    grid-template-columns: 1fr;
-  }
-
-  .visual-options .option-button {
-    min-height: 78px;
-  }
-
-  .result-main,
-  .result-secondary {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .progress-fill {
-    transition: none;
-  }
-}
-
-
-.participant-box {
-  margin: 22px 0;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--panel);
-}
-
-.participant-box h3 {
-  margin: 0 0 6px;
-  font-size: 1.12rem;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  gap: 14px;
-  margin-top: 14px;
-}
-
-.form-grid label {
-  display: grid;
-  gap: 6px;
-  font-weight: 700;
-}
-
-.form-grid input {
-  width: 100%;
-  min-height: 50px;
-  padding: 10px 12px;
-  border: 2px solid var(--line);
-  border-radius: 12px;
-  background: var(--white);
-  color: var(--text);
-  font-size: 1rem;
-}
-
-.form-grid input:focus {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-  border-color: var(--blue);
-}
-
-.local-only-note,
-.save-message {
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: #f3fcfa;
-  border-left: 5px solid var(--mint);
-  font-size: 0.92rem;
-}
-
-.error-message {
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: #fff7f4;
-  border-left: 5px solid var(--orange);
-  font-weight: 700;
-}
-
-.local-admin {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--white);
-}
-
-.local-admin summary {
-  padding: 16px 18px;
-  cursor: pointer;
-  font-weight: 800;
-}
-
-.local-admin-body {
-  padding: 0 18px 18px;
-}
-
-.danger-button {
-  min-height: 52px;
-  border-radius: 14px;
-  padding: 12px 16px;
-  border: 2px solid #a33a2c;
-  background: var(--white);
-  color: #81291f;
-  font-weight: 800;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
-}
-
-@media (max-width: 640px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-.pin-gate {
-  display: grid;
-  gap: 12px;
-}
-
-.pin-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: end;
-}
-
-.pin-row label {
-  display: grid;
-  gap: 6px;
-  font-weight: 700;
-}
-
-.pin-row input {
-  min-height: 50px;
-  padding: 10px 12px;
-  border: 2px solid var(--line);
-  border-radius: 12px;
-  background: var(--white);
-  color: var(--text);
-  font-size: 1rem;
-}
-
-.pin-row input:focus {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-  border-color: var(--blue);
-}
-
-@media (max-width: 640px) {
-  .pin-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-.visual-options .option-button {
-  min-height: 132px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 10px;
-}
-
-.visual-asset {
-  width: 96px;
-  height: 96px;
-  object-fit: contain;
-  display: block;
-}
-
-@media (max-width: 640px) {
-  .visual-asset {
-    width: 82px;
-    height: 82px;
-  }
-}
-
-/* UI 0.6 – fokussierte Schüleransicht für iPad Querformat */
-body {
-  min-height: 100vh;
-  font-size: 20px;
-}
-
-.page-shell {
-  width: min(100%, 1180px);
-  min-height: 100vh;
-  padding: 18px 24px 28px;
-}
-
-.navigator.student-screen {
-  min-height: calc(100vh - 46px);
-  align-content: start;
-  gap: 14px;
-}
-
-.student-screen .progress-wrap {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  padding: 8px 0 10px;
-  background: var(--white);
-}
-
-.student-screen .progress-head {
-  display: none;
-}
-
-.student-screen .progress-track {
-  height: 12px;
-}
-
-.screen-label {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  min-height: 38px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.task-label {
-  color: var(--blue);
-  background: #edf4fa;
-  border: 2px solid #bfd1e2;
-}
-
-.example-label {
-  color: #17685f;
-  background: #e9fbf8;
-  border: 2px solid var(--mint);
-}
-
-.text-label {
-  color: var(--muted);
-  background: var(--white);
-  border: 2px solid var(--line);
-}
-
-.example-card {
-  max-width: 900px;
-  width: 100%;
-  margin: 5vh auto 0;
-  border: 3px solid var(--mint);
-  background: #f7fffd;
-}
-
-.example-card h2,
-.question-panel h2 {
-  margin: 0;
-  font-size: clamp(1.8rem, 3.2vw, 2.45rem);
-}
-
-.example-note {
-  margin: 0;
-  color: var(--muted);
-  font-size: 1.05rem;
-}
-
-.practice-options {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.practice-option {
-  min-height: 150px;
-  font-size: 3rem;
-  text-align: center;
-}
-
-.task-layout {
-  min-height: calc(100vh - 90px);
-  display: grid;
-  align-items: stretch;
-  gap: 18px;
-}
-
-.task-layout.has-passage {
-  grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
-}
-
-.task-layout.single-task {
-  grid-template-columns: minmax(0, 860px);
-  justify-content: center;
-  align-items: center;
-}
-
-.question-panel,
-.reading-panel,
-.passage-panel {
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background: var(--white);
-}
-
-.question-panel,
-.reading-panel {
-  display: grid;
-  align-content: center;
-  gap: 22px;
-  padding: 30px 34px;
-}
-
-.passage-panel {
-  display: grid;
-  align-content: start;
-  gap: 16px;
-  padding: 24px 28px;
-  background: var(--panel);
-  overflow: auto;
-  max-height: calc(100vh - 95px);
-}
-
-.passage-panel p {
-  margin: 0;
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
-  line-height: 1.72;
-  white-space: pre-line;
-}
-
-.prompt {
-  font-size: clamp(1.55rem, 2.8vw, 2rem);
-  line-height: 1.35;
-}
-
-.options {
-  gap: 14px;
-}
-
-.option-button,
-.unknown-button,
-.primary-button,
-.secondary-button {
-  min-height: 66px;
-  font-size: 1.2rem;
-}
-
-.option-button {
-  padding: 16px 20px;
-  border-width: 3px;
-  border-radius: 17px;
-}
-
-.option-button.is-selected,
-.unknown-button.is-selected {
-  border-color: var(--blue);
-  background: #eaf2f9;
-  box-shadow: 0 0 0 3px rgba(36, 86, 136, 0.12);
-}
-
-.unknown-button {
-  min-height: 58px;
-  font-size: 1.05rem;
-}
-
-.visual-options {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.visual-options .option-button {
-  min-height: 190px;
-  padding: 16px;
-}
-
-.visual-asset {
-  width: 150px;
-  height: 150px;
-}
-
-.action-row {
-  display: flex;
-  justify-content: flex-end;
-  min-height: 70px;
-  align-items: center;
-}
-
-.action-row .primary-button {
-  min-width: 190px;
-  font-size: 1.3rem;
-}
-
-.timed-text {
-  margin: 0;
-  padding: 26px 30px;
-  font-size: clamp(1.2rem, 2vw, 1.42rem);
-  line-height: 1.78;
-  max-height: calc(100vh - 210px);
-  overflow: auto;
-}
-
-.intro-card.student-intro {
-  max-width: 880px;
-  margin: 4vh auto 0;
-}
-
-.student-intro > p {
-  font-size: 1.15rem;
-}
-
-.student-intro .primary-button {
-  min-width: 220px;
-}
-
-.student-intro .participant-box {
-  background: var(--white);
-  padding: 0;
-  border: 0;
-}
-
-.student-intro .local-only-note {
-  margin-bottom: 0;
-}
-
-.local-admin.student-admin {
-  max-width: 880px;
-  width: 100%;
-  margin: 8px auto 0;
-}
-
-.result-card {
-  max-width: 920px;
-  width: 100%;
-  margin: 2vh auto 0;
-}
-
-@media (orientation: landscape) and (min-width: 760px) and (max-height: 900px) {
-  .page-shell {
-    padding-top: 12px;
-    padding-bottom: 18px;
-  }
-
-  .question-panel,
-  .reading-panel {
-    padding: 24px 30px;
-    gap: 18px;
-  }
-
-  .visual-options .option-button {
-    min-height: 170px;
-  }
-
-  .visual-asset {
-    width: 136px;
-    height: 136px;
-  }
-
-  .practice-option {
-    min-height: 132px;
-  }
-}
-
-@media (orientation: portrait), (max-width: 759px) {
-  .task-layout.has-passage {
-    grid-template-columns: 1fr;
-  }
-
-  .passage-panel {
-    max-height: 46vh;
-  }
-
-  .visual-options,
-  .practice-options {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .visual-options .option-button {
-    min-height: 120px;
-  }
-
-  .visual-asset {
-    width: 92px;
-    height: 92px;
-  }
-}
-
+.result-path { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px; border: 3px solid var(--path-accent); border-radius: 18px; }
+.path-symbol svg { width: 54px; height: 54px; color: var(--text); }
+.result-path h2 { margin-bottom: 8px; }
+.strategy-hint { border-left: 4px solid #19766f; background: #effcfa; padding: 16px; border-radius: 8px; }
+/* Teacher controls are only mounted on the introduction screen. */
+.local-admin { border: 1px solid var(--line); border-radius: 16px; font-size: 18px; }
+summary { cursor: pointer; padding: 18px 20px; min-height: 58px; font-weight: 700; }
+.local-admin-body { padding: 0 24px 24px; }
+.pin-row { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: end; }
+.pin-row label { min-width: 0; }
+.result-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.result-actions button { font-size: 16px; }
+.run-profile { border: 1px solid var(--line); border-radius: 12px; margin-top: 16px; }
+.run-profile summary span { font-weight: 400; margin-left: 12px; }
+.profile-body { padding: 0 24px 24px; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 17px; }
+caption { text-align: left; font-weight: 700; padding-bottom: 12px; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+td { white-space: nowrap; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@media (hover: hover) {
+  .option-button:hover, .unknown-button:hover { border-color: var(--blue); }
+  .primary-button:not(:disabled):hover { background: #1f4770; }
+}
+@media (max-width: 759px), (orientation: portrait) {
+  .page-shell { padding: 12px; }
+  .student-screen { height: auto; min-height: calc(100svh - 24px); grid-template-rows: 12px auto; }
+  .task-layout.has-passage { grid-template-columns: 1fr; }
+  .passage-content { max-height: 38vh; }
+  .question-panel, .passage-panel { padding: 18px; }
+  .question-body { overflow: visible; padding-inline: 0; }
+  .action-row { position: sticky; bottom: 0; background: var(--white); padding-bottom: 8px; z-index: 2; }
+  .visual-options, .practice-options { gap: 8px; }
+  .visual-options .option-button { min-height: 112px; padding: 12px 5px; }
+  .visual-asset { width: 100%; height: 90px; }
+  .practice-option { min-height: 110px; font-size: 36px; }
+  .form-grid, .pin-row { grid-template-columns: 1fr; }
+  .intro-layout { margin-top: 12px; }
+  .target-word { font-size: 32px; }
+  .result-path { grid-template-columns: 42px 1fr; padding: 18px; gap: 12px; }
+  .path-symbol svg { width: 40px; height: 40px; }
+}
+@media (max-height: 500px) and (min-width: 760px) {
+  .student-screen { height: auto; min-height: 100vh; }
+  .question-body { overflow: visible; }
+  .passage-content { max-height: 70vh; }
+}
+@media (prefers-reduced-motion: reduce) { .progress-fill { transition: none; } }
 </style>
 </head>
 <body>
@@ -870,7 +152,7 @@ body {
   <script>
 "use strict";
 
-const APP_VERSION = "0.6";
+const APP_VERSION = "0.7";
 const PREFIX = "lesediagnostik5:v1";
 const PARTICIPANTS_KEY = PREFIX + ":participants";
 const RUNS_KEY = PREFIX + ":runs";
@@ -897,7 +179,7 @@ const state = {
   index: 0,
   scores: { ...INITIAL_SCORES },
   responses: {},
-  fluency: { startedAt: null, seconds: null, wpm: null },
+  fluency: { startedAt: null, seconds: null, wpm: null, interrupted: false },
   participantName: "",
   className: "",
   currentParticipant: null,
@@ -905,7 +187,12 @@ const state = {
   teacherUnlocked: false,
   saveMessage: "",
   selectedOption: null,
-  exampleSelected: false
+  exampleSelected: false,
+  optionOrders: {},
+  runStartedAt: null,
+  interrupted: false,
+  pendingRun: null,
+  assetError: false
 };
 
 const app = document.getElementById("app");
@@ -923,6 +210,8 @@ async function init() {
     state.sets = values.slice(0, 3);
     state.rules = values[3];
     state.design = values[4];
+    validateProject(state.sets, state.rules);
+    await preloadAssets(state.sets);
     applyDesignConfig();
     render();
   } catch (error) {
@@ -930,8 +219,8 @@ async function init() {
     app.innerHTML =
       '<div class="navigator"><section class="intro-card">' +
       '<h1>Lese-Navigator</h1>' +
-      '<p class="error-message">Die Aufgabendaten konnten nicht geladen werden.</p>' +
-      '<p class="note">Bitte die Seite neu laden. Wenn der Fehler bleibt, muss die Deployment-Struktur geprüft werden.</p>' +
+      '<p class="error-message">Die Aufgaben oder Bilder konnten nicht geladen werden.</p>' +
+      '<p class="note">Bitte die Seite neu laden. Wenn der Fehler bleibt, bitte die Lehrkraft holen.</p>' +
       '</section></div>';
   }
 }
@@ -962,15 +251,36 @@ function safeParse(value, fallback) {
 }
 
 function loadParticipants() {
-  if (!storageAvailable()) return [];
-  const value = safeParse(localStorage.getItem(PARTICIPANTS_KEY), []);
-  return Array.isArray(value) ? value : [];
+  return readStoredArray(PARTICIPANTS_KEY, function (p) {
+    return p && typeof p.id === "string" && typeof p.name === "string" && typeof p.className === "string";
+  });
 }
 
 function loadRuns() {
-  if (!storageAvailable()) return [];
-  const value = safeParse(localStorage.getItem(RUNS_KEY), []);
-  return Array.isArray(value) ? value : [];
+  return readStoredArray(RUNS_KEY, function (r) {
+    return r && typeof r.id === "string" && typeof r.participantId === "string" &&
+      typeof r.completedAt === "string" && typeof r.setId === "string" &&
+      r.scores && typeof r.scores === "object" && r.responses && typeof r.responses === "object" &&
+      !Array.isArray(r.responses) && Object.values(r.responses).every(v => typeof v === "string") &&
+      Object.keys(INITIAL_SCORES).every(k => Number.isInteger(r.scores[k]) && r.scores[k] >= 0) &&
+      Array.isArray(r.itemResults) && r.itemResults.every(i => i && typeof i.itemId === "string" &&
+        typeof i.response === "string" && [true, false, null].includes(i.correct)) &&
+      (!r.readingBase || Object.values(r.readingBase).every(v => v && Number.isInteger(v.correct) && Number.isInteger(v.total))) &&
+      (!r.optionOrders || Object.values(r.optionOrders).every(v => Array.isArray(v) && v.every(x => typeof x === "string")));
+  });
+}
+
+function readStoredArray(key, validate) {
+  let raw;
+  try { raw = localStorage.getItem(key); }
+  catch { throw new Error("Der lokale Speicher ist nicht verfügbar. Bitte die Lehrkraft holen."); }
+  if (raw == null) return [];
+  let value;
+  try { value = JSON.parse(raw); } catch { /* Keep the original bytes untouched. */ }
+  if (!Array.isArray(value) || !value.every(validate)) {
+    throw new Error("Gespeicherte Daten sind beschädigt. Sie wurden nicht überschrieben. Bitte zuerst eine Rohsicherung herunterladen.");
+  }
+  return value;
 }
 
 function makeId(prefix) {
@@ -1007,9 +317,9 @@ function saveDiagnosticRun(run) {
   const entry = Object.assign({}, run, {
     id: run.id || makeId("r"),
     completedAt: run.completedAt || new Date().toISOString(),
-    schemaVersion: 1
+    schemaVersion: 2
   });
-  localStorage.setItem(RUNS_KEY, JSON.stringify(runs.concat([entry])));
+  if (!runs.some(r => r.id === entry.id)) localStorage.setItem(RUNS_KEY, JSON.stringify(runs.concat([entry])));
   return entry;
 }
 
@@ -1091,24 +401,52 @@ function flattenSet(set) {
   });
 }
 
-function hashText(text) {
-  let hash = 2166136261;
-  for (let i = 0; i < text.length; i += 1) {
-    hash ^= text.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
+function seededRandom(seed) {
+  let value = seed >>> 0;
+  return function () {
+    value += 0x6D2B79F5;
+    let t = Math.imul(value ^ value >>> 15, 1 | value);
+    t ^= t + Math.imul(t ^ t >>> 7, 61 | t);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+function shuffled(values, random) {
+  const copy = values.slice();
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
   }
-  return hash >>> 0;
+  return copy;
+}
+
+function prepareOptionOrders(queue, seed) {
+  const random = seededRandom(seed);
+  const groups = new Map();
+  const orders = {};
+  queue.forEach(function (item) {
+    if (!item.options) return;
+    if (!item.correctOption) { orders[item.id] = item.options.map(o => o.id); return; }
+    const size = item.options.length;
+    if (!groups.has(size)) groups.set(size, []);
+    groups.get(size).push(item);
+  });
+  groups.forEach(function (items, size) {
+    const offset = Math.floor(random() * size);
+    const positions = shuffled(items.map((_, i) => (i + offset) % size), random);
+    items.forEach(function (item, i) {
+      const wrong = shuffled(item.options.filter(o => o.id !== item.correctOption), random).map(o => o.id);
+      wrong.splice(positions[i], 0, item.correctOption);
+      orders[item.id] = wrong;
+    });
+  });
+  return orders;
 }
 
 function orderedOptions(options, seed, itemId) {
-  if (!seed) return options;
-  return options.slice().map(function (option) {
-    return { option: option, order: hashText(seed + ":" + itemId + ":" + option.id) };
-  }).sort(function (a, b) {
-    return a.order - b.order;
-  }).map(function (entry) {
-    return entry.option;
-  });
+  const order = state.optionOrders[itemId];
+  if (!order) return options.slice();
+  return order.map(id => options.find(o => o.id === id));
 }
 
 function pickRunSeed() {
@@ -1141,6 +479,7 @@ function applyDesignConfig() {
     root.style.setProperty("--orange", paths.magnifier.color);
   }
 
+  if (theme.fontHeading) root.style.setProperty("--font-heading", '"' + theme.fontHeading + '", "Segoe UI", Arial, sans-serif');
   if (theme.fontBody) {
     document.body.style.fontFamily =
       '"' + theme.fontBody + '", "Aptos", "Segoe UI", Arial, sans-serif';
@@ -1148,7 +487,8 @@ function applyDesignConfig() {
 }
 
 function compareValue(actual, rule) {
-  if (actual == null || !rule || typeof rule !== "object") return false;
+  if (actual == null || !rule || typeof rule !== "object" || !Object.keys(rule).length ||
+      Object.keys(rule).some(k => !["lt", "lte", "gt", "gte", "eq"].includes(k))) return false;
   if (rule.lt != null && !(actual < rule.lt)) return false;
   if (rule.lte != null && !(actual <= rule.lte)) return false;
   if (rule.gt != null && !(actual > rule.gt)) return false;
@@ -1158,7 +498,7 @@ function compareValue(actual, rule) {
 }
 
 function matchesCondition(condition, scores, context) {
-  if (!condition || typeof condition !== "object") return false;
+  if (!condition || typeof condition !== "object" || !Object.keys(condition).length) return false;
   context = context || {};
 
   if (condition.primary != null && context.primary !== condition.primary) {
@@ -1186,28 +526,17 @@ function firstMatchingRecommendation(rules, scores, context) {
 }
 
 function recommendationFrom(scores) {
-  const primary = firstMatchingRecommendation(
-    state.rules.primaryLogic,
-    scores,
-    {}
-  ) || "magnifier";
-
-  const secondary = firstMatchingRecommendation(
-    state.rules.secondaryLogic,
-    scores,
-    { primary: primary }
-  );
-
-  const strategyHint = matchesCondition(
-    state.rules.strategyHint && state.rules.strategyHint.when,
-    scores,
-    { primary: primary }
-  );
-
+  const valid = Object.entries(state.rules.scoreKeys).every(function ([key, rule]) {
+    return Number.isInteger(scores[key]) && scores[key] >= 0 && scores[key] <= rule.max;
+  });
+  const matches = valid ? state.rules.primaryLogic.filter(r => matchesCondition(r.when, scores, {})) : [];
+  if (matches.length !== 1) return { primary: null, secondary: null, strategyHint: false, needsReview: true };
+  const primary = matches[0].recommend;
   return {
     primary: primary,
-    secondary: secondary,
-    strategyHint: strategyHint
+    secondary: firstMatchingRecommendation(state.rules.secondaryLogic, scores, { primary: primary }),
+    strategyHint: matchesCondition(state.rules.strategyHint.when, scores, { primary: primary }),
+    needsReview: false
   };
 }
 
@@ -1258,95 +587,100 @@ function render() {
 }
 
 function renderIntro(message) {
-  message = message || "";
-  const participantCount = loadParticipants().length;
-  const runCount = loadRuns().length;
+  let participantCount = 0, runCount = 0, storageError = "";
+  try { participantCount = loadParticipants().length; runCount = loadRuns().length; }
+  catch (error) { storageError = error.message; }
   const configured = hasTeacherPin();
-
   app.innerHTML =
-    '<div class="navigator">' +
+    '<div class="navigator intro-layout">' +
       '<section class="intro-card student-intro">' +
+        '<div class="eyebrow">Dein nächster Leseschritt</div>' +
         '<h1>Lese-Navigator</h1>' +
-        '<p>Du löst kleine Leseaufgaben. Am Ende bekommst du einen Tipp zum Weiterüben.</p>' +
-        '<div class="participant-box">' +
-          '<div class="form-grid">' +
-            '<label><span>Name oder Kürzel</span><input id="participant-name" type="text" autocomplete="off" maxlength="80" value="' + escapeAttribute(state.participantName) + '"></label>' +
-            '<label><span>Klasse</span><input id="class-name" type="text" autocomplete="off" maxlength="40" value="' + escapeAttribute(state.className) + '"></label>' +
-          '</div>' +
+        '<p>Du löst kleine Leseaufgaben.<br>Am Ende bekommst du einen Tipp zum Üben.</p>' +
+        '<form id="participant-form"><div class="form-grid">' +
+          '<label><span>Dein Kürzel oder Name</span><input id="participant-name" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="80" required value="' + escapeAttribute(state.participantName) + '"></label>' +
+          '<label><span>Deine Klasse</span><input id="class-name" type="text" autocomplete="off" maxlength="40" value="' + escapeAttribute(state.className) + '"><small>Du kannst das Feld leer lassen.</small></label>' +
         '</div>' +
-        (message ? '<p class="error-message">' + escapeHtml(message) + '</p>' : '') +
-        '<button id="start-run" class="primary-button" type="button">Start</button>' +
-        '<p class="local-only-note">Deine Ergebnisse bleiben auf diesem Gerät.</p>' +
+        ((message || storageError) ? '<p class="error-message" role="alert">' + escapeHtml(message || storageError) + '</p>' : '') +
+        '<button id="start-run" class="primary-button" type="submit"' + (storageError ? ' disabled' : '') + '>Los geht’s <span aria-hidden="true">→</span></button></form>' +
+        '<p class="local-only-note">Ohne Note. Deine Ergebnisse bleiben hier im Browser.</p>' +
       '</section>' +
-      '<details class="local-admin student-admin"><summary>Lehrkraft</summary>' +
+      '<details class="local-admin"' + (state.teacherUnlocked ? ' open' : '') + '><summary>Für die Lehrkraft</summary>' +
         '<div class="local-admin-body">' +
-          (state.teacherUnlocked ? teacherAdminUnlocked(participantCount, runCount) : teacherAdminLocked(configured)) +
+          (state.teacherUnlocked ? teacherAdminUnlocked(participantCount, runCount, storageError) : teacherAdminLocked(configured)) +
         '</div></details>' +
     '</div>';
-
-  document.getElementById("participant-name").addEventListener("input", function (event) {
-    state.participantName = event.target.value;
+  document.getElementById("participant-form").addEventListener("submit", function (event) { event.preventDefault(); startRun(); });
+  ["participant-name", "class-name"].forEach(function (id) {
+    document.getElementById(id).addEventListener("input", function (event) {
+      state[id === "participant-name" ? "participantName" : "className"] = event.target.value;
+    });
   });
-  document.getElementById("class-name").addEventListener("input", function (event) {
-    state.className = event.target.value;
+  const actions = {
+    "pin-action": handleTeacherPin,
+    "teacher-lock": function () { state.teacherUnlocked = false; renderIntro(); },
+    "export-summary": function () { safelyAdmin(exportSummaryCsv); },
+    "export-items": function () { safelyAdmin(exportItemCsv); },
+    "export-backup": function () { safelyAdmin(exportRawBackup); },
+    "delete-local": function () { safelyAdmin(handleDeleteAll); }
+  };
+  Object.entries(actions).forEach(function ([id, action]) {
+    const button = document.getElementById(id);
+    if (button) button.addEventListener("click", action);
   });
-  document.getElementById("start-run").addEventListener("click", startRun);
+  const pin = document.getElementById("teacher-pin");
+  if (pin) pin.addEventListener("keydown", function (event) { if (event.key === "Enter") handleTeacherPin(); });
+}
 
-  const pinButton = document.getElementById("pin-action");
-  if (pinButton) pinButton.addEventListener("click", handleTeacherPin);
+function safelyAdmin(action) {
+  if (!state.teacherUnlocked) return;
+  try { action(); } catch (error) { renderIntro(error.message); }
+}
 
-  const lockButton = document.getElementById("teacher-lock");
-  if (lockButton) lockButton.addEventListener("click", function () {
-    state.teacherUnlocked = false;
-    renderIntro();
-  });
-
-  const exportSummary = document.getElementById("export-summary");
-  if (exportSummary) exportSummary.addEventListener("click", exportSummaryCsv);
-
-  const exportItems = document.getElementById("export-items");
-  if (exportItems) exportItems.addEventListener("click", exportItemCsv);
-
-  const deleteButton = document.getElementById("delete-local");
-  if (deleteButton) deleteButton.addEventListener("click", handleDeleteAll);
+function exportRawBackup() {
+  if (!state.teacherUnlocked) return;
+  // Preserve broken JSON as raw strings; never include the PIN verifier.
+  const backup = { format: "lesediagnostik5-raw-backup", createdAt: new Date().toISOString(),
+    participants: localStorage.getItem(PARTICIPANTS_KEY), runs: localStorage.getItem(RUNS_KEY) };
+  downloadFile("lesediagnostik5-rohsicherung.json", JSON.stringify(backup, null, 2), "application/json");
 }
 
 function renderExample() {
-  const selected = state.exampleSelected;
-
-  app.innerHTML =
-    '<div class="navigator student-screen">' +
-      '<div class="progress-wrap" aria-label="Fortschritt">' +
-        '<div class="progress-track" aria-hidden="true"><div class="progress-fill" style="width:0%"></div></div>' +
-      '</div>' +
-      '<section class="task-card example-card">' +
-        '<span class="screen-label example-label">Beispiel</span>' +
-        '<h2>So wählst du eine Antwort.</h2>' +
-        '<p class="prompt">Tippe auf eine Antwort.</p>' +
-        '<p class="example-note">Das ist nur zum Üben. Es zählt noch nicht.</p>' +
-        '<div class="options practice-options">' +
-          '<button class="option-button practice-option' + (selected === "circle" ? ' is-selected' : '') + '" data-example="circle" type="button" aria-pressed="' + (selected === "circle") + '">●</button>' +
-          '<button class="option-button practice-option' + (selected === "square" ? ' is-selected' : '') + '" data-example="square" type="button" aria-pressed="' + (selected === "square") + '">■</button>' +
-          '<button class="option-button practice-option' + (selected === "triangle" ? ' is-selected' : '') + '" data-example="triangle" type="button" aria-pressed="' + (selected === "triangle") + '">▲</button>' +
-        '</div>' +
-        (selected ? '<div class="action-row"><button id="begin-tasks" class="primary-button" type="button">Weiter</button></div>' : '') +
-      '</section>' +
-    '</div>';
-
+  app.innerHTML = '<div class="navigator student-screen">' + progressMarkup(0) +
+    '<div class="task-layout single-task"><section class="question-panel example-card" aria-label="Beispiel">' +
+    '<span class="screen-label example-label">Beispiel · ohne Punkte</span>' +
+    '<div class="question-body"><h1 id="task-heading" tabindex="-1">So geht’s</h1>' +
+    '<p class="prompt">Wähle eine Form. Tippe dann auf „Weiter“.</p>' +
+    '<div class="options practice-options" role="group" aria-label="Wähle eine Form">' +
+    [['circle', '●', 'Kreis'], ['square', '■', 'Quadrat'], ['triangle', '▲', 'Dreieck']].map(function (v) {
+      return '<button class="option-button practice-option" data-example="' + v[0] + '" aria-label="' + v[2] + '" aria-pressed="false" type="button">' + v[1] + '</button>';
+    }).join('') + '</div><p class="note">Du kannst deine Auswahl noch ändern.</p></div>' +
+    '<div class="action-row"><button id="begin-tasks" class="primary-button" type="button" disabled>Weiter <span aria-hidden="true">→</span></button></div>' +
+    '</section></div></div>';
   document.querySelectorAll("[data-example]").forEach(function (button) {
     button.addEventListener("click", function () {
       state.exampleSelected = button.dataset.example;
-      renderExample();
+      document.querySelectorAll("[data-example]").forEach(function (option) {
+        const selected = option.dataset.example === state.exampleSelected;
+        option.classList.toggle("is-selected", selected); option.setAttribute("aria-pressed", String(selected));
+      });
+      document.getElementById("begin-tasks").disabled = false;
     });
   });
-
-  const begin = document.getElementById("begin-tasks");
-  if (begin) begin.addEventListener("click", function () {
-    state.exampleSelected = false;
-    state.selectedOption = null;
-    state.stage = "task";
-    render();
+  document.getElementById("begin-tasks").addEventListener("click", function () {
+    if (!state.exampleSelected) return;
+    state.exampleSelected = false; state.selectedOption = null; state.stage = "task"; render();
   });
+  focusTask();
+}
+
+function progressMarkup(value) {
+  return '<div class="progress-wrap"><div class="progress-track" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + value + '"><div class="progress-fill" style="width:' + value + '%"></div></div></div>';
+}
+
+function focusTask() {
+  const heading = document.getElementById("task-heading");
+  if (heading) heading.focus({ preventScroll: true });
 }
 
 function teacherAdminLocked(configured) {
@@ -1365,35 +699,96 @@ function teacherAdminLocked(configured) {
     '<p id="pin-error" class="error-message" hidden></p></div>';
 }
 
-function teacherAdminUnlocked(participantCount, runCount) {
-  return '<p>Auf diesem Browser gespeichert: <strong>' + participantCount +
-    '</strong> Teilnehmer · <strong>' + runCount + '</strong> Durchläufe</p>' +
-    '<p class="note">Browserdaten können beim Löschen des Website-Speichers verloren gehen. Sichere Ergebnisse bei Bedarf als CSV in deinem geschützten schulischen Ablageort.</p>' +
+function teacherAdminUnlocked(participantCount, runCount, storageError) {
+  return '<p class="teacher-kicker">Lokale Verwaltung · App ' + APP_VERSION + '</p>' +
+    '<p><strong>' + participantCount + '</strong> Personen · <strong>' + runCount + '</strong> Durchläufe</p>' +
+    '<p class="note">Die PIN schützt die Bedienoberfläche, verschlüsselt aber keine Daten. Nutze möglichst Kürzel. Sichere Exporte im geschützten schulischen Ablageort.</p>' +
+    (storageError ? '<p class="error-message" role="alert">' + escapeHtml(storageError) + '</p>' : '') +
     '<div class="result-actions">' +
-      '<button id="export-summary" class="secondary-button" type="button"' + (runCount ? '' : ' disabled') + '>Ergebnisse als CSV</button>' +
-      '<button id="export-items" class="secondary-button" type="button"' + (runCount ? '' : ' disabled') + '>Itemdaten als CSV</button>' +
-      '<button id="delete-local" class="danger-button" type="button"' + ((participantCount || runCount) ? '' : ' disabled') + '>Lokale Daten löschen</button>' +
-      '<button id="teacher-lock" class="secondary-button" type="button">Lehrkraftbereich sperren</button>' +
-    '</div>';
+      '<button id="export-summary" class="secondary-button" type="button"' + (!runCount || storageError ? ' disabled' : '') + '>Ergebnisse als CSV</button>' +
+      '<button id="export-items" class="secondary-button" type="button"' + (!runCount || storageError ? ' disabled' : '') + '>Itemdaten als CSV</button>' +
+      '<button id="export-backup" class="secondary-button" type="button">Rohsicherung herunterladen</button>' +
+      '<button id="teacher-lock" class="secondary-button" type="button">Sperren</button>' +
+      '<button id="delete-local" class="danger-button" type="button">Lokale Daten löschen</button>' +
+    '</div>' +
+    '<p class="pilot-note">Pilotwerte, keine Normwerte. Empfehlungen mit Lautlesetest und Beobachtungen abgleichen. Lesebasis aus Set 0.3 und 0.4 ist nicht unmittelbar vergleichbar.</p>' +
+    (!storageError ? teacherProfiles() : '');
+}
+
+function teacherProfiles() {
+  const runs = loadRuns().slice(-50).reverse();
+  if (!runs.length) return '<p class="note">Noch keine Ergebnisse auf diesem Browser.</p>';
+  return '<h2>Die letzten ' + runs.length + ' Durchläufe</h2>' + runs.map(function (run) {
+    const legacy = run.setVersion !== "0.4";
+    const recommendation = run.recommendation || {};
+    const label = state.rules.recommendations[recommendation.primary]?.label || "Bitte prüfen";
+    const base = run.readingBase || readingBaseProfile(run.itemResults);
+    const rows = Object.entries(state.rules.scoreKeys).map(function ([key, rule]) {
+      return '<tr><th scope="row">' + escapeHtml(rule.label) + '</th><td>' + escapeHtml(run.scores[key]) + ' / ' + rule.max + '</td></tr>';
+    }).join('');
+    const components = Object.entries(state.rules.readingBaseComponents).map(function ([key, rule]) {
+      const value = base[key];
+      return '<li>' + escapeHtml(rule.label) + ': ' + (value && value.total ? value.correct + ' / ' + value.total : 'nicht erhoben') + '</li>';
+    }).join('');
+    const interpretation = run.fluency?.interpretation || fluencyInterpretation(run.scores, run.fluency);
+    const tempo = run.fluency && Number.isFinite(run.fluency.wpm) ? run.fluency.wpm + ' Wörter/Minute' : 'nicht verfügbar';
+    const explanation = state.rules.fluency.checkLabels[interpretation] || 'Unterbrochen oder nicht vollständig gemessen; nicht als Tempo-Hinweis verwenden.';
+    const self = run.itemResults.filter(i => i.competency === 'self_assessment').map(function (i) {
+      const item = state.sets.find(s => s.setId === run.setId)?.sections.flatMap(s => s.items).find(x => x.id === i.itemId);
+      // Only resolve unchanged anchor items from known historical set versions.
+      const text = ['0.2', '0.3', '0.4'].includes(run.setVersion) ? item?.options.find(o => o.id === i.response)?.text : null;
+      return '<li>' + escapeHtml(text ? item.prompt + ' ' + text : i.itemId + ': ' + i.response) + '</li>';
+    }).join('');
+    const unknowns = Object.values(run.responses).filter(v => v === 'unknown').length;
+    const warnings = [];
+    if (legacy) warnings.push('Ältere Aufgabenfassung: Das heutige Teilprofil und die aktuelle Begründung sind nicht rückwirkend anwendbar. Die gespeicherte Empfehlung bleibt unverändert.');
+    if (unknowns) warnings.push(unknowns + ' Antworten „Ich weiß es nicht“: Unsicherheit und Aufgabenverständnis besprechen.');
+    if (run.interrupted) warnings.push('Der Browser war während des Durchlaufs im Hintergrund. Die Bearbeitungszeit enthält Unterbrechungen.');
+    if (!legacy && Object.values(base).some(v => v.total && v.correct <= 1)) warnings.push('Mindestens ein Teil der Lesebasis wurde höchstens einmal richtig gelöst. Vor einer Förderentscheidung gezielt nachprüfen.');
+    return '<details class="run-profile"><summary>' + escapeHtml(run.participantNameSnapshot || run.participantId) + ' · ' + escapeHtml(run.classNameSnapshot || 'ohne Klasse') + ' <span>' + escapeHtml(label) + '</span></summary><div class="profile-body">' +
+      '<p class="note">' + escapeHtml(new Date(run.completedAt).toLocaleString('de-DE')) + ' · ' + escapeHtml(run.setId) + ' ' + escapeHtml(run.setVersion) + ' · Regeln ' + escapeHtml(run.rulesVersion || 'unbekannt') + '</p>' +
+      '<p><strong>Gespeicherte Empfehlung: ' + escapeHtml(label) + '</strong>' + (recommendation.secondary ? ' · Ergänzend: ' + escapeHtml(state.rules.recommendations[recommendation.secondary]?.label || recommendation.secondary) : '') + '</p>' +
+      (!legacy ? '<p>' + escapeHtml(recommendationReason(run.scores, recommendation)) + '</p>' : '') +
+      warnings.map(w => '<p class="pilot-note">' + escapeHtml(w) + '</p>').join('') +
+      '<table><caption>Teilprofil · vorläufige Pilotwerte</caption><tbody>' + rows + '</tbody></table>' +
+      '<h3>Lesebasis im Detail</h3><ul>' + components + '</ul>' +
+      '<h3>Stilles Lesetempo</h3><p>' + escapeHtml(tempo) + ' · Lesezeit ' + escapeHtml(run.fluency?.seconds != null ? Math.round(run.fluency.seconds * 10) / 10 + ' s' : 'nicht verfügbar') + '</p><p>' + escapeHtml(explanation) + '</p>' +
+      '<p class="note">Zeit ist selbst gemeldet; auch zwei richtige Kontrollfragen bestätigen keinen gültigen Tempowert. Auffällige Zeiten anhand der Beobachtung prüfen. Kein WPM-Grenzwert, keine automatische Tempo-Zuweisung.</p>' +
+      '<h3>Selbsteinschätzung – Gesprächsanlass</h3><ul>' + self + '</ul><p class="note">Passt das zu den Aufgaben und zum Lautlesen? Häufiges Nachlesen kann eine sinnvolle Strategie sein.</p>' +
+      '<p class="note">Gesamtdauer: ' + escapeHtml(run.durationSeconds != null ? run.durationSeconds + ' s' : 'nicht erhoben') + '</p>' +
+      '</div></details>';
+  }).join('');
+}
+
+function recommendationReason(scores, recommendation) {
+  if (!recommendation.primary) return "Keine verlässliche automatische Empfehlung. Daten und Durchführung prüfen.";
+  const match = state.rules.primaryLogic.find(r => r.recommend === recommendation.primary && matchesCondition(r.when, scores));
+  if (!match) return "Die gespeicherte Empfehlung stammt aus einer anderen Regelfassung.";
+  return match.teacherText || "Vorläufige Empfehlung anhand der dokumentierten Pilotregeln.";
 }
 
 async function handleTeacherPin() {
   const input = document.getElementById("teacher-pin");
   const errorBox = document.getElementById("pin-error");
-  const pin = String(input ? input.value : "").replace(/\D/g, "").slice(0, 10);
+  const pin = String(input ? input.value : "").trim();
+  const action = document.getElementById("pin-action");
+  if (!action || action.disabled) return;
+  action.disabled = true;
 
   try {
     if (!hasTeacherPin()) {
       await setTeacherPin(pin);
-      state.teacherUnlocked = true;
+      state.teacherUnlocked = !document.hidden;
       renderIntro();
       return;
     }
+    if (!/^\d{4,10}$/.test(pin)) throw new Error("Bitte 4 bis 10 Ziffern eingeben.");
     const valid = await verifyTeacherPin(pin);
     if (!valid) throw new Error("Die PIN ist nicht richtig.");
-    state.teacherUnlocked = true;
+    state.teacherUnlocked = !document.hidden;
     renderIntro();
   } catch (error) {
+    if (action) action.disabled = false;
     if (errorBox) {
       errorBox.hidden = false;
       errorBox.textContent = error instanceof Error ? error.message : "Die PIN konnte nicht verarbeitet werden.";
@@ -1415,19 +810,30 @@ function startRun() {
   }
 
   try {
+    loadRuns();
     state.currentParticipant = upsertParticipant(state.participantName, state.className);
   } catch (error) {
     renderIntro(error instanceof Error ? error.message : "Die lokalen Angaben konnten nicht gespeichert werden.");
     return;
   }
 
+  let previous;
+  try { previous = loadRuns().filter(r => r.participantId === state.currentParticipant.id).slice(-2).map(r => r.setId); }
+  catch (error) { renderIntro(error.message); return; }
   state.runSeed = pickRunSeed();
-  state.activeSet = state.sets[state.runSeed % state.sets.length];
+  const available = state.sets.filter(set => !previous.includes(set.setId));
+  state.activeSet = (available.length ? available : state.sets)[state.runSeed % (available.length || state.sets.length)];
+  state.teacherUnlocked = false;
+  state.runStartedAt = Date.now();
+  state.interrupted = false;
+  state.pendingRun = null;
+  state.assetError = false;
   state.queue = flattenSet(state.activeSet);
+  state.optionOrders = prepareOptionOrders(state.queue, state.runSeed);
   state.index = 0;
   state.scores = Object.assign({}, INITIAL_SCORES);
   state.responses = {};
-  state.fluency = { startedAt: null, seconds: null, wpm: null };
+  state.fluency = { startedAt: null, seconds: null, wpm: null, interrupted: false };
   state.resultData = null;
   state.saveMessage = "";
   state.selectedOption = null;
@@ -1439,124 +845,88 @@ function startRun() {
 function renderTask() {
   const current = state.queue[state.index];
   if (!current) return;
-
-  const progress = state.queue.length ? Math.round((state.index / state.queue.length) * 100) : 0;
+  const oldPassage = document.getElementById("reading-passage");
+  const oldText = oldPassage ? oldPassage.dataset.passage : null;
+  const oldScroll = oldPassage ? oldPassage.scrollTop : 0;
+  const progress = Math.round((state.index / state.queue.length) * 100);
   const isTimed = current.type === "timed_reading";
-  const timedStarted = state.fluency.startedAt != null;
-  const selected = state.selectedOption;
-  let questionContent = "";
-
+  let content;
   if (isTimed) {
-    if (timedStarted) {
-      questionContent =
-        '<section class="reading-panel">' +
-          '<span class="screen-label task-label">Leseaufgabe</span>' +
-          '<div class="timed-text">' + escapeHtml(current.text) + '</div>' +
-          '<div class="action-row"><button id="finish-reading" class="primary-button" type="button">Fertig gelesen</button></div>' +
-        '</section>';
-    } else {
-      questionContent =
-        '<section class="reading-panel">' +
-          '<span class="screen-label task-label">Leseaufgabe</span>' +
-          '<h2>Lies einen kurzen Text.</h2>' +
-          '<p class="prompt">Lies in deinem normalen Tempo.</p>' +
-          '<div class="action-row"><button id="start-reading" class="primary-button" type="button">Text zeigen</button></div>' +
-        '</section>';
-    }
+    const started = state.fluency.startedAt != null;
+    content = '<section class="question-panel reading-panel"><span class="screen-label task-label">Leseaufgabe</span>' +
+      '<div class="question-body">' + (started
+        ? '<h1 id="task-heading" class="sr-only" tabindex="-1">Lies den Text.</h1><div class="timed-text" tabindex="0" role="region" aria-label="Lesetext">' + escapeHtml(current.text) + '</div>'
+        : '<h1 id="task-heading" tabindex="-1">Lies einen kurzen Text.</h1><p class="prompt">Lies leise in deinem normalen Tempo.</p><p>Tippe am Ende auf „Fertig gelesen“.</p>') +
+      '</div><div class="action-row"><button id="' + (started ? 'finish-reading' : 'start-reading') + '" class="primary-button" type="button">' + (started ? 'Fertig gelesen' : 'Text zeigen') + '</button></div></section>';
   } else {
     const options = orderedOptions(current.options || [], state.runSeed, current.id);
-    const optionHtml = options.map(function (option, optionIndex) {
-      let content = "";
-
-      if (current.type === "visual_choice" && option.asset) {
-        content =
-          '<img class="visual-asset" src="./assets/lesebilder/' +
-          escapeAttribute(option.asset) +
-          '.png" alt="" loading="eager" decoding="async">';
-      } else if (current.type === "visual_choice") {
-        content = escapeHtml(option.symbol || "");
-      } else {
-        content = escapeHtml(option.text || "");
-      }
-
-      const isSelected = selected === option.id;
-      const aria = current.type === "visual_choice"
-        ? ' aria-label="Bildoption ' + (optionIndex + 1) + '"'
-        : "";
-
-      return '<button class="option-button' + (isSelected ? ' is-selected' : '') +
-        '" type="button" data-option="' + escapeAttribute(option.id) + '"' + aria +
-        ' aria-pressed="' + isSelected + '">' + content + '</button>';
-    }).join("");
-
-    questionContent =
-      '<section class="question-panel">' +
-        '<span class="screen-label task-label">Aufgabe</span>' +
-        '<p class="prompt">' + escapeHtml(current.prompt) + '</p>' +
-        '<div class="options ' + (current.type === "visual_choice" ? "visual-options" : "") + '">' +
-          optionHtml +
-        '</div>' +
-        (current.type !== "self_report"
-          ? '<button id="unknown-answer" class="unknown-button' + (selected === "unknown" ? ' is-selected' : '') +
-            '" type="button" aria-pressed="' + (selected === "unknown") + '">Ich weiß es nicht.</button>'
-          : '') +
-        (selected
-          ? '<div class="action-row"><button id="confirm-answer" class="primary-button" type="button">Weiter</button></div>'
-          : '') +
-      '</section>';
+    content = '<section class="question-panel"><span class="screen-label task-label">' + (current.type === 'self_report' ? 'Über dein Lesen' : 'Aufgabe') + '</span>' +
+      '<div class="question-body">' +
+      (current.stimulus ? '<div class="stimulus' + (['visual_choice'].includes(current.type) || current.competency === 'orthographic_discrimination' ? ' target-word' : '') + '">' + escapeHtml(current.stimulus) + '</div>' : '') +
+      '<h1 id="task-heading" class="prompt" tabindex="-1">' + escapeHtml(current.prompt) + '</h1>' +
+      '<div class="options ' + (current.type === 'visual_choice' ? 'visual-options' : '') + '" role="group" aria-labelledby="task-heading">' +
+      options.map(function (option, index) {
+        const visual = current.type === 'visual_choice';
+        return '<button class="option-button" type="button" data-option="' + escapeAttribute(option.id) + '" aria-pressed="false"' + (visual ? ' aria-label="Bildoption ' + (index + 1) + '"' : '') + '>' +
+          (visual ? '<img class="visual-asset" src="' + escapeAttribute(assetUrl(option.asset)) + '" alt="" width="128" height="128" decoding="async">' : '<span>' + escapeHtml(option.text) + '</span>') + '</button>';
+      }).join('') + '</div>' +
+      (current.type !== 'self_report' ? '<button id="unknown-answer" class="unknown-button" type="button" aria-pressed="false">Ich weiß es nicht.</button>' : '<p class="note">Hier gibt es kein Richtig oder Falsch.</p>') +
+      '<p id="asset-error" class="error-message" role="alert" hidden>Ein Bild fehlt. Bitte die Lehrkraft holen und diese Seite offen lassen.</p>' +
+      '</div><div class="action-row"><button id="confirm-answer" class="primary-button" type="button" disabled>Weiter <span aria-hidden="true">→</span></button></div></section>';
   }
-
-  app.innerHTML =
-    '<div class="navigator student-screen">' +
-      '<div class="progress-wrap" aria-label="Fortschritt">' +
-        '<div class="progress-track" aria-hidden="true"><div class="progress-fill" style="width:' +
-          progress + '%"></div></div>' +
-      '</div>' +
-      '<div class="task-layout ' + (current.contextPassage ? "has-passage" : "single-task") + '">' +
-        (current.contextPassage
-          ? '<section class="passage-panel"><span class="screen-label text-label">Text</span><p>' +
-            escapeHtml(current.contextPassage) + '</p></section>'
-          : '') +
-        questionContent +
-      '</div>' +
-    '</div>';
-
-  document.querySelectorAll("[data-option]").forEach(function (button) {
-    button.addEventListener("click", function () {
-      answer(button.dataset.option);
+  app.innerHTML = '<div class="navigator student-screen">' + progressMarkup(progress) +
+    '<div class="task-layout ' + (current.contextPassage ? 'has-passage' : 'single-task') + '">' +
+    (current.contextPassage ? '<section class="passage-panel" aria-label="Text"><span class="screen-label text-label">Text</span><div id="reading-passage" class="passage-content" data-passage="' + escapeAttribute(current.sectionId) + '" tabindex="0" role="region" aria-label="Lesetext zum Nachschlagen">' +
+      current.contextPassage.split(/\n\n/).map(p => '<p>' + escapeHtml(p) + '</p>').join('') + '</div></section>' : '') + content + '</div></div>';
+  document.querySelectorAll('[data-option]').forEach(button => button.addEventListener('click', () => answer(button.dataset.option)));
+  const unknown = document.getElementById('unknown-answer');
+  if (unknown) unknown.addEventListener('click', answerUnknown);
+  const confirm = document.getElementById('confirm-answer');
+  if (confirm) confirm.addEventListener('click', confirmAnswer);
+  const start = document.getElementById('start-reading');
+  if (start) start.addEventListener('click', function () { state.fluency.startedAt = performance.now(); renderTask(); });
+  const finish = document.getElementById('finish-reading');
+  if (finish) finish.addEventListener('click', finishTimedReading);
+  document.querySelectorAll('.visual-asset').forEach(function (image) {
+    image.addEventListener('error', function () {
+      state.assetError = true;
+      document.getElementById('asset-error').hidden = false;
+      if (confirm) confirm.disabled = true;
     });
   });
+  const passage = document.getElementById('reading-passage');
+  if (passage && oldText === current.sectionId) passage.scrollTop = oldScroll;
+  focusTask();
+}
 
-  const unknown = document.getElementById("unknown-answer");
-  if (unknown) unknown.addEventListener("click", answerUnknown);
-
-  const confirm = document.getElementById("confirm-answer");
-  if (confirm) confirm.addEventListener("click", confirmAnswer);
-
-  const startReading = document.getElementById("start-reading");
-  if (startReading) startReading.addEventListener("click", function () {
-    state.fluency.startedAt = performance.now();
-    renderTask();
+function updateSelection() {
+  document.querySelectorAll('[data-option], #unknown-answer').forEach(function (button) {
+    const id = button.id === 'unknown-answer' ? 'unknown' : button.dataset.option;
+    const selected = state.selectedOption === id;
+    button.classList.toggle('is-selected', selected);
+    button.setAttribute('aria-pressed', String(selected));
   });
-
-  const finishReading = document.getElementById("finish-reading");
-  if (finishReading) finishReading.addEventListener("click", finishTimedReading);
+  const confirm = document.getElementById('confirm-answer');
+  if (confirm) confirm.disabled = !state.selectedOption || state.assetError;
 }
 
 function answer(optionId) {
+  const current = state.queue[state.index];
+  if (!current || !current.options.some(o => o.id === optionId)) return;
   state.selectedOption = optionId;
-  renderTask();
+  updateSelection();
 }
 
 function answerUnknown() {
+  if (state.queue[state.index]?.type === 'self_report') return;
   state.selectedOption = "unknown";
-  renderTask();
+  updateSelection();
 }
 
 function confirmAnswer() {
   const current = state.queue[state.index];
   const optionId = state.selectedOption;
-  if (!current || !optionId) return;
+  if (!current || !optionId || state.assetError) return;
 
   const nextResponses = Object.assign({}, state.responses);
   nextResponses[current.id] = optionId;
@@ -1572,6 +942,7 @@ function advance(nextScores, nextResponses) {
   state.scores = nextScores;
   state.responses = nextResponses;
   state.selectedOption = null;
+  state.assetError = false;
   state.index += 1;
   if (state.index >= state.queue.length) {
     completeRun();
@@ -1582,98 +953,93 @@ function advance(nextScores, nextResponses) {
 
 function finishTimedReading() {
   const current = state.queue[state.index];
-  if (!current || state.fluency.startedAt == null) return;
-  const seconds = Math.max(1, (performance.now() - state.fluency.startedAt) / 1000);
-  state.fluency.seconds = seconds;
-  state.fluency.wpm = Math.round((current.wordCount / seconds) * 60);
+  if (!current || current.type !== "timed_reading" || state.fluency.startedAt == null) return;
+  const seconds = (performance.now() - state.fluency.startedAt) / 1000;
+  state.fluency.seconds = seconds > 0 ? seconds : null;
+  state.fluency.wpm = seconds > 0 ? Math.round((current.wordCount / seconds) * 60) : null;
+  state.fluency.startedAt = null;
   state.selectedOption = null;
+  state.assetError = false;
   state.index += 1;
-  if (state.index >= state.queue.length) {
-    completeRun();
-    return;
-  }
+  if (state.index >= state.queue.length) { completeRun(); return; }
   renderTask();
 }
 
 function completeRun() {
   const recommendation = recommendationFrom(state.scores);
   const itemResults = buildItemResults(state.queue, state.responses);
-  state.resultData = {
-    scores: state.scores,
-    responses: state.responses,
-    recommendation: recommendation,
-    itemResults: itemResults
+  state.resultData = { scores: state.scores, responses: state.responses, recommendation: recommendation, itemResults: itemResults };
+  state.pendingRun = {
+    id: makeId("r"), completedAt: new Date().toISOString(),
+    participantId: state.currentParticipant.id,
+    participantNameSnapshot: state.currentParticipant.name,
+    classNameSnapshot: state.currentParticipant.className,
+    setId: state.activeSet.setId, setVersion: state.activeSet.version,
+    rulesVersion: state.rules.version, appVersion: APP_VERSION,
+    scores: state.scores, responses: state.responses, itemResults: itemResults,
+    readingBase: readingBaseProfile(itemResults),
+    optionOrders: state.optionOrders,
+    durationSeconds: Math.round((Date.now() - state.runStartedAt) / 1000),
+    interrupted: state.interrupted,
+    fluency: Object.assign({}, state.fluency, { interpretation: fluencyInterpretation(state.scores, state.fluency) }),
+    recommendation: recommendation
   };
-
-  try {
-    saveDiagnosticRun({
-      participantId: state.currentParticipant.id,
-      participantNameSnapshot: state.currentParticipant.name,
-      classNameSnapshot: state.currentParticipant.className,
-      setId: state.activeSet.setId,
-      setVersion: state.activeSet.version,
-      rulesVersion: state.rules.version,
-      appVersion: APP_VERSION,
-      scores: state.scores,
-      responses: state.responses,
-      itemResults: itemResults,
-      fluency: { seconds: state.fluency.seconds, wpm: state.fluency.wpm },
-      recommendation: recommendation
-    });
-    state.saveMessage = "Ergebnis wurde nur auf diesem Gerät gespeichert.";
-  } catch {
-    state.saveMessage = "Das Ergebnis konnte nicht im lokalen Browserspeicher gespeichert werden.";
-  }
-
+  delete state.pendingRun.fluency.startedAt;
+  persistPendingRun();
   state.stage = "result";
   render();
 }
 
+function persistPendingRun() {
+  try {
+    saveDiagnosticRun(state.pendingRun);
+    state.pendingRun = null;
+    state.saveMessage = "";
+  } catch (error) {
+    state.saveMessage = "Bitte die Lehrkraft holen. Dein Ergebnis konnte noch nicht gespeichert werden. Lass diese Seite offen.";
+  }
+}
+
+function readingBaseProfile(items) {
+  const result = {};
+  Object.keys(state.rules.readingBaseComponents).forEach(function (key) {
+    const matches = items.filter(i => i.competency === key && i.scoreKey === "reading_base");
+    result[key] = { correct: matches.filter(i => i.correct === true).length, total: matches.length };
+  });
+  return result;
+}
+
+function fluencyInterpretation(scores, fluency) {
+  if (!fluency || !Number.isFinite(fluency.seconds) || fluency.seconds <= 0 || fluency.interrupted) return "interrupted_or_missing";
+  return state.rules.fluency.checkInterpretation[String(scores.fluency_check)] || "do_not_use";
+}
+
 function renderResult() {
-  const recommendation = state.resultData
-    ? state.resultData.recommendation
-    : recommendationFrom(state.scores);
+  const recommendation = state.resultData.recommendation;
   const primary = state.rules.recommendations[recommendation.primary];
-  const secondary = recommendation.secondary
-    ? state.rules.recommendations[recommendation.secondary]
-    : null;
-
-  app.innerHTML =
-    '<div class="navigator">' +
-      '<header class="brandline"><div><h1>Dein Lese-Tipp</h1><p>Das passt gerade gut zu deinem Lernen.</p></div></header>' +
-      '<section class="result-card">' +
-        '<div class="result-main ' + pathClass(recommendation.primary) + '">' +
-          '<div class="path-symbol">' + pathIcon(recommendation.primary) + '</div>' +
-          '<div><h3>Starte mit ' + escapeHtml(primary.label) + '</h3><p>' +
-            escapeHtml(primary.childText) + '</p></div>' +
-        '</div>' +
-        (secondary
-          ? '<div class="result-secondary ' + pathClass(recommendation.secondary) + '">' +
-              '<div class="path-symbol">' + pathIcon(recommendation.secondary) + '</div>' +
-              '<div><h3>Auch passend: ' + escapeHtml(secondary.label) + '</h3><p>' +
-                escapeHtml(secondary.childText) + '</p></div></div>'
-          : '') +
-        (recommendation.strategyHint
-          ? '<p class="strategy-hint"><strong>Extra-Tipp:</strong> Nutze beim Üben eine Strategiekarte.</p>'
-          : '') +
-        '<p class="note">Der Lese-Navigator zeigt dir einen Startpunkt. Er ist kein Test mit Note.</p>' +
-        (state.saveMessage ? '<p class="save-message">' + escapeHtml(state.saveMessage) + '</p>' : '') +
-        '<div class="result-actions">' +
-          '<button id="next-person" class="primary-button" type="button">Nächster Durchlauf</button>' +
-          '<button id="same-person" class="secondary-button" type="button">Noch einmal für dieselbe Person</button>' +
-        '</div>' +
-      '</section>' +
-    '</div>';
-
-  document.getElementById("next-person").addEventListener("click", function () {
-    resetToIntro(false);
-  });
-  document.getElementById("same-person").addEventListener("click", function () {
-    resetToIntro(true);
-  });
+  const secondary = state.rules.recommendations[recommendation.secondary];
+  function card(path, title) {
+    return '<div class="result-path ' + pathClass(path.id) + '"><div class="path-symbol">' + pathIcon(path.id) + '</div><div><h2>' + escapeHtml(title + path.label) + '</h2><p>' + escapeHtml(path.childText) + '</p></div></div>';
+  }
+  app.innerHTML = '<div class="navigator result-layout">' + progressMarkup(100) +
+    '<section class="result-card"><div class="eyebrow">Geschafft</div><h1 id="task-heading" tabindex="-1">Dein nächster Leseschritt</h1>' +
+    (primary ? card(primary, 'Starte mit ') : '<p>Schau gemeinsam mit deiner Lehrkraft, was du als Nächstes üben kannst.</p>') +
+    (secondary ? card(secondary, 'Auch passend: ') : '') +
+    (recommendation.strategyHint ? '<p class="strategy-hint">' + escapeHtml(state.rules.strategyHint.childText) + '</p>' : '') +
+    '<p>Das ist ein Startpunkt. Du kannst deinen Lernweg später ändern.</p>' +
+    (state.pendingRun ? '<p class="error-message" role="alert">' + escapeHtml(state.saveMessage) + '</p><button id="retry-save" class="secondary-button" type="button">Speichern erneut versuchen</button>' : '<div class="action-row"><button id="done" class="primary-button" type="button">Fertig</button></div>') +
+    '</section></div>';
+  const done = document.getElementById('done');
+  if (done) done.addEventListener('click', () => resetToIntro(false));
+  const retry = document.getElementById('retry-save');
+  if (retry) retry.addEventListener('click', function () { persistPendingRun(); renderResult(); });
+  focusTask();
 }
 
 function resetToIntro(keepParticipant) {
+  state.teacherUnlocked = false;
+  state.pendingRun = null;
+  state.optionOrders = {};
   state.stage = "intro";
   state.runSeed = null;
   state.activeSet = null;
@@ -1681,7 +1047,7 @@ function resetToIntro(keepParticipant) {
   state.index = 0;
   state.scores = Object.assign({}, INITIAL_SCORES);
   state.responses = {};
-  state.fluency = { startedAt: null, seconds: null, wpm: null };
+  state.fluency = { startedAt: null, seconds: null, wpm: null, interrupted: false };
   state.resultData = null;
   state.saveMessage = "";
   state.selectedOption = null;
@@ -1701,6 +1067,7 @@ function pathClass(id) {
 }
 
 function handleDeleteAll() {
+  if (!state.teacherUnlocked) return;
   if (!confirm("Alle lokal gespeicherten Namen/Kürzel und Diagnoseergebnisse auf diesem Browser wirklich löschen?")) {
     return;
   }
@@ -1712,26 +1079,26 @@ function handleDeleteAll() {
 }
 
 function csvEscape(value) {
-  const text = value == null ? "" : String(value);
+  let text = value == null ? "" : String(value);
+  if (/^[\s]*[=+@-]/.test(text) || /^[\t\r\n]/.test(text)) text = "'" + text;
   return /[;"\n\r]/.test(text) ? '"' + text.replaceAll('"', '""') + '"' : text;
 }
 
 function downloadCsv(filename, rows) {
-  const body = rows.map(function (row) {
-    return row.map(csvEscape).join(";");
-  }).join("\r\n");
-  const blob = new Blob(["\uFEFF", body], { type: "text/csv;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = filename;
-  document.body.appendChild(anchor);
-  anchor.click();
-  anchor.remove();
-  setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  const body = rows.map(row => row.map(csvEscape).join(';')).join('\r\n');
+  downloadFile(filename, "\uFEFF" + body, "text/csv;charset=utf-8");
+}
+
+function downloadFile(filename, body, type) {
+  const url = URL.createObjectURL(new Blob([body], { type: type }));
+  const anchor = document.createElement('a');
+  anchor.href = url; anchor.download = filename;
+  document.body.appendChild(anchor); anchor.click(); anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function exportSummaryCsv() {
+  if (!state.teacherUnlocked) return;
   const participants = loadParticipants();
   const participantMap = new Map(participants.map(function (item) {
     return [item.id, item];
@@ -1743,15 +1110,17 @@ function exportSummaryCsv() {
     "lesebasis","wort_satz","textverstaendnis","tiefes_textverstaendnis",
     "worterschliessung","strategiewissen","lesetempo_kontrollfragen",
     "woerter_pro_minute","lesezeit_sekunden","hauptempfehlung",
-    "zweitempfehlung","ich_weiss_es_nicht_anzahl"
+    "zweitempfehlung","ich_weiss_es_nicht_anzahl",
+    "wort_bild","wort_unterscheiden","wort_im_satz","lesetempo_einordnung",
+    "lesetempo_unterbrochen","gesamtdauer_sekunden","durchlauf_unterbrochen","durchlauf_id"
   ]];
 
   runs.forEach(function (run) {
     const participant = participantMap.get(run.participantId);
     rows.push([
       run.participantId,
-      participant ? participant.name : (run.participantNameSnapshot || ""),
-      participant ? participant.className : (run.classNameSnapshot || ""),
+      run.participantNameSnapshot ?? participant?.name ?? "",
+      run.classNameSnapshot ?? participant?.className ?? "",
       run.completedAt,
       run.setId,
       run.setVersion || "",
@@ -1768,7 +1137,13 @@ function exportSummaryCsv() {
       run.fluency && run.fluency.seconds ? Math.round(run.fluency.seconds * 10) / 10 : "",
       run.recommendation ? run.recommendation.primary : "",
       run.recommendation ? (run.recommendation.secondary || "") : "",
-      Object.values(run.responses || {}).filter(function (value) { return value === "unknown"; }).length
+      Object.values(run.responses || {}).filter(function (value) { return value === "unknown"; }).length,
+      run.readingBase?.word_recognition?.correct ?? "",
+      run.readingBase?.orthographic_discrimination?.correct ?? "",
+      run.readingBase?.word_in_sentence?.correct ?? "",
+      run.fluency?.interpretation || "nicht_erhoben",
+      run.fluency?.interrupted == null ? "" : run.fluency.interrupted ? "1" : "0",
+      run.durationSeconds ?? "", run.interrupted == null ? "" : run.interrupted ? "1" : "0", run.id
     ]);
   });
 
@@ -1779,6 +1154,7 @@ function exportSummaryCsv() {
 }
 
 function exportItemCsv() {
+  if (!state.teacherUnlocked) return;
   const participants = loadParticipants();
   const participantMap = new Map(participants.map(function (item) {
     return [item.id, item];
@@ -1787,7 +1163,7 @@ function exportItemCsv() {
   const rows = [[
     "teilnehmer_id","name_oder_kuerzel","klasse","zeitpunkt","parallelform",
     "aufgabensatz_version","auswertungsregeln_version","app_version",
-    "item_id","antwort","kompetenz","auswertungsbereich","richtig"
+    "item_id","antwort","kompetenz","auswertungsbereich","richtig","antwortreihenfolge","durchlauf_id"
   ]];
 
   runs.forEach(function (run) {
@@ -1796,8 +1172,8 @@ function exportItemCsv() {
     items.forEach(function (item) {
       rows.push([
         run.participantId,
-        participant ? participant.name : (run.participantNameSnapshot || ""),
-        participant ? participant.className : (run.classNameSnapshot || ""),
+        run.participantNameSnapshot ?? participant?.name ?? "",
+        run.classNameSnapshot ?? participant?.className ?? "",
         run.completedAt,
         run.setId,
         run.setVersion || "",
@@ -1807,7 +1183,8 @@ function exportItemCsv() {
         item.response,
         item.competency || "",
         item.scoreKey || "",
-        item.correct === true ? "1" : item.correct === false ? "0" : ""
+        item.correct === true ? "1" : item.correct === false ? "0" : "",
+        (run.optionOrders?.[item.itemId] || []).join("|"), run.id
       ]);
     });
   });
@@ -1830,6 +1207,96 @@ function escapeHtml(value) {
 function escapeAttribute(value) {
   return escapeHtml(value);
 }
+// Data contracts: scored items and pilot rules must agree before the UI starts.
+function validateProject(sets, rules) {
+  const fail = message => { throw new Error("Ungültige Aufgabendaten: " + message); };
+  if (!rules || !rules.scoreKeys || !rules.readingBaseComponents || !rules.recommendations ||
+      !rules.fluency || !rules.fluency.checkInterpretation || !rules.strategyHint) fail("Regeln fehlen");
+  const keys = Object.keys(INITIAL_SCORES);
+  if (keys.length !== Object.keys(rules.scoreKeys).length) fail("Auswertungsbereiche");
+  keys.forEach(key => { if (!Number.isInteger(rules.scoreKeys[key]?.max)) fail(key); });
+  function condition(c) {
+    if (!c || typeof c !== "object" || !Object.keys(c).length) fail("leere Bedingung");
+    Object.entries(c).forEach(function ([key, value]) {
+      if (key === "primary") { if (!rules.recommendations[value]) fail("Förderweg"); return; }
+      if (key === "any") { if (!Array.isArray(value) || !value.length) fail("Alternativen"); value.forEach(condition); return; }
+      if (!keys.includes(key) || !value || !Object.keys(value).length) fail("Bereich " + key);
+      Object.entries(value).forEach(([op, n]) => { if (!["lt", "lte", "gt", "gte", "eq"].includes(op) || !Number.isFinite(n)) fail("Vergleich"); });
+    });
+  }
+  [rules.primaryLogic, rules.secondaryLogic].forEach(list => {
+    if (!Array.isArray(list)) fail("Empfehlungsregeln");
+    list.forEach(rule => { condition(rule.when); if (!rules.recommendations[rule.recommend]) fail("Empfehlung"); });
+  });
+  condition(rules.strategyHint.when);
+  const ids = new Set();
+  sets.forEach(function (set) {
+    if (set.schemaVersion !== 2 || !set.setId || !set.version || !Array.isArray(set.sections)) fail("Set");
+    const sums = Object.assign({}, INITIAL_SCORES);
+    const base = {};
+    let timed = 0;
+    function check(item, reserve) {
+      if (!item.id || ids.has(item.id)) fail("Item-ID"); ids.add(item.id);
+      if (!["choice", "visual_choice", "self_report", "timed_reading"].includes(item.type) || !item.prompt) fail(item.id);
+      if (item.type === "timed_reading") {
+        if (!item.text || item.wordCount !== item.text.trim().split(/\s+/u).length) fail("Wortzahl");
+        if (!reserve) timed += 1;
+        return;
+      }
+      if (!Array.isArray(item.options) || item.options.length < 2 || new Set(item.options.map(o => o.id)).size !== item.options.length) fail("Optionen");
+      item.options.forEach(o => {
+        if (!o.id) fail("Antwort-ID");
+        if (item.type === "visual_choice" ? !/^[a-z]+$/.test(o.asset || "") : typeof o.text !== "string") fail("Antwortinhalt");
+      });
+      if (item.type === "self_report") { if (item.scoreKey || item.correctOption) fail("Selbsteinschätzung"); return; }
+      if (!keys.includes(item.scoreKey) || !item.options.some(o => o.id === item.correctOption)) fail("Lösung oder Score");
+      if (!reserve) {
+        sums[item.scoreKey] += 1;
+        if (item.scoreKey === "reading_base") base[item.competency] = (base[item.competency] || 0) + 1;
+      }
+    }
+    flattenSet(set).forEach(i => check(i, false));
+    (set.reserveItems || []).forEach(i => check(i, true));
+    keys.forEach(key => { if (sums[key] !== rules.scoreKeys[key].max) fail("Maximalwert " + key); });
+    Object.entries(rules.readingBaseComponents).forEach(([key, rule]) => { if (base[key] !== rule.max) fail("Lesebasis " + key); });
+    if (timed !== 1) fail("Lesetext");
+  });
+  // Exhaustive coverage of the three domains driving the primary recommendation.
+  for (let a = 0; a <= rules.scoreKeys.reading_base.max; a += 1)
+    for (let b = 0; b <= rules.scoreKeys.word_sentence.max; b += 1)
+      for (let c = 0; c <= rules.scoreKeys.text_basic.max; c += 1) {
+        const scores = Object.assign({}, INITIAL_SCORES, { reading_base: a, word_sentence: b, text_basic: c });
+        if (rules.primaryLogic.filter(r => matchesCondition(r.when, scores)).length !== 1) fail("Empfehlung nicht eindeutig");
+      }
+}
+
+function assetUrl(asset) { return "./assets/lesebilder/" + asset + ".png?v=0.4"; }
+
+async function preloadAssets(sets) {
+  const names = new Set();
+  sets.forEach(set => flattenSet(set).concat(set.reserveItems || []).forEach(i => (i.options || []).forEach(o => { if (o.asset) names.add(o.asset); })));
+  await Promise.all(Array.from(names).map(asset => new Promise(function (resolve, reject) {
+    const image = new Image();
+    image.onload = function () { image.naturalWidth > 0 ? resolve() : reject(new Error("Bild leer")); };
+    image.onerror = function () { reject(new Error("Bild fehlt: " + asset)); };
+    image.src = assetUrl(asset);
+  })));
+}
+
+document.addEventListener("visibilitychange", function () {
+  if (document.hidden) {
+    state.teacherUnlocked = false;
+    if (state.stage === "task") state.interrupted = true;
+    if (state.fluency.startedAt != null) state.fluency.interrupted = true;
+    if (state.stage === "intro" && state.rules) renderIntro();
+  }
+});
+window.addEventListener("beforeunload", function (event) {
+  if (state.stage === "task" || state.stage === "example" || state.pendingRun) {
+    event.preventDefault(); event.returnValue = "";
+  }
+});
+
 </script>
 </body>
 </html>

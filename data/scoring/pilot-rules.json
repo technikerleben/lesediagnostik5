@@ -144,7 +144,8 @@
           "lt": 7
         }
       },
-      "recommend": "wave"
+      "recommend": "wave",
+      "teacherText": "Die Lesebasis liegt unter der vorläufigen Grenze. Wortlesen und Lautlesen gezielt beobachten."
     },
     {
       "when": {
@@ -164,7 +165,8 @@
           }
         ]
       },
-      "recommend": "compass"
+      "recommend": "compass",
+      "teacherText": "Die Lesebasis erreicht die vorläufige Grenze. Wort-/Satzverständnis oder grundlegendes Textverständnis liegen darunter."
     },
     {
       "when": {
@@ -178,7 +180,8 @@
           "gte": 6
         }
       },
-      "recommend": "magnifier"
+      "recommend": "magnifier",
+      "teacherText": "Die drei grundlegenden Bereiche erreichen die vorläufigen Grenzen. Die Ergebnisse zum tieferen Verständnis helfen bei der Auswahl passender Aufgaben."
     }
   ],
   "secondaryLogic": [
