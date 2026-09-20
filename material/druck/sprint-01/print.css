@@ -91,10 +91,10 @@ h2 { font-size: 16pt; }
   margin-top: auto;
   border-top: 1pt solid var(--line);
   padding-top: 3mm;
-  font-size: 12pt;
+  font-size: 14pt;
 }
 
-.small { font-size: 11pt; }
+.small { font-size: 14pt; }
 .muted { color: var(--muted); }
 
 .wave { --accent: #245688; }
