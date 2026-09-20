@@ -17,6 +17,10 @@ Stand: 20.09.2026
 - [x] separate Lösungssammlung für Sprint 01
 - [x] Haupt-README mit der Materialtheke verknüpft
 - [x] wiederverwendbare Druck-Master für A5-Aufgabenkarte, A5-Tandemtext, A6-Strategiekarte und A6-Lösungskarte
+- [x] 11 druckfertige A5-Schülerseiten für Sprint 01
+- [x] A6-Sammeldruck der 3 Strategiekarten
+- [x] A6-Sammeldruck der Lösungskarten
+- [x] Sammeldruck aller Schülerseiten und eigener Druck-Hub
 
 ## Sprint 01 – Prototypen
 
@@ -47,11 +51,10 @@ Stand: 20.09.2026
 Die Inhalte sind als **Prototypen** angelegt, nicht als fertige Serien.
 
 Als Nächstes:
-1. die vorhandenen Inhaltsprototypen in die fertigen A5/A6-Master setzen,
-2. Vorderseiten und separate Lösungskarten druckfertig erzeugen,
-3. kleinen heterogenen Schülerpilot durchführen,
-4. Beobachtungen mit `pilotbogen.md` sichern,
-5. Prototypen überarbeiten und im Katalog auf `pilot` setzen,
-6. erst danach bewährte Formate auf weitere Themen skalieren.
+1. Drucksatz aus dem Druck-Hub ausgeben,
+2. kleinen heterogenen Schülerpilot durchführen,
+3. Beobachtungen mit `pilotbogen.md` sichern,
+4. Prototypen überarbeiten und im Katalog auf `pilot` setzen,
+5. erst danach bewährte Formate auf weitere Themen skalieren.
 
 Ein Format wechselt im Katalog erst nach Unterrichtserprobung von `prototype` zu `pilot` bzw. später zu `series`.
