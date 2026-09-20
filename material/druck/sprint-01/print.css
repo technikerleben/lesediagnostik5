@@ -42,7 +42,7 @@ body { padding: 0; }
 }
 
 .eyebrow {
-  font-size: 10pt;
+  font-size: 14pt;
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--muted);
